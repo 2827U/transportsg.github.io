@@ -18323,8 +18323,8 @@ EDSData.SBST = {
         1: {
             front: {
                 renderType: "message",
-                text: "BUS REVERSING",
-                font: "LECIP-20:9",
+                text: "BUS  REVERSING",
+                font: "LECIP-20:12",
                 spacing: 2
             },
             rear: {
