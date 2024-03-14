@@ -64,10 +64,99 @@ EDSFormats.GASG = {
             font: "$bottomFont",
             spacing: "$bottomSpacing",
             margin: {
-                bottom: 1
+                bottom: 0
             }
         },
         text: "$top"
+    },
+    destScroll: {
+        serviceNumber: {
+            align: "right",
+            margin: {
+                right: 1
+            },
+            text: "$serviceNumber",
+            font: "LECIP-20:12",
+            spacing: {
+                $$cond: {
+                    "$spacing === null" : 3,
+                    "else": "$spacing"
+                }
+            }
+        },
+        top: {
+            align: {
+                $$cond: {
+                    "$bottom === null": "centre-x,centre-y",
+                    "else": "centre-x,top"
+                }
+            },
+            text: "$top",
+            font: "$topFont",
+            spacing: 1,
+            margin: {
+                right: 'width(serviceNumber)'
+            }
+        },
+        bottom: {
+            align: "centre-x,bottom",
+            text: {
+                $$cond: {
+                    "$bottom !== null": "$bottom",
+                    "else": "''"
+                }
+            },
+            font: {
+                $$cond: {
+                    "$bottomFont !== null": "$bottomFont",
+                    "else": "LECIP-10"
+                }
+            },
+            spacing: 1,
+            margin: {
+                right: 'width(serviceNumber)'
+            }
+        },
+
+        text: "$top+' '+$bottom+' '+$serviceNumber"
+    },
+    full: {
+        __dynamic__: (matrix, data) => {
+            matrixPrimitives.setStrokeColour(null);
+            matrixPrimitives.fillRectangle(matrix, 0, 0, matrix.width, matrix.height);
+        },
+        text: "FULL"
+    },
+    'centreMessageServiceScroll': {
+        serviceNumber: {
+            align: 'right,centre-y',
+            margin: {
+                right: 1
+            },
+            text: '$serviceNumber',
+            font: 'LECIP-20:12',
+            spacing: 3
+        },
+        top: {
+            align: 'centre-x,top',
+            margin: {
+                right: 'width(serviceNumber) len(5)',
+                top: 1
+            },
+            text: '$top',
+            font: '$topFont',
+            spacing: 1
+        },
+        bottom: {
+            align: 'centre-x,bottom',
+            margin: {
+                right: 'width(serviceNumber) len(5)',
+                bottom: 1
+            },
+            text: '$bottom',
+            font: '$bottomFont',
+            spacing: 1
+        }
     },
     rearService: {
         serviceNumber: {
@@ -82,6 +171,16 @@ EDSFormats.GASG = {
 }
 
 EDSData.GASG = {
+    1: {
+        1: {
+            front: {
+                renderType: "full"
+            },
+            rear: {
+                renderType: "full"
+            }
+        }
+    },
     2: {
         1: {
             front: {
@@ -89,7 +188,13 @@ EDSData.GASG = {
                 serviceNumber: "2",
                 destination: "KAMPONG BAHRU",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "KAMPONG BAHRU",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "2"
+                },
                     "LOYANG AVE"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -107,7 +212,13 @@ EDSData.GASG = {
                 serviceNumber: "2",
                 destination: "CHANGI VILLAGE",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "CHANGI VILLAGE",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "2"
+                },
                     "LOYANG AVE"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -160,6 +271,56 @@ EDSData.GASG = {
             }
         }
     },
+    "2N": {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "2",
+                destination: "NEW BRIDGE RD",
+                destinationFont: "LECIP-10",
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "NEW BRIDGE RD",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "2"
+                },
+                    "LOYANG AVE"
+                ],
+                scrollFont: "LECIP-7:5"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "2",
+                font: "LECIP-20:12",
+                spacing: 2
+            }
+        },
+        2: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "2",
+                destination: "CHANGI VILLAGE",
+                destinationFont: "LECIP-10",
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "CHANGI VILLAGE",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "2"
+                },
+                    "LOYANG AVE"
+                ],
+                scrollFont: "LECIP-7:5"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "2",
+                font: "LECIP-20:12",
+                spacing: 2
+            }
+        }
+    },
     3: {
         1: {
             front: {
@@ -167,7 +328,13 @@ EDSData.GASG = {
                 serviceNumber: "3",
                 destination: "TAMPINES",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "TAMPINES",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "3"
+                },
                     "PUNGGOL CENTRAL / FIELD",
                     "TAMPINES EXPRESSWAY",
                     "PASIR RIS DR 12 / 1 / 10",
@@ -192,7 +359,13 @@ EDSData.GASG = {
                 serviceNumber: "3",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "3"
+                },
                     "TAMPINES ST 21",
                     "TAMPINES EAST MRT",
                     "PASIR RIS ST 21 / DR 3",
@@ -216,10 +389,23 @@ EDSData.GASG = {
             front: {
                 renderType: "standardService",
                 serviceNumber: "3A",
-                destination: "TERMINATING AT",
+                destination: "PASIR RIS DR 12",
                 destinationFont: "LECIP-10",
-                scrolls: [
-                    "PASIR RIS DRIVE 12"
+                scrolls: [{
+                    renderType: "centreMessageServiceScroll",
+                    serviceNumber: "3A",
+                    top: "TERMINATING AT",
+                    topFont: "LECIP-7:5",
+
+                    bottom: "PASIR RIS DR 12",
+                    bottomFont: "LECIP-7:5"
+                },
+                    "TAMPINES ST 21",
+                    "TAMPINES EAST MRT",
+                    "TAMPINES AVE 2 / 7",
+                    "PASIR RIS ST 21 / DR 3",
+                    "PASIR RIS MRT",
+                    "PASIR RIS DR 1 / ST 71"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -238,7 +424,13 @@ EDSData.GASG = {
                 serviceNumber: "6",
                 destination: "PASIR RIS",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "6"
+                },
                     "PASIR RIS DR 3",
                     "LOYANG AVE",
                     "LOYANG WAY",
@@ -261,7 +453,13 @@ EDSData.GASG = {
                 serviceNumber: "12",
                 destination: "KAMPONG BAHRU",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "KAMPONG BAHRU",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "12"
+                },
                     "TANAH MERAH MRT"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -279,8 +477,24 @@ EDSData.GASG = {
                 serviceNumber: "12",
                 destination: "PASIR RIS",
                 destinationFont: "LECIP-10",
-                scrolls: [
-                    "TANAH MERAH MRT"
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "12"
+                },
+                    "CHINATOWN / CLARKE QUAY MRT",
+                    "VICTORIA ST / BUGIS",
+                    "LAVENDER / KALLANG MRT",
+                    "MOUNTBATTEN RD / MRT",
+                    "EAST COAST RD",
+                    "BEDOK SOUTH RD",
+                    "TANAH MERAH MRT",
+                    "SIMEI RD",
+                    "TAMPINES EAST MRT",
+                    "PASIR RIS ST 12 / 13",
+                    "PASIR RIS DR 1 / 6 / 3"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -299,7 +513,13 @@ EDSData.GASG = {
                 serviceNumber: "12e",
                 destination: "KAMPONG BAHRU",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "KAMPONG BAHRU",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "12e"
+                },
                     "PASIR RIS DR 6 / 1",
                     "TAMPINES AVE 7 / 2",
                     "SIMEI RD",
@@ -324,7 +544,13 @@ EDSData.GASG = {
                 serviceNumber: "12e",
                 destination: "PASIR RIS",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "12e"
+                },
                     "CLARKE QUAY",
                     "BUGIS",
                     "ECP (EXPRESS)",
@@ -343,6 +569,66 @@ EDSData.GASG = {
             }
         }
     },
+    "12N": {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "12",
+                destination: "NEW BRIDGE RD",
+                destinationFont: "LECIP-10",
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "NEW BRIDGE RD",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "12"
+                },
+                    "TANAH MERAH MRT"
+                ],
+                scrollFont: "LECIP-7:5"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "12",
+                font: "LECIP-20:12",
+                spacing: 2
+            }
+        },
+        2: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "12",
+                destination: "PASIR RIS",
+                destinationFont: "LECIP-10",
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "12"
+                },
+                    "CHINATOWN / CLARKE QUAY MRT",
+                    "VICTORIA ST / BUGIS",
+                    "LAVENDER / KALLANG MRT",
+                    "MOUNTBATTEN RD / MRT",
+                    "EAST COAST RD",
+                    "BEDOK SOUTH RD",
+                    "TANAH MERAH MRT",
+                    "SIMEI RD",
+                    "TAMPINES EAST MRT",
+                    "PASIR RIS ST 12 / 13",
+                    "PASIR RIS DR 1 / 6 / 3"
+                ],
+                scrollFont: "LECIP-7:5"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "12",
+                font: "LECIP-20:12",
+                spacing: 2
+            }
+        }
+    },
     15: {
         1: {
             front: {
@@ -350,7 +636,13 @@ EDSData.GASG = {
                 serviceNumber: "15",
                 destination: "MARINE PARADE",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "MARINE PARADE",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "15"
+                },
                     "PASIR RIS ST 52, DR 1 / 8",
                     "TAMPINES AVE 12 / 7 / 4 / 5 / 1",
                     "BEDOK NORTH RD",
@@ -375,7 +667,13 @@ EDSData.GASG = {
                 serviceNumber: "15",
                 destination: "PASIR RIS",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "15"
+                },
                     "JOO CHIAT PLACE",
                     "STILL RD",
                     "JALAN EUNOS / MRT",
@@ -422,7 +720,13 @@ EDSData.GASG = {
                 serviceNumber: "17",
                 destination: "BEDOK",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "BEDOK",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "17"
+                },
                     "PASIR RIS DR 3 / 4",
                     "PASIR RIS ST 12 / 11",
                     "TAMPINES AVE 7 / 2",
@@ -446,7 +750,13 @@ EDSData.GASG = {
                 serviceNumber: "17",
                 destination: "PASIR RIS",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "17"
+                },
                     "BEDOK NORTH RD",
                     "BEDOK NORTH AVE 4",
                     "SIMEI AVE",
@@ -493,7 +803,13 @@ EDSData.GASG = {
                 serviceNumber: "34",
                 destination: "CHANGI AIRPORT",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "CHANGI AIRPORT",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "34"
+                },
                     "PUNGGOL RD",
                     "TAMPINES EXPRESSWAY",
                     "TAMPINES AVE 10 / 5 / 2",
@@ -514,7 +830,13 @@ EDSData.GASG = {
                 serviceNumber: "34",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "34"
+                },
                     "TAMPINES EAST MRT",
                     "TAMPINES AVE 2 / 5 / 10",
                     "TAMPINES EXPRESSWAY",
@@ -581,7 +903,13 @@ EDSData.GASG = {
                 serviceNumber: "36",
                 destination: "TOMLINSON RD",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "TOMLINSON RD",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "36"
+                },
                     "MARINE PARADE RD",
                     "SUNTEC CITY",
                     "STAMFORD RD",
@@ -604,7 +932,13 @@ EDSData.GASG = {
                 serviceNumber: "36",
                 destination: "CHANGI AIRPORT",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "CHANGI AIRPORT",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "36"
+                },
                     "ORCHARD RD",
                     "BRAS BASAH RD",
                     "SUNTEC CITY",
@@ -699,7 +1033,13 @@ EDSData.GASG = {
                 serviceNumber: "43",
                 destination: "UPP EAST COAST",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "UPP EAST COAST",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "43"
+                },
                     "PUNGGOL WAY",
                     "SENGKANG EAST RD",
                     "BUANGKOK MRT",
@@ -728,7 +1068,13 @@ EDSData.GASG = {
                 serviceNumber: "43",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "43"
+                },
                     "MARINE PARADE RD",
                     "TANJONG KATONG RD",
                     "PAYA LEBAR MRT / RD",
@@ -757,10 +1103,20 @@ EDSData.GASG = {
             front: {
                 renderType: "standardService",
                 serviceNumber: "43e",
-                destination: "MARINE PARADE RD",
+                destination: "MARINE PARADE",
                 destinationFont: "LECIP-10",
-                scrolls: [
-                    "PAYA LEBAR MRT"
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "MARINE PARADE",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "43e"
+                },
+                    "SENGKANG EAST RD",
+                    "BUANGKOK MRT",
+                    "KPE (EXPRESS)",
+                    "PAYA LEBAR RD",
+                    "TANJONG KATONG RD"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -777,8 +1133,18 @@ EDSData.GASG = {
                 serviceNumber: "43e",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
-                    "PAYA LEBAR MRT"
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "43e"
+                },
+                    "TANJONG KATONG RD",
+                    "PAYA LEBAR RD",
+                    "KPE (EXPRESS)",
+                    "BUANGKOK MRT",
+                    "SENGKANG EAST RD"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -797,7 +1163,13 @@ EDSData.GASG = {
                 serviceNumber: "43M",
                 destination: "SERANGOON MRT",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "SERANGOON MRT",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "43M"
+                },
                     "PUNGGOL WAY",
                     "SENGKANG EAST RD",
                     "BUANGKOK MRT",
@@ -820,7 +1192,13 @@ EDSData.GASG = {
                 serviceNumber: "43M",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "43M"
+                },
                     "YIO CHU KANG RD",
                     "BUANGKOK GREEN",
                     "BUANGKOK MRT",
@@ -844,7 +1222,13 @@ EDSData.GASG = {
                 serviceNumber: "62",
                 destination: "SIMS AVE",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "SIMS AVE",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "62"
+                },
                     "PUNGGOL FIELD / EAST",
                     "SENGKANG EAST DR",
                     "UPPER SERANGOON RD",
@@ -871,7 +1255,13 @@ EDSData.GASG = {
                 serviceNumber: "62",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "62"
+                },
                     "ALJUNIED MRT",
                     "MACPHERSON RD",
                     "UPPER PAYA LEBAR RD",
@@ -898,10 +1288,21 @@ EDSData.GASG = {
             front: {
                 renderType: "standardService",
                 serviceNumber: "62A",
-                destination: "TERMINATING AT",
+                destination: "ALJUNIED MRT",
                 destinationFont: "LECIP-10",
-                scrolls: [
-                    "AJLUNIED MRT"
+                scrolls: [{
+                    renderType: "centreMessageServiceScroll",
+                    serviceNumber: "62A",
+                    top: "TERMINATING AT",
+                    topFont: "LECIP-7:5",
+
+                    bottom: "ALJUNIED MRT",
+                    bottomFont: "LECIP-7:5"
+                },
+                    "PUNGGOL FIELD / EAST",
+                    "SENGKANG EAST DR",
+                    "UPPER SERANGOON RD",
+
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -920,11 +1321,18 @@ EDSData.GASG = {
                 serviceNumber: "68",
                 destination: "TAMPINES",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "TAMPINES",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "68"
+                },
                     "ELIAS RD",
                     "PASIR RIS ST 71",
-                    "PASIR RIS DR 10 / 1 / 12",
-                    "TAMPINES AVE 10 / 11 / 6",
+                    "TAMPINES AVE 10",
+                    "TAMPINES AVE 11",
+                    "TAMPINES AVE 6",
                     "TAMPINES CONCOURSE"
 
                 ],
@@ -943,10 +1351,17 @@ EDSData.GASG = {
                 serviceNumber: "68",
                 destination: "PASIR RIS",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "68"
+                },
                     "TAMPINES CONCOURSE",
-                    "TAMPINES AVE 6 / 11 / 10",
-                    "PASIR RIS DR 12 / 1 / 10",
+                    "TAMPINES AVE 6",
+                    "TAMPINES AVE 11",
+                    "TAMPINES AVE 10",
                     "PASIR RIS ST 71",
                     "ELIAS RD"
                 ],
@@ -1007,7 +1422,13 @@ EDSData.GASG = {
                 serviceNumber: "82",
                 destination: "SERANGOON MRT",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "SERANGOON MRT",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "82"
+                },
                     "UPPER SERANGOON RD"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -1025,7 +1446,13 @@ EDSData.GASG = {
                 serviceNumber: "82",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "82"
+                },
                     "UPPER SERANGOON RD"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -1045,7 +1472,13 @@ EDSData.GASG = {
                 serviceNumber: "83",
                 destination: "SENGKANG",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "SENGKANG",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "83"
+                },
                     "PUNGGOL CENTRAL",
                     "PUNGGOL WAY",
                     "PUNGGOL FIELD",
@@ -1067,7 +1500,13 @@ EDSData.GASG = {
                 serviceNumber: "83",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "83"
+                },
                     "SENGKANG EAST RD",
                     "PUNGGOL RD",
                     "PUNGGOL FIELD",
@@ -1111,7 +1550,13 @@ EDSData.GASG = {
                 serviceNumber: "84",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "84"
+                },
                     "SENTUL CRESCENT"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -1131,7 +1576,13 @@ EDSData.GASG = {
                 serviceNumber: "85",
                 destination: "YISHUN",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "YISHUN",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "85"
+                },
                     "PUNGGOL CENTRAL",
                     "RIVERVALE DR",
                     "COMPASSVALE DR",
@@ -1156,7 +1607,13 @@ EDSData.GASG = {
                 serviceNumber: "85",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "85"
+                },
                     "SLE",
                     "JALAN KAYU",
                     "SENGKANG WEST WAY",
@@ -1182,7 +1639,15 @@ EDSData.GASG = {
                 serviceNumber: "85A",
                 destination: "SENGKANG E RD",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "centreMessageServiceScroll",
+                    serviceNumber: "85A",
+                    top: "TERMINATING AT",
+                    topFont: "LECIP-7:5",
+
+                    bottom: "SENGKANG EAST RD",
+                    bottomFont: "LECIP-7:5"
+                },
                     "YISHUN AVE 2",
                     "JALAN KAYU",
                     "SENGKANG WEST WAY"
@@ -1204,7 +1669,13 @@ EDSData.GASG = {
                 serviceNumber: "118",
                 destination: "CHANGI BIZ PARK",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "CHANGI BIZ PARK",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "118"
+                },
                     "PUNGGOL WAY",
                     "TPE",
                     "TAMPINES AVE 10 / 8 / 1",
@@ -1227,7 +1698,13 @@ EDSData.GASG = {
                 serviceNumber: "118",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "118"
+                },
                     "EXPO MRT",
                     "XILIN AVE",
                     "SIMEI AVE",
@@ -1251,11 +1728,20 @@ EDSData.GASG = {
             front: {
                 renderType: "standardService",
                 serviceNumber: "118A",
-                destination: "SIMEI AVE ",
+                destination: "SIMEI AVE",
                 destinationFont: "LECIP-10",
-                scrolls: [
-                    "TAMPINES AVE 10 / 5",
-                    "TAMPINES AVE 8 / 1"
+                scrolls: [{
+                    renderType: "centreMessageServiceScroll",
+                    serviceNumber: "118A",
+                    top: "TERMINATING AT",
+                    topFont: "LECIP-7:5",
+
+                    bottom: "ITE COLL EAST ADM BLK",
+                    bottomFont: "LECIP-6:4"
+                },
+                    "TAMPINES AVE 10 / 8",
+                    "TAMPINES AVE 1",
+                    "TAMPINES WEST MRT"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -1272,12 +1758,20 @@ EDSData.GASG = {
             front: {
                 renderType: "standardService",
                 serviceNumber: "118B",
-                destination: "TPE",
+                destination: "SIMEI AVE",
                 destinationFont: "LECIP-10",
-                scrolls: [
-                    "SIMEI AVE",
-                    "TAMPINES AVE 5 / 10",
-                    "TAMPINES AVE 1 / 8"
+                scrolls: [{
+                    renderType: "centreMessageServiceScroll",
+                    serviceNumber: "118B",
+                    top: "TERMINATING AT",
+                    topFont: "LECIP-7:5",
+
+                    bottom: "TPE (BEF PUNGGOL RD)",
+                    bottomFont: "LECIP-7:5"
+                },
+                    "TAMPINES AVE 1",
+                    "TAMPINES AVE 8",
+                    "TAMPINES AVE 10"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -1296,7 +1790,13 @@ EDSData.GASG = {
                 serviceNumber: "119",
                 destination: "KOVAN",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "KOVAN",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "119"
+                },
                     "PUNGGOL FIELD / WAY",
                     "SENGKANG MRT",
                     "RIVERVALE DRIVE",
@@ -1319,7 +1819,13 @@ EDSData.GASG = {
                 serviceNumber: "119",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "119"
+                },
                     "UPPER SERANGOON RD",
                     "HOUGANG AVE 8 / 10",
                     "PUNGGOL RD",
@@ -1344,16 +1850,38 @@ EDSData.GASG = {
                 serviceNumber: "136",
                 destination: "ANG MO KIO",
                 destinationFont: "LECIP-10",
-                scrolls: [
-                    "SERANGOON GARDEN WAY"
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "ANG MO KIO",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "136"
+                },
+                    "PUNGGOL CENTRAL",
+                    "EDGEFIELD PLAINS",
+                    "PUNGGOL FIELD / RD",
+                    "RIVERVALE DR",
+                    "UPPER SERANGOON RD",
+                    "SERANGOON GARDENS",
+                    "ANG MO KIO AVE 1 / 6 / 3"
                 ],
                 scrollFont: "LECIP-7:5"
             },
             rear: {
-                renderType: "rearService",
-                serviceNumber: "136",
-                font: "LECIP-20:9",
-                spacing: 2
+                renderType: "standardService",
+                serviceNumber: "",
+                destination: "TO",
+                destinationFont: "LECIP-7:5",
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "136",
+                    topFont: "LECIP-20:9",
+        
+                    serviceNumber: ""
+                },
+                    "AMK"
+                ],
+                scrollFont: "LECIP-7:5"
             }
         },
         2: {
@@ -1362,16 +1890,32 @@ EDSData.GASG = {
                 serviceNumber: "136",
                 destination: "PUNGGOL",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "136"
+                },
                     "SERANGOON GARDEN WAY"
                 ],
                 scrollFont: "LECIP-7:5"
             },
             rear: {
-                renderType: "rearService",
-                serviceNumber: "136",
-                font: "LECIP-20:9",
-                spacing: 2
+                renderType: "standardService",
+                serviceNumber: "",
+                destination: "TO",
+                destinationFont: "LECIP-6:3",
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "136",
+                    topFont: "LECIP-20:9",
+        
+                    serviceNumber: ""
+                },
+                    "PUNGGOL"
+                ],
+                scrollFont: "LECIP-6:3"
             }
         }
     },
@@ -1382,7 +1926,13 @@ EDSData.GASG = {
                 serviceNumber: "354",
                 destination: "PASIR RIS INT",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS INT",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "354"
+                },
                     "DOWNTOWN EAST",
                     "JALAN LOYANG BESAR",
                     "PASIR RIS DR 3"
@@ -1404,7 +1954,13 @@ EDSData.GASG = {
                 serviceNumber: "358",
                 destination: "PASIR RIS INT",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS INT",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "358"
+                },
                     "PASIR RIS DR 3 / 10",
                     "ELIAS RD",
                     "PASIR RIS DR 3 / 6",
@@ -1448,7 +2004,13 @@ EDSData.GASG = {
                 serviceNumber: "359",
                 destination: "PASIR RIS INT",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS INT",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "359"
+                },
                     "PASIR RIS DR 3 / 12",
                     "PASIR RIS ST 71",
                     "PASIR RIS DR 12 / 3",
@@ -1494,7 +2056,13 @@ EDSData.GASG = {
                 serviceNumber: "381",
                 destination: "PUNGGOL INT",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PUNGGOL INT",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "381"
+                },
                  "PUNGGOL EAST (LOOP)"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -1510,11 +2078,17 @@ EDSData.GASG = {
     "382G": {
         1: {
             front: {
-                renderType: "standardService",
-                serviceNumber: "382G",
-                destination: "PUNGGOL INT",
-                destinationFont: "LECIP-10",
-                scrolls: [
+                    renderType: "standardService",
+                    serviceNumber: "382G",
+                    destination: "PUNGGOL INT",
+                    destinationFont: "LECIP-10",
+                    scrolls: [{
+                        renderType: "destScroll",
+                        top: "PUNGGOL INT",
+                        topFont: "LECIP-10",
+            
+                        serviceNumber: "382G"
+                    },
                  "PUNGGOL FIELD",
                  "SUMANG WALK",
                  "SUMANG LINK",
@@ -1534,11 +2108,18 @@ EDSData.GASG = {
     "382W": {
         1: {
             front: {
-                renderType: "standardService",
-                serviceNumber: "382W",
-                destination: "PUNGGOL INT",
-                destinationFont: "LECIP-10",
-                scrolls: [
+
+                    renderType: "standardService",
+                    serviceNumber: "382W",
+                    destination: "PUNGGOL INT",
+                    destinationFont: "LECIP-10",
+                    scrolls: [{
+                        renderType: "destScroll",
+                        top: "PUNGGOL INT",
+                        topFont: "LECIP-10",
+            
+                        serviceNumber: "382W"
+                    },
                  "PUNGGOL PLACE",
                  "SENTUL CRESCENT",
                  "SUMANG LINK",
@@ -1579,11 +2160,17 @@ EDSData.GASG = {
     384: {
         1: {
             front: {
-                renderType: "standardService",
-                serviceNumber: "384",
-                destination: "PUNGGOL INT",
-                destinationFont: "LECIP-10",
-                scrolls: [
+                    renderType: "standardService",
+                    serviceNumber: "384",
+                    destination: "PUNGGOL INT",
+                    destinationFont: "LECIP-10",
+                    scrolls: [{
+                        renderType: "destScroll",
+                        top: "PUNGGOL INT",
+                        topFont: "LECIP-10",
+            
+                        serviceNumber: "384"
+                    },
                  "PUNGGOL CENTRAL",
                  "PUNGGOL WAY",
                  "NORTHSHORE DRIVE"
@@ -1601,11 +2188,17 @@ EDSData.GASG = {
     386: {
         1: {
             front: {
-                renderType: "standardService",
-                serviceNumber: "386",
-                destination: "PUNGGOL INT",
-                destinationFont: "LECIP-10",
-                scrolls: [
+                    renderType: "standardService",
+                    serviceNumber: "386",
+                    destination: "PUNGGOL INT",
+                    destinationFont: "LECIP-10",
+                    scrolls: [{
+                        renderType: "destScroll",
+                        top: "PUNGGOL INT",
+                        topFont: "LECIP-10",
+            
+                        serviceNumber: "386"
+                    },
                  "PUNGGOL FIELD"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -1646,7 +2239,13 @@ EDSData.GASG = {
                 serviceNumber: "403",
                 destination: "PASIR RIS INT",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS INT",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "403"
+                },
                  "PASIR RIS DR 8 / 1",
                  "ELIAS RD",
                  "PASIR RIS RD",
@@ -1669,7 +2268,13 @@ EDSData.GASG = {
                 serviceNumber: "518",
                 destination: "BAYFRONT",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "BAYFRONT",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "518"
+                },
                     "PASIR RIS DR 3 / 12",
                     "PASIR RIS ST 12 / 11",
                     "TAMPINES AVE 7 / 2 / 1",
@@ -1694,7 +2299,13 @@ EDSData.GASG = {
                 serviceNumber: "518",
                 destination: "PASIR RIS",
                 destinationFont: "LECIP-10",
-                scrolls: [
+                scrolls: [{
+                    renderType: "destScroll",
+                    top: "PASIR RIS",
+                    topFont: "LECIP-10",
+        
+                    serviceNumber: "518"
+                },
                     "ORCHARD RD"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -1715,7 +2326,11 @@ EDSData.GASG = {
                 destination: "BAYFRONT",
                 destinationFont: "LECIP-10",
                 scrolls: [
-                    "LOYANG AVE"
+                    "PASIR RIS DR 3 / 1",
+                    "LOYANG AVE",
+                    "ORCHARD RD",
+                    "SUNTEC CITY",
+                    "(SKIPS TAMPINES)"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -1735,7 +2350,10 @@ EDSData.GASG = {
                 destination: "MARINA BLVD",
                 destinationFont: "LECIP-10",
                 scrolls: [
-                    "LOYANG AVE"
+                    "PASIR RIS DR 6",
+                    "PASIR RIS ST 11",
+                    "LOYANG AVE",
+                    "ROBINSON RD"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -1753,7 +2371,10 @@ EDSData.GASG = {
                 destination: "PASIR RIS DR 1",
                 destinationFont: "LECIP-10",
                 scrolls: [
-                    "LOYANG AVE"
+                    "SHENTON WAY",
+                    "LOYANG AVE",
+                    "PASIR RIS ST 11",
+                    "PASIR RIS DR 6"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -1773,7 +2394,11 @@ EDSData.GASG = {
                 destination: "MARINA BLVD",
                 destinationFont: "LECIP-10",
                 scrolls: [
-                    "PUNGGOL WAY"
+                    "PUNGGOL DR",
+                    "PUNGGOL EAST",
+                    "PUNGGOL FIELD",
+                    "PUNGGOL WAY",
+                    "ROBINSON RD"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -1791,7 +2416,10 @@ EDSData.GASG = {
                 destination: "PUNGGOL DRIVE",
                 destinationFont: "LECIP-10",
                 scrolls: [
-                    "PUNGGOL WAY"
+                    "SHENTON WAY",
+                    "PUNGGOL WAY",
+                    "PUNGGOL FIELD",
+                    "PUNGGOL EAST"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -1848,6 +2476,642 @@ EDSData.GASG = {
                 bottom: "SG",
                 bottomFont: "LECIP-6:4",
                 bottomSpacing: 1,
+            }
+        }
+    },
+    4000: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "PASIR RIS - OUTRAM",
+                font: "LECIP-20:6",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "PSR - ",
+                topFont: "LECIP-7:5",
+
+                bottom: "OTP",
+                bottomFont: "LECIP-7:5"
+            }
+        }
+    },
+    4001: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "OUTRAM - PASIR RIS",
+                font: "LECIP-20:6",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "OTP - ",
+                topFont: "LECIP-7:5",
+
+                bottom: "PSR",
+                bottomFont: "LECIP-7:5"
+            }
+        }
+    },
+    4002: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "OUTRAM-TANAH MERAH-EXPO-CHANGI AIRPORT",
+                font: "LECIP-6:3",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "OTP - ",
+                topFont: "LECIP-7:5",
+
+                bottom: "CGA",
+                bottomFont: "LECIP-7:5"
+            }
+        }
+    },
+    4003: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "CHANGI AIRPORT-EXPO-TANAH MERAH-OUTRAM",
+                font: "LECIP-6:3",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "CGA - ",
+                topFont: "LECIP-7:5",
+
+                bottom: "OTP",
+                bottomFont: "LECIP-7:5"
+            }
+        }
+    },
+    4011: {
+        1: {
+            front: { 
+                renderType: "twoline",
+                top: "SHUTTLE 1",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "RAFFLES PLACE - BUONA VISTA",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "RFP -",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "BNV",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    4012: {
+        1: {
+            front: { 
+                renderType: "twoline",
+                top: "SHUTTLE 1",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "BUONA VISTA - RAFFLES PLACE",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "BNV -",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "RFP",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    4041: {
+        1: {
+            front: { 
+                renderType: "twoline",
+                top: "SHUTTLE 4",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "JURONG EAST - CHOA CHU KANG",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "JUR -",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "CCK",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    4042: {
+        1: {
+            front: { 
+                renderType: "twoline",
+                top: "SHUTTLE 4",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "CHOA CHU KANG - JURONG EAST",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "CCK -",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "JUR",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    4071: {
+        1: {
+            front: { 
+                renderType: "twoline",
+                top: "SHUTTLE 7",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "PASIR RIS - TANAH MERAH",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "PSR -",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "TMN",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    4072: {
+        1: {
+            front: {
+                renderType: "twoline",
+                top: "SHUTTLE 7",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "TANAH MERAH - PASIR RIS",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "TNM -",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "PSR",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    4073: {
+        1: {
+            front: { 
+                renderType: "twoline",
+                top: "SHUTTLE 7",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "TANAH MERAH - ALJUNIED",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "TNM -",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "ALJ",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    4074: {
+        1: {
+            front: {
+                renderType: "twoline",
+                top: "SHUTTLE 7",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "ALJUNIED - TANAH MERAH",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "ALJ -",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "TNM",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    4101: {
+        1: {
+            front: { 
+                renderType: "twoline",
+                top: "SHUTTLE 10",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "WOODLANDS - ANG MO KIO",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "WDL -",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "AMK",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    4012: {
+        1: {
+            front: {
+                renderType: "twoline",
+                top: "SHUTTLE 10",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "ANG MO KIO - WOODLANDS",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "AMK -",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "WDL",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    7001: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA 1",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "GA 1",
+                font: "LECIP-20:6",
+                spacing: 2
+            }
+        }
+    },
+    7002: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA 2",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "GA 2",
+                font: "LECIP-20:6",
+                spacing: 2
+            }
+        }
+    },
+    7003: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA 3",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "GA 3",
+                font: "LECIP-20:6",
+                spacing: 2
+            }
+        }
+    },
+    7004: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA 4",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "GA 4",
+                font: "LECIP-20:6",
+                spacing: 2
+            }
+        }
+    },
+    7005: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA 5",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "GA 5",
+                font: "LECIP-20:6",
+                spacing: 2
+            }
+        }
+    },
+    7006: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA 6",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "GA 6",
+                font: "LECIP-20:6",
+                spacing: 2
+            }
+        }
+    },
+    7007: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA 7",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "GA 7",
+                font: "LECIP-20:6",
+                spacing: 2
+            }
+        }
+    },
+    7008: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA 8",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "GA 8",
+                font: "LECIP-20:6",
+                spacing: 2
+            }
+        }
+    },
+    7009: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA 9",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "GA 9",
+                font: "LECIP-20:6",
+                spacing: 2
+            }
+        }
+    },
+    7101: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA  RIDE  01",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GA RIDE",
+                topFont: "LECIP-6:4",
+
+                bottom: "01",
+                bottomFont: "LECIP-10"
+            }
+        }
+    },
+    7102: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA  RIDE  02",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GA RIDE",
+                topFont: "LECIP-6:4",
+
+                bottom: "02",
+                bottomFont: "LECIP-10"
+            }
+        }
+    },
+    7103: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA  RIDE  03",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GA RIDE",
+                topFont: "LECIP-6:4",
+
+                bottom: "03",
+                bottomFont: "LECIP-10"
+            }
+        }
+    },
+    7104: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA  RIDE  04",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GA RIDE",
+                topFont: "LECIP-6:4",
+
+                bottom: "04",
+                bottomFont: "LECIP-10"
+            }
+        }
+    },
+    7105: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA  RIDE  05",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GA RIDE",
+                topFont: "LECIP-6:4",
+
+                bottom: "05",
+                bottomFont: "LECIP-10"
+            }
+        }
+    },
+    7106: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA  RIDE  06",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GA RIDE",
+                topFont: "LECIP-6:4",
+
+                bottom: "06",
+                bottomFont: "LECIP-10"
+            }
+        }
+    },
+    7107: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA  RIDE  07",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GA RIDE",
+                topFont: "LECIP-6:4",
+
+                bottom: "07",
+                bottomFont: "LECIP-10"
+            }
+        }
+    },
+    7108: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA  RIDE  08",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GA RIDE",
+                topFont: "LECIP-6:4",
+
+                bottom: "08",
+                bottomFont: "LECIP-10"
+            }
+        }
+    },
+    7109: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "GA  RIDE  09",
+                font: "LECIP-20:12",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GA RIDE",
+                topFont: "LECIP-6:4",
+
+                bottom: "09",
+                bottomFont: "LECIP-10"
+            }
+        }
+    },
+    9999: {
+        1: {
+            front: { 
+                renderType: "message",
+                text: "LECIP 24122023",
+                font: "LECIP-20:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "LECIP",
+                topFont: "LECIP-6:3",
+
+                bottom: "24122023",
+                bottomFont: "LECIP-6:3"
             }
         }
     }

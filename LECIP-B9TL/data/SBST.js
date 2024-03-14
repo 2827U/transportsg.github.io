@@ -5493,37 +5493,6 @@ EDSData.SBST = {
                 font: "LECIP-20:12",
                 spacing: 2
             }
-        },
-        2: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "83",
-                destination: "PUNGGOL INT-SENGKANG SQ",
-                destinationFont: "LECIP-6:4",
-                scrolls: [{
-                        renderType: "centreMessageServiceScroll",
-                        serviceNumber: "83",
-                        top: "PUNGGOL - SENGKANG",
-                        topFont: "LECIP-7:5",
-
-                        bottom: "(LOOP)",
-                        bottomFont: "LECIP-7:5"
-                    },
-                    'PUNGGOL CENTRAL',
-                    'PUNGGOL FIELD',
-                    'PUNGGOL RD',
-                    'COMPASSVALE ST',
-                    'PUNGGOL RD',
-                    'PUNGGOL FIELD'
-                ],
-                scrollFont: "LECIP-6:4"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "83",
-                font: "LECIP-20:12",
-                spacing: 2
-            }
         }
     },
     "83T": {
@@ -7715,16 +7684,12 @@ EDSData.SBST = {
                 destination: "SHENTON WAY TER-T.BLANGAH",
                 destinationFont: "LECIP-6:4",
                 scrolls: [
-                    "CANTOMENT RD",
+                    "SHENTON WAY",
+                    "ZION RD",
                     "GANGES AVE",
-                    "TIONG BAHRU RD",
-                    "KIM TIAN RD",
+                    "JALAN BUKIT MERAH",
                     "LOWER DELTA RD",
                     "TELOK BLANGAH RISE",
-                    "LOWER DELTA RD",
-                    "KIM TIAN RD",
-                    "TIONG BAHRU RD",
-                    "GANGES AVE"
                 ],
                 scrollFont: "LECIP-6:4"
             },
@@ -9290,6 +9255,28 @@ EDSData.SBST = {
             }
         }
     },
+    146: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "146",
+                destination: "BARTLEY RD - BIDADARI PK DR",
+                destinationFont: "LECIP-6:4",
+                scrolls: [
+                    'BARTLEY RD',
+                    'UPPER SERANGOON RD',
+                    'BIDADARI PARK DR'
+                ],
+                scrollFont: "LECIP-6:4"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "146",
+                font: "LECIP-20:9",
+                spacing: 2
+            }
+        }
+    },
     147: {
         1: {
             front: {
@@ -10065,7 +10052,7 @@ EDSData.SBST = {
                 renderType: "rearService",
                 serviceNumber: "160",
                 font: "LECIP-20:9",
-                spacing: 1
+                spacing: 2
             }
         },
         2: {
@@ -15052,7 +15039,7 @@ EDSData.SBST = {
             }
         }
     },
-    457: {
+    458: {
         1: {
             front: {
                 renderType: "brandedSvc",
@@ -15069,7 +15056,7 @@ EDSData.SBST = {
             }
         }
     },
-    458: {
+    459: {
         1: {
             front: {
                 renderType: "brandedSvc",
@@ -15096,10 +15083,10 @@ EDSData.SBST = {
             },
             rear: {
                 renderType: 'twoline',
-                top: "SBST",
+                top: "",
                 topFont: "LECIP-7:5",
 
-                bottom: "CARES",
+                bottom: "",
                 bottomFont: "LECIP-7:5"
             }
         }
@@ -16576,23 +16563,10 @@ EDSData.SBST = {
                 destination: "> CHINATOWN",
                 destinationFont: "LECIP-7:5",
                 scrolls: [
-                    "BUKIT PANJANG",
-                    "CASHEW",
-                    "HILLVIEW",
                     "BEAUTY WORLD",
-                    "KING ALBERT PARK",
-                    "SIXTH AVENUE",
-                    "TAN KAH KEE",
                     "BOTANIC GARDENS",
-                    "STEVENS",
                     "NEWTON",
-                    "LITTLE INDIA",
-                    "ROCHOR",
-                    "BUGIS",
-                    "PROMENADE",
-                    "BAYFRONT",
-                    "DOWNTOWN",
-                    "TELOK AYER"
+                    "BUGIS"
                 ],
                 scrollFont: "LECIP-7:5"
             },
@@ -16610,23 +16584,10 @@ EDSData.SBST = {
                 destination: "> BUKIT PANJANG",
                 destinationFont: "LECIP-7:5",
                 scrolls: [
-                    "CHINATOWN",
-                    "TELOK AYER",
-                    "DOWNTOWN",
-                    "BAYFRONT",
-                    "PROMENADE",
                     "BUGIS",
-                    "ROCHOR",
-                    "LITTLE INDIA",
                     "NEWTON",
-                    "STEVENS",
                     "BOTANIC GARDENS",
-                    "TAN KAH KEE",
-                    "SIXTH AVENUE",
-                    "KING ALBERT PARK",
-                    "BEAUTY WORLD",
-                    "HILLVIEW",
-                    "CASHEW"
+                    "BEAUTY WORLD"
                 ],
                 scrollFont: "LECIP-7:5"
             },
