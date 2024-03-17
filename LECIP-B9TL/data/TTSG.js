@@ -960,7 +960,7 @@ EDSData.TTSG = {
                     "ALEXANDRA RD",
                     "HARBOURFRONT",
                     "ROBINSON RD",
-                    "BAYFRON AVE / MBS",
+                    "BAYFRONT AVE / MBS",
                     "SUNTEC CITY"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -1029,7 +1029,7 @@ EDSData.TTSG = {
                     "ALEXANDRA RD",
                     "HARBOURFRONT",
                     "ROBINSON RD",
-                    "BAYFRON AVE / MBS",
+                    "BAYFRONT AVE / MBS",
                     "SUNTEC CITY"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -3835,8 +3835,8 @@ EDSData.TTSG = {
             front: {
                 renderType: "standardService",
                 serviceNumber: "859T",
-                destination: "Hanover-Tower11:7",
-                destinationFont: "LECIP-10",
+                destination: "ENDS AT",
+                destinationFont: "Hanover-Tower11:7",
                 scrolls: [
                     "YISHUN INT"
                 ],
@@ -4612,7 +4612,7 @@ EDSData.TTSG = {
                 scrolls: [{
                     renderType: "destScroll",
                     top: "WOODLANDS",
-                    topFont: "Hanover-Tower12:7S",
+                    topFont: "Hanover-Tower12:7",
         
                     serviceNumber: "966"
                 },
