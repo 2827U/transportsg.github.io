@@ -15,43 +15,9 @@ EDSFormats.TTSG = {
                 right: 'width(serviceNumber)'
             },
             text: "$destination",
-            font: "Mobitec-9:6",
-            spacing: 1
-        },
-        scroll: {
-            align: "centre-x,bottom",
-            margin: {
-                right: 'width(serviceNumber)'
-            },
-            scrolls: "$scrolls",
-            rotate: true,
-            rotateSpeed: 3000,
-
-            font: "Mobitec-Tower6:4",
-            spacing: 1
-        },
-
-        text: "$destination+' '+$serviceNumber"
-    },
-    standardServiceThinDest: {
-        serviceNumber: {
-            align: "right",
-            margin: {
-                right: 1
-            },
-            text: "$serviceNumber",
-            font: "Mobitec-Tower16:10",
-            spacing: 2
-        },
-        destination: {
-            align: "centre-x,top",
-            margin: {
-                right: 'width(serviceNumber)'
-            },
-            text: "$destination",
             font: {
                 $$cond: {
-                    "$topFont === null": "Mobitec-Tower9:4",
+                    "$destFont === null": "Mobitec-9:6",
                     "else": "$destFont"
                 }
             },
@@ -247,6 +213,7 @@ EDSFormats.TTSG = {
 }
 
 EDSData.TTSG = {
+    
     1: {
       front: {
         renderType: "standardService",
@@ -341,27 +308,6 @@ EDSData.TTSG = {
             ]
         }
     },
-    6666: {
-        front: {
-            renderType: "logo",
-            image: "logo-full",
-            text: "TOWER TRANSIT LOGO",
-            destination: "",
-            scrolls: [
-                {
-                    renderType: "message",
-                    text: "",
-                    font: "TTS-16:9",
-                    spacing: 3
-                },
-                {
-                    renderType: "logo",
-                    image: "logo-full",
-                    text: "TOWER TRANSIT LOGO"
-                }
-            ]
-        }
-    },
     22: {
         front: { //Reserved for MAN A22
                 renderType: "destScroll",
@@ -371,6 +317,7 @@ EDSData.TTSG = {
                 bottom: "Mobitec - 150324",
                 bottomFont: "Mobitec-Tower6:4",
                 image: "MAN-Logo37"
+                
         }
     },
     24: {
@@ -393,6 +340,84 @@ EDSData.TTSG = {
                 bottom: "Mobitec - 150324",
                 bottomFont: "Mobitec-Tower6:4",
                 image: "MAN-Logo37"
+        }
+    },
+    101: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "N1",
+            destination: "YISHUN RING RD",
+            scrolls: [
+                "NEWTON RD",
+                "TOA PAYOH CENTRAL",
+                "BISHAN ST 11",
+                "ANG MO KIO AVE 3",
+                "ANG MO KIO AVE 4",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "N1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "N1",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "N1",
+                    top: "YISHUN RING RD",
+                    bottom: "( KHATIB STN )",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
+    102: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "N2",
+            destination: "YISHUN RING RD",
+            scrolls: [
+                "WOODLANDS CENTRE RD",
+                "MARSILING RD",
+                "WOODLANDS AVE 7",
+                "ADMIRALTY DR",
+                "CANBERRA RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "N2",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "N2",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "N2",
+                    top: "SEMBAWANG DR",
+                    bottom: "( SEMBAWANG STN )",
+                    image: "mrt"
+                }
+            ]
         }
     },
     311: {
@@ -627,7 +652,8 @@ EDSData.TTSG = {
             destination: "TEL SHUTTLE",
             scrolls: [
                 "Outram Park > Caldecott"
-            ]
+            ],
+            ScrollFont: "Hanover-7:3"
         }
     },
     522: {
@@ -712,6 +738,38 @@ EDSData.TTSG = {
                     image: "mrt"
                 }
             ]
+        }
+    },
+    663: {
+        front: {
+            renderType: "destScroll",
+            serviceNumber: "66A",
+            top: "Ends At",
+            topFont: "Mobitec-7:5:3",
+            bottom: "Little India Stn Exit A",
+            bottomFont: "Mobitec-Tower6:4",
+            image: "mrt"
+        }
+    },
+    664: {
+        front: {
+            renderType: "destScroll",
+            serviceNumber: "66B",
+            top: "Ends At",
+            topFont: "Mobitec-7:5:3",
+            bottom: "Tekka Ctr",
+            bottomFont: "Mobitec-Tower6:4",
+        }
+    },    
+    665: {
+        front: {
+            renderType: "destScroll",
+            serviceNumber: "66C",
+            top: "Ends At",
+            topFont: "Mobitec-7:5:3",
+            bottom: "Opp Beauty World Stn",
+            bottomFont: "Hanover-5:3",
+            image: "mrt"
         }
     },
     668: {
@@ -1033,10 +1091,10 @@ EDSData.TTSG = {
             serviceNumber: "79",
             destination: "JURONG EAST MRT",
             scrolls: [
-                "PENJURU",
-                "PENJURU",
-                "PENJURU",
-                "PENJURU",
+                "QUALITY RD",
+                "THIRD CHIN BEE RD",
+                "JURONG PORT RD",
+                "TEBAN GARDENS RD",
                 {
                     renderType: "destScroll",
                     serviceNumber: "79",
@@ -1059,6 +1117,7 @@ EDSData.TTSG = {
                     renderType: "destScroll",
                     serviceNumber: "79",
                     top: "JURONG EAST",
+                    bottom: "( BS 28301 - BLK 131 )",
                     image: "mrt"
                 }
             ]
@@ -1070,10 +1129,10 @@ EDSData.TTSG = {
             serviceNumber: "79",
             destination: "BOON LAY",
             scrolls: [
-                "PENJURU",
-                "PENJURU",
-                "PENJURU",
-                "PENJURU",
+                "TEBAN GARDENS RD",
+                "JURONG PORT RD",
+                "THIRD CHIN BEE RD",
+                "QUALITY RD",
                 {
                     renderType: "destScroll",
                     serviceNumber: "79",
@@ -1441,6 +1500,8 @@ EDSData.TTSG = {
                     renderType: "destScroll",
                     serviceNumber: "98",
                     top: "JURONG PIER WAY",
+                    bottom: "(JURONG ISLAND CHECKPOINT)",
+
                 }
             ]
         }
@@ -1818,7 +1879,7 @@ EDSData.TTSG = {
                     bottomFont: "Mobitec-Tower6:4",
                 },
                 "JURONG TOWN HALL RD",
-                "TEBAN GARDEN RD",
+                "TEBAN GARDENS RD",
                 "PANDAN GARDENS",
                 {
                     renderType: "destScroll",
@@ -2608,6 +2669,34 @@ EDSData.TTSG = {
             ]
         }
     },
+    1842: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "963",
+            destination: "HARBOURFRONT",
+            scrolls: [
+                "BUKIT PANJANG RD",
+                "HILLVIEW AVE",
+                "BUKIT BATOK EAST AVE 3",
+                "AYE",
+                "ALEXANDRA RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963",
+                    top: "HARBOURFRONT",
+                    image: "mrt"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963",
+                    top: "Hello Uncle",
+                    topFont: "Mobitec-7:7",
+                    bottom: "Does this bus go to Hillview?",
+                    bottomFont: "Hanover-7:3",
+                }
+            ]
+        }
+    },
     1891: {
         front: {
             renderType: "standardService",
@@ -2898,6 +2987,36 @@ EDSData.TTSG = {
             ]
         }
     },
+    4953: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "000",
+            destination: "SERANGOON RD",
+            scrolls: [
+                "KIM TIAN RD",
+                "TIONG BAHRU MRT",
+                "REDHILL MRT",
+                "TANGLIN / ORCHARD RD",
+                "SELEGIE RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "000",
+                    top: "Please do not",
+                    topFont: "Hanover-7:3",
+                    bottom: "the cat",
+                    bottomFont: "Hanover-7:3",
+                    image: "the-cat"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "000",
+                    top: "SERANGOON RD",
+                    bottom: "( LITTLE INDIA MRT )",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
     5001: {
         front: {
             renderType: "message",
@@ -2950,7 +3069,7 @@ EDSData.TTSG = {
         front: {
             renderType: "message",
             font: "Hanover-14:6",
-            text: "LRT  Shuttle  A",
+            text: "LRT  Bridging  A",
             spacing: 2
         }
     },
@@ -2958,7 +3077,7 @@ EDSData.TTSG = {
         front: {
             renderType: "message",
             font: "Hanover-14:6",
-            text: "LRT  Shuttle  B",
+            text: "LRT  Bridging  B",
             spacing: 2
         }
     },
@@ -3122,6 +3241,111 @@ EDSData.TTSG = {
                 image: "logo"
         }
     },
+    5200: {
+        front: {
+                renderType: "destScroll",
+                serviceNumber: "",
+                top: "~  $  $  0  1",
+                topFont: "Mobitec-Tower16:10",
+                topSpacing: "5",
+        }
+    },
+    5225: {
+        front: {
+                renderType: "destScroll",
+                serviceNumber: "",
+                top: "~  $  $  2  5",
+                topFont: "Mobitec-Tower16:10",
+                topSpacing: "5",
+        }
+    },
+    5300: {
+        front: {
+                renderType: "destScroll",
+                serviceNumber: "%1",
+                top: "Crew  Bus",
+                topFont: "Hanover-14:6",
+                image: "logo"
+        }
+    },
+    5301: {
+        front: {
+                renderType: "destScroll",
+                serviceNumber: "%2",
+                top: "Crew  Bus",
+                topFont: "Hanover-14:6",
+                image: "logo"
+        }
+    },
+    5302: {
+        front: {
+                renderType: "destScroll",
+                serviceNumber: "%3",
+                top: "Crew  Bus",
+                topFont: "Hanover-14:6",
+                image: "logo"
+        }
+    },
+    5303: {
+        front: {
+                renderType: "destScroll",
+                serviceNumber: "%4",
+                top: "Crew  Bus",
+                topFont: "Hanover-14:6",
+                image: "logo"
+        }
+    },
+    5304: {
+        front: {
+                renderType: "destScroll",
+                serviceNumber: "%5",
+                top: "Crew  Bus",
+                topFont: "Hanover-14:6",
+                image: "logo"
+        }
+    },
+    5305: {
+        front: {
+                renderType: "destScroll",
+                serviceNumber: "%6",
+                top: "Crew  Bus",
+                topFont: "Hanover-14:6",
+                image: "logo"
+        }
+    },
+    5400: {
+        front: {
+            renderType: "destScroll",
+            serviceNumber: "",
+            top: "Bulim - TTS",
+            topFont: "Hanover-7:4",
+            bottom: "Hotel Ferry",
+            bottomFont: "Hanover-7:4",
+            image: "logo"
+        }
+    },
+    5401: {
+        front: {
+            renderType: "destScroll",
+            serviceNumber: "",
+            top: "Mandai - TTS",
+            topFont: "Hanover-7:4",
+            bottom: "Hotel Ferry",
+            bottomFont: "Hanover-7:4",
+            image: "logo"
+        }
+    },
+    5402: {
+        front: {
+            renderType: "destScroll",
+            serviceNumber: "",
+            top: "TTS - Hotel Ferry",
+            topFont: "Hanover-7:4",
+            bottom: "Employee Shuttle",
+            bottomFont: "Hanover-7:4",
+            image: "logo"
+        }
+    },
     5888: {
         front: {
                 renderType: "destScroll",
@@ -3131,6 +3355,999 @@ EDSData.TTSG = {
                 bottom: "Double Decker Bus",
                 bottomFont: "Mobitec-Tower6:4",
                 image: "MAN-Logo32"
+        }
+    },
+    6511: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "651",
+            destination: "MARINA BLVD",
+            scrolls: [
+                "JURONG WEST AVE 5",
+                "JURONG WEST ST 75/64",
+                "JURONG WEST ST 81/61",
+                "ANSON RD",
+                "ROBINSON RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "651",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "651",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "651",
+                    top: "MARINA BLVD",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "651",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "JURONG WEST >> CBD",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6512: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "651",
+            destination: "JURONG WEST AVE 3",
+            destFont: "Mobitec-7:5:3",
+            scrolls: [
+                "CENTRAL BOULEVARD",
+                "SHENTON WAY",
+                "JURONG WEST ST 61/81",
+                "JURONG WEST ST 64/75",
+                "JURONG WEST AVE 5",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "651",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "651",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "651",
+                    top: "JURONG WEST AVE 3",
+                    topFont: "Mobitec-7:5:3",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "651",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "CBD >> JURONG WEST",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6531: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "653",
+            destination: "MARINA BLVD",
+            scrolls: [
+                "HILLVIEW AVE",
+                "BUKIT BATOK EAST AVE 2",
+                "BUKIT BATOK EAST AVE 3",
+                "ROBINSON RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "653",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "653",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "653",
+                    top: "MARINA BLVD",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "653",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "HILLVIEW >> BT BATOK >> CBD",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6532: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "653",
+            destination: "HILLVIEW AVE",
+            scrolls: [
+                "CENTRAL BOULEVARD",
+                "SHENTON WAY",
+                "BUKIT BATOK EAST AVE 3",
+                "BUKIT BATOK EAST AVE 2",
+                "HUME AVE",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "653",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "653",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "653",
+                    top: "HILLVIEW AVE",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "653",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "CBD >> BT BATOK >> HILLVIEW",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6561: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "656",
+            destination: "SHENTON WAY",
+            scrolls: [
+                "ADMIRALTY LINK",
+                "SEMBAWANG DR",
+                "DHOBY GHAUT MRT",
+                "BRAS BASAH RD",
+                "COLLYER QUAY",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "SHENTON WAY",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "SEMBAWANG >> CBD",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6562: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "656",
+            destination: "CANBERRA RD",
+            scrolls: [
+                "ROBINSON RD",
+                "STAMFORD RD",
+                "DHOBY GHAUT MRT",
+                "SEMBAWANG RD",
+                "ADMIRALTY LINK",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "CANBERRA RD",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "SEMBAWANG >> SEMBAWANG",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6568: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "656",
+            destination: "SHENTON WAY",
+            scrolls: [
+                "ADMIRALTY LINK",
+                "SEMBAWANG DR",
+                "DHOBY GHAUT MRT",
+                "NORTH BRIDGE RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "SHENTON WAY",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "SEMBAWANG >> CBD",
+                    bottomFont: "Mobitec-5:3",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:2",
+                    bottom: "Bras Basah Rd",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:2",
+                    bottom: "Collyer Quay",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+            ]
+        }
+    },
+    6569: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "656",
+            destination: "CANBERRA RD",
+            scrolls: [
+                "ROBINSON RD",
+                "STAMFORD RD",
+                "DHOBY GHAUT MRT",
+                "SEMBAWANG RD",
+                "ADMIRALTY LINK",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "CANBERRA RD",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "CBD >> SEMBAWANG",
+                    bottomFont: "Mobitec-5:3",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:3",
+                    bottom: "Fullerton Rd",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "656",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:3",
+                    bottom: "Esplanade Dr",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+            ]
+        }
+    },
+    6571: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "657",
+            destination: "MARINA BLVD",
+            scrolls: [
+                "JURONG EAST AVE 1",
+                "TOH GUAN RD",
+                "ROBINSON RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "657",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "657",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "657",
+                    top: "MARINA BLVD",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "657",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "JURONG WEST/EAST >> CBD",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6572: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "657",
+            destination: "JURONG WEST AVE 1",
+            destFont: "Mobitec-7:5:3",
+            scrolls: [
+                "CENTRAL BOULEVARD",
+                "SHENTON WAY",
+                "TOH GUAN RD",
+                'JURONG EAST AVE 1',
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "657",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "657",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "657",
+                    top: "JURONG WEST AVE 1",
+                    topFont: "Mobitec-7:5:3",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "657",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "CBD >> JURONG EAST/WEST",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6631: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "663",
+            destination: "SHENTON WAY",
+            scrolls: [
+                "YISHUN AVE 6 / RING RD",
+                "YISHUN CTRL / AVE 2",
+                "DHOBY GHAUT MRT",
+                "BRAS BASAH RD",
+                "COLLYER QUAY",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "SHENTON WAY",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "YISHUN >> CBD",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6632: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "663",
+            destination: "YISHUN AVE 6",
+            scrolls: [
+                "ROBINSON RD",
+                "STAMFORD RD",
+                "DHOBY GHAUT MRT",
+                "YISHUN AVE 2 / CTRL",
+                "YISHUN AVE 11 / RING RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "YISHUN AVE 6",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "CBD >> YISHUN",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6638: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "663",
+            destination: "SHENTON WAY",
+            scrolls: [
+                "YISHUN AVE 6 / RING RD",
+                "YISHUN CTRL / AVE 2",
+                "DHOBY GHAUT MRT",
+                "NORTH BRIDGE RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "SHENTON WAY",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "YISHUN >> CBD",
+                    bottomFont: "Mobitec-5:3",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:2",
+                    bottom: "Bras Basah Rd",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:2",
+                    bottom: "Collyer Quay",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+            ]
+        }
+    },
+    6639: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "663",
+            destination: "YISHUN AVE 6",
+            scrolls: [
+                "ROBINSON RD",
+                "STAMFORD RD",
+                "DHOBY GHAUT MRT",
+                "YISHUN AVE 2 / CTRL",
+                "YISHUN AVE 11 / RING RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "YISHUN AVE 6",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "CBD >> YISHUN",
+                    bottomFont: "Mobitec-5:3",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:3",
+                    bottom: "Fullerton Rd",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "663",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:3",
+                    bottom: "Esplanade Dr",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+            ]
+        }
+    },
+    6651: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "665",
+            destination: "SHENTON WAY",
+            scrolls: [
+                "MARSILING LANE / RISE",
+                "WOODLANDS AVE 5 / 4 / 1",
+                "DHOBY GHAUT MRT",
+                "BRAS BASAH RD",
+                "COLLYER QUAY",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "SHENTON WAY",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "MARSILING/W'LANDS >> CBD",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6652: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "665",
+            destination: "MARSILING DRIVE",
+            scrolls: [
+                "ROBINSON RD",
+                "STAMFORD RD",
+                "DHOBY GHAUT MRT",
+                "WOODLANDS AVE 1 / 4 / 5",
+                "MARSILING RISE / LANE",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "MARSILING DRIVE",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "CBD >> W'LANDS/MARSILING",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6658: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "665",
+            destination: "SHENTON WAY",
+            scrolls: [
+                "MARSILING LANE / RISE",
+                "WOODLANDS AVE 5 / 4 / 1",
+                "DHOBY GHAUT MRT",
+                "NORTH BRIDGE RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "SHENTON WAY",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "MARSILING/W'LANDS >> CBD",
+                    bottomFont: "Mobitec-5:3",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:2",
+                    bottom: "Bras Basah Rd",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:2",
+                    bottom: "Collyer Quay",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+            ]
+        }
+    },
+    6659: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "665",
+            destination: "MARSILING DRIVE",
+            scrolls: [
+                "ROBINSON RD",
+                "STAMFORD RD",
+                "DHOBY GHAUT MRT",
+                "WOODLANDS AVE 1 / 4 / 5",
+                "MARSILING RISE / LANE",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "MARSILING DRIVE",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "CBD >> W'LANDS/MARSILING",
+                    bottomFont: "Mobitec-5:3",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:3",
+                    bottom: "Fullerton Rd",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "665",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:3",
+                    bottom: "Esplanade Dr",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+            ]
+        }
+    },
+    6701: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "670",
+            destination: "MARINA BLVD",
+            scrolls: [
+                "YISHUN AVE 6",
+                "YISHUN AVE 9",
+                "YISHUN RING RD",
+                "ANSON RD",
+                "ROBINSON RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "670",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "670",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "670",
+                    top: "MARINA BLVD",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "670",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "YISHUN >> CBD",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
+        }
+    },
+    6702: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "670",
+            destination: "YISHUN AVE 7",
+            scrolls: [
+                "CENTRAL BOULEVARD",
+                "SHENTON WAY",
+                "YISHUN RING RD",
+                "YISHUN AVE 9",
+                "YISHUN AVE 6",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "670",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "670",
+                    top: "Have a safe ride",
+                    topFont: "Hanover-7:3",
+                    bottom: "home!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "670",
+                    top: "YISHUN AVE 7"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "657",
+                    top: "City Direct",
+                    topFont: "Mobitec-Tower10:7",
+                    bottom: "CBD >> JURONG WEST",
+                    bottomFont: "Mobitec-5:3",
+                }
+            ]
         }
     },
     7098: {
@@ -3171,88 +4388,33 @@ EDSData.TTSG = {
             ]
         }
     },
-    7501: {
-        front: {
-            renderType: "standardService",
-            serviceNumber: "N1",
-            destination: "YISHUN RING RD",
-            scrolls: [
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "N1",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
-                    image: "logo"
-                },
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "N1",
-                    top: "YISHUN RING RD",
-                    bottom: "( KHATIB STN )",
-                    image: "mrt"
-                },
-                "NEWTON RD",
-                "TOA PAYOH CENTRAL",
-                "BISHAN ST 11",
-                "ANG MO KIO AVE 3",
-                "ANG MO KIO AVE 4"
-            ]
-        }
-    },
-    7502: {
-        front: {
-            renderType: "standardService",
-            serviceNumber: "N2",
-            destination: "SEMBAWANG DR",
-            scrolls: [
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "N2",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
-                    image: "logo"
-                },
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "N2",
-                    top: "SEMBAWANG DR",
-                    bottom: "( KHATIB STN )",
-                    image: "mrt"
-                },
-                "WOODLANDS CENTRE RD",
-                "MARSILING RD",
-                "WOODLANDS AVE 7",
-                "ADMIRALTY DR",
-                "CANBERRA RD"
-            ]
-        }
-    },
-    8000: {
-        front: {
-                renderType: "destScroll",
-                serviceNumber: "%1",
-                top: "Crew  Bus",
-                topFont: "Hanover-14:6",
-                image: "logo"
-        }
-    },
     8011: {
         front: {
             renderType: "standardService",
             serviceNumber: "801",
             destination: "YISHUN",
             scrolls: [
+                "YISHUN CENTRAL",
+                "YISHUN AVE 9",
+                "YISHUN AVE 6",
+                "YISHUN ST 42",
+                "YISHUN AVE 1",
                 {
                     renderType: "destScroll",
                     serviceNumber: "801",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "801",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3260,12 +4422,7 @@ EDSData.TTSG = {
                     serviceNumber: "801",
                     top: "YISHUN",
                     image: "mrt"
-                },
-                "YISHUN CENTRAL",
-                "YISHUN AVE 9",
-                "YISHUN AVE 6",
-                "YISHUN ST 42",
-                "YISHUN AVE 1"
+                }
             ]
         }
     },
@@ -3275,13 +4432,26 @@ EDSData.TTSG = {
             serviceNumber: "825",
             destination: "YIO CHU KANG",
             scrolls: [
+                "ANG MO KIO AVE 6",
+                "LENTOR MRT",
+                "LENTOR RD",
+                "LENTOR LOOP",
                 {
                     renderType: "destScroll",
                     serviceNumber: "825",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "825",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3289,11 +4459,7 @@ EDSData.TTSG = {
                     serviceNumber: "825",
                     top: "YIO CHU KANG",
                     image: "mrt"
-                },
-                "ANG MO KIO AVE 6",
-                "LENTOR MRT",
-                "LENTOR RD",
-                "LENTOR LOOP"
+                }
             ]
         }
     },
@@ -3303,13 +4469,27 @@ EDSData.TTSG = {
             serviceNumber: "853",
             destination: "LOR 1 GEYLANG",
             scrolls: [
+                "YISHUN AVE 2",
+                "ANG MO KIO AVE 6",
+                "SERANGOON CENTRAL",
+                "UPPER SERANGOON RD",
+                "GEYLANG BAHRU",
                 {
                     renderType: "destScroll",
                     serviceNumber: "853",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "853",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3318,12 +4498,7 @@ EDSData.TTSG = {
                     top: "LOR 1 GEYLANG",
                     bottom: "( KALLANG STN )",
                     image: "mrt"
-                },
-                "YISHUN AVE 2",
-                "ANG MO KIO AVE 6",
-                "SERANGOON CENTRAL",
-                "UPPER SERANGOON RD",
-                "GEYLANG BAHRU"
+                }
             ]
         }
     },
@@ -3333,13 +4508,27 @@ EDSData.TTSG = {
             serviceNumber: "853",
             destination: "YISHUN",
             scrolls: [
+                "GEYLANG BAHRU",
+                "UPPER SERANGOON RD",
+                "SERANGOON CENTRAL",
+                "ANG MO KIO AVE 6",
+                "YISHUN AVE 2",
                 {
                     renderType: "destScroll",
                     serviceNumber: "853",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "853",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3347,12 +4536,7 @@ EDSData.TTSG = {
                     serviceNumber: "853",
                     top: "YISHUN",
                     image: "mrt"
-                },
-                "GEYLANG BAHRU",
-                "UPPER SERANGOON RD",
-                "SERANGOON CENTRAL",
-                "ANG MO KIO AVE 6",
-                "YISHUN AVE 2"
+                }
             ]
         }
     },
@@ -3361,26 +4545,38 @@ EDSData.TTSG = {
             renderType: "standardService",
             serviceNumber: "853M",
             destination: "UPP EAST COAST",
+            destFont: "Mobitec-7:5:3",
             scrolls: [
+                "ANG MO KIO AVE 6",
+                "SERANGOON CENTRAL",
+                "SIMS AVE",
+                "TANJONG KATONG RD",
+                "MARINE PARADE RD",
                 {
                     renderType: "destScroll",
-                    serviceNumber: "853M",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    serviceNumber: "853",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "853",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
                     renderType: "destScroll",
                     serviceNumber: "853M",
-                    top: "UPP EAST COAST"
-                },
-                "ANG MO KIO AVE 6",
-                "SERANGOON CENTRAL",
-                "SIMS AVE",
-                "TANJONG KATONG RD",
-                "MARINE PARADE RD"
+                    top: "UPP EAST COAST",
+                    topFont: "Mobitec-7:5:3"
+
+                }
             ]
         }
     },
@@ -3390,13 +4586,27 @@ EDSData.TTSG = {
             serviceNumber: "853M",
             destination: "YISHUN",
             scrolls: [
+                "MARINE PARADE RD",
+                "TANJONG KATONG RD",
+                "GEYLANG RD",
+                "SERANGOON CENTRAL",
+                "ANG MO KIO AVE 6",
                 {
                     renderType: "destScroll",
                     serviceNumber: "853M",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "853M",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3404,12 +4614,7 @@ EDSData.TTSG = {
                     serviceNumber: "853M",
                     top: "YISHUN",
                     image: "mrt"
-                },
-                "MARINE PARADE RD",
-                "TANJONG KATONG RD",
-                "GEYLANG RD",
-                "SERANGOON CENTRAL",
-                "ANG MO KIO AVE 6"
+                }
             ]
         }
     },
@@ -3419,13 +4624,27 @@ EDSData.TTSG = {
             serviceNumber: "854",
             destination: "BEDOK",
             scrolls: [
+                "YISHUN AVE 2",
+                "YIO CHU KANG RD",
+                "HOUGANG AVE 3",
+                "JLN EUNOS",
+                "NEW UPPER CHANGI RD",
                 {
                     renderType: "destScroll",
                     serviceNumber: "854",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "854",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3433,12 +4652,7 @@ EDSData.TTSG = {
                     serviceNumber: "854",
                     top: "BEDOK",
                     image: "mrt"
-                },
-                "YISHUN AVE 2",
-                "YIO CHU KANG RD",
-                "HOUGANG AVE 3",
-                "JLN EUNOS",
-                "NEW UPPER CHANGI RD"
+                }
             ]
         }
     },
@@ -3448,13 +4662,27 @@ EDSData.TTSG = {
             serviceNumber: "854",
             destination: "YISHUN",
             scrolls: [
+                "NEW UPPER CHANGI RD",
+                "EUNOS LINK",
+                "HOUGANG AVE 3",
+                "YIO CHU KANG RD",
+                "YISHUN AVE 2",
                 {
                     renderType: "destScroll",
                     serviceNumber: "854",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "854",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3462,12 +4690,52 @@ EDSData.TTSG = {
                     serviceNumber: "854",
                     top: "YISHUN",
                     image: "mrt"
-                },
-                "NEW UPPER CHANGI RD",
-                "EUNOS LINK",
-                "HOUGANG AVE 3",
+                }
+            ]
+        }
+    },
+    8543: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "854e",
+            destination: "BEDOK",
+            scrolls: [
+                "YISHUN AVE 2",
                 "YIO CHU KANG RD",
-                "YISHUN AVE 2"
+                "HOUGANG AVE 3",
+                "EUNOS LINK",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "854e",
+                    top: "LIMITED STOPS",
+                    topFont: "Mobitec-9:6",
+                    bottom: "EXPRESS SERVICE",
+                    bottomFont: "Mobitec-6:5",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "854e",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "854e",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "854e",
+                    top: "BEDOK",
+                    image: "mrt"
+                }
             ]
         }
     },
@@ -3477,13 +4745,27 @@ EDSData.TTSG = {
             serviceNumber: "855",
             destination: "HARBOURFRONT",
             scrolls: [
+                "YISHUN AVE 2",
+                "UPPER THOMSON RD",
+                "ADAM RD",
+                "QUEENSWAY",
+                "JALAN BUKIT MERAH",
                 {
                     renderType: "destScroll",
                     serviceNumber: "855",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "855",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3491,12 +4773,7 @@ EDSData.TTSG = {
                     serviceNumber: "855",
                     top: "HARBOURFRONT",
                     image: "mrt"
-                },
-                "YISHUN AVE 2",
-                "UPPER THOMSON RD",
-                "ADAM RD",
-                "QUEENSWAY",
-                "JALAN BUKIT MERAH"
+                }
             ]
         }
     },
@@ -3506,13 +4783,27 @@ EDSData.TTSG = {
             serviceNumber: "855",
             destination: "YISHUN",
             scrolls: [
+                "JALAN BUKIT MERAH",
+                "QUEENSWAY",
+                "FARRER RD",
+                "UPPER THOMSON RD",
+                "YISHUN AVE 2",
                 {
                     renderType: "destScroll",
                     serviceNumber: "855",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "855",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3520,12 +4811,7 @@ EDSData.TTSG = {
                     serviceNumber: "855",
                     top: "YISHUN",
                     image: "mrt"
-                },
-                "JALAN BUKIT MERAH",
-                "QUEENSWAY",
-                "FARRER RD",
-                "UPPER THOMSON RD",
-                "YISHUN AVE 2"
+                }
             ]
         }
     },
@@ -3535,13 +4821,27 @@ EDSData.TTSG = {
             serviceNumber: "856",
             destination: "WOODLANDS",
             scrolls: [
+                "CANBERRA RD",
+                "ADMIRALTY RD WEST",
+                "SENOKO DR",
+                "WOODLANDS NORTH MRT",
+                "MARSILING ESTATE",
                 {
                     renderType: "destScroll",
                     serviceNumber: "856",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "856",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3549,12 +4849,7 @@ EDSData.TTSG = {
                     serviceNumber: "856",
                     top: "WOODLANDS",
                     image: "mrt"
-                },
-                "CANBERRA RD",
-                "ADMIRALTY RD WEST",
-                "SENOKO DR",
-                "WOODLANDS NORTH MRT",
-                "MARSILING ESTATE"
+                }
             ]
         }
     },
@@ -3564,13 +4859,27 @@ EDSData.TTSG = {
             serviceNumber: "856",
             destination: "YISHUN",
             scrolls: [
+                "WOODLANDS TRAIN CHECKPOINT",
+                "WOODLANDS NORTH MRT",
+                "SENOKO RD",
+                "ADMIRALTY RD WEST",
+                "CANBERRA RD",
                 {
                     renderType: "destScroll",
                     serviceNumber: "856",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "856",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3578,42 +4887,7 @@ EDSData.TTSG = {
                     serviceNumber: "856",
                     top: "YISHUN",
                     image: "mrt"
-                },
-                "WOODLANDS TRAIN CHKPT",
-                "WOODLANDS NORTH MRT",
-                "SENOKO RD",
-                "ADMIRALTY RD WEST",
-                "CANBERRA"
-            ]
-        }
-    },
-    8571: {
-        front: {
-            renderType: "standardService",
-            serviceNumber: "857",
-            destination: "TEMASEK AVE",
-            scrolls: [
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "857",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
-                    image: "logo"
-                },
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "857",
-                    top: "TEMASEK AVE",
-                    bottom: "( PROMENADE STN )",
-                    image: "mrt"
-                },
-                "YIO CHU KANG RD",
-                "BENDEMEER RD",
-                "LITTLE INDIA",
-                "BENCOOLEN ST",
-                "BRAS BASAH RD"
+                }
             ]
         }
     },
@@ -3628,19 +4902,72 @@ EDSData.TTSG = {
             image: "ktm"
         }
     },
+    8571: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "857",
+            destination: "TEMASEK AVE",
+            scrolls: [
+                "YIO CHU KANG RD",
+                "BENDEMEER RD",
+                "LITTLE INDIA",
+                "BENCOOLEN ST",
+                "BRAS BASAH RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "857",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "857",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "857",
+                    top: "TEMASEK AVE",
+                    bottom: "( PROMENADE STN )",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
     8572: {
         front: {
             renderType: "standardService",
             serviceNumber: "857",
             destination: "YISHUN",
             scrolls: [
+                "STAMFORD RD",
+                "SELEGIE RD",
+                "BOON KENG MRT",
+                "SERANGOON RD",
+                "YIO CHU KANG RD",
                 {
                     renderType: "destScroll",
                     serviceNumber: "857",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "857",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3648,12 +4975,7 @@ EDSData.TTSG = {
                     serviceNumber: "857",
                     top: "YISHUN",
                     image: "mrt"
-                },
-                "STAMFORD RD",
-                "SELEGIE RD",
-                "BOON KENG MRT",
-                "SERANGOON RD",
-                "YIO CHU KANG RD"
+                }
             ]
         }
     },
@@ -3678,33 +5000,108 @@ EDSData.TTSG = {
             image: "mrt"
         }
     },
+    8578: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "857",
+            destination: "STAMFORD RD",
+            scrolls: [
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "857",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:2",
+                    bottom: "Bras Basah Rd",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "857",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:2",
+                    bottom: "Marina Centre / Suntec",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+                "YIO CHU KANG RD",
+                "BENDEMEER RD",
+                "LITTLE INDIA",
+                "BENCOOLEN ST",
+                "BRAS BASAH RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "857",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "857",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "857",
+                    top: "STAMFORD RD",
+                    bottom: "( CITY HALL STN )",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
+    8579: {
+        front: {
+            renderType: "destScroll",
+            serviceNumber: "857B",
+            top: "ENDS AT",
+            topFont: "Mobitec-7:5:3",
+            bottom: "CITY HALL STN",
+            bottomFont: "Mobitec-Tower6:4",
+            image: "mrt"
+        }
+    },
     8581: {
         front: {
             renderType: "standardService",
             serviceNumber: "858",
             destination: "CHANGI AIRPORT",
             scrolls: [
+                "WOODLANDS AVE 9",
+                "SEMBAWANG WAY",
+                "YISHUN MRT",
+                "JALAN KAYU",
+                "T P E",
                 {
                     renderType: "destScroll",
                     serviceNumber: "858",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "858",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
                     renderType: "destScroll",
                     serviceNumber: "858",
                     top: "CHANGI AIRPORT",
-                    bottom: "( PTB 3, 1, 2)",
+                    bottom: "( PTB 3, 1, 2 )",
                     image: "ChangiAirportControlTower"
-                },
-                "WOODLANDS AVE 9",
-                "SEMBAWANG WAY",
-                "YISHUN MRT",
-                "JALAN KAYU",
-                "T P E"
+                }
             ]
         }
     },
@@ -3714,26 +5111,35 @@ EDSData.TTSG = {
             serviceNumber: "858",
             destination: "WOODLANDS",
             scrolls: [
+                "TPE",
+                "JALAN KAYU",
+                "YISHUN MRT",
+                "SEMBAWANG WAY",
+                "WOODLANDS AVE 9",
                 {
                     renderType: "destScroll",
                     serviceNumber: "858",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
                     renderType: "destScroll",
                     serviceNumber: "858",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "857",
                     top: "WOODLANDS",
                     image: "mrt"
-                },
-                "TPE",
-                "JALAN KAYU",
-                "YISHUN MRT",
-                "SEMBAWANG WAY",
-                "WOODLANDS AVE 9"
+                }
             ]
         }
     },
@@ -3754,13 +5160,27 @@ EDSData.TTSG = {
             serviceNumber: "859",
             destination: "YISHUN",
             scrolls: [
+                "CANBERRA RD",
+                "ADMIRALTY LINK",
+                "SEMBAWANG CRES",
+                "SEMBAWANG RD",
+                "YISHUN AVE 5",
                 {
                     renderType: "destScroll",
                     serviceNumber: "859",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "859",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3768,12 +5188,7 @@ EDSData.TTSG = {
                     serviceNumber: "859",
                     top: "YISHUN",
                     image: "mrt"
-                },
-                "CANBERRA RD",
-                "ADMIRALTY LINK",
-                "SEMBAWANG CRES",
-                "SEMBAWANG RD",
-                "YISHUN AVE 5"
+                }
             ]
         }
     },
@@ -3783,13 +5198,27 @@ EDSData.TTSG = {
             serviceNumber: "859",
             destination: "SEMBAWANG",
             scrolls: [
+                "CANBERRA RD",
+                "ADMIRALTY LINK",
+                "SEMBAWANG CRES",
+                "SEMBAWANG RD",
+                "YISHUN AVE 5",
                 {
                     renderType: "destScroll",
                     serviceNumber: "859",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "859",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3797,12 +5226,7 @@ EDSData.TTSG = {
                     serviceNumber: "859",
                     top: "SEMBAWANG",
                     image: "mrt"
-                },
-                "YISHUN AVE 5",
-                "SEMBAWANG RD",
-                "SEMBAWANG CRES",
-                "ADMIRALTY LINK",
-                "CANBERRA RD"
+                }
             ]
         }
     },
@@ -3812,13 +5236,26 @@ EDSData.TTSG = {
             serviceNumber: "859A",
             destination: "SEMBAWANG",
             scrolls: [
+                "CANBERRA RD",
+                "ADMIRALTY LINK",
+                "ADMIRALTY DR",
+                "SEMBWAWANG CRES",
                 {
                     renderType: "destScroll",
                     serviceNumber: "859A",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "859A",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3826,25 +5263,95 @@ EDSData.TTSG = {
                     serviceNumber: "859A",
                     top: "SEMBAWANG",
                     image: "mrt"
-                },
-                "CANBERRA RD",
-                "ADMIRALTY LINK",
+                }
+            ]
+        }
+    },
+    8594: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "859B",
+            destination: "SEMBAWANG",
+            scrolls: [
+                "SEMBAWANG CRES",
                 "ADMIRALTY DR",
-                "SEMBWAWANG CRES"
+                "ADMIRALTY LINK",
+                "CANBERRA RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "859B",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "859B",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "859B",
+                    top: "SEMBAWANG",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
+    8701: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "870",
+            destination: "TENGAH",
+            scrolls: [
+                "BUKIT BATOK AVE 1",
+                "BT BATOK WEST AVE 6",
+                "BT BATOK WEST AVE 3",
+                "PLANTATION CRESCENT",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "870",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "870",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "870",
+                    top: "TENGAH",
+                }
             ]
         }
     },
     8702: {
         front: {
-            renderType: "standardServiceThinDest",
+            renderType: "standardService",
             serviceNumber: "870",
             destination: "JURONG TOWN HALL",
-            Destinationfont: "Mobitec-Tower9:4",
+            destFont: "Mobitec-Tower9:4",
             scrolls: [
-                "WEST COAST RD",
-                "PANDAN RD",
-                "TANJONG PENJURU",
-                "PENJURU RD",
+                "BUKIT BATOK RD",
+                "BT BATOK WEST AVE 3",
+                "BT BATOK WEST AVE 6",
+                "BUKIT BATOK AVE 1",
+                "JURONG EAST CENTRAL",
                 {
                     renderType: "destScroll",
                     serviceNumber: "870",
@@ -3874,47 +5381,33 @@ EDSData.TTSG = {
             ]
         }
     },
-    8594: {
-        front: {
-            renderType: "standardService",
-            serviceNumber: "859B",
-            destination: "SEMBAWANG",
-            scrolls: [
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "859B",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
-                    image: "logo"
-                },
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "859B",
-                    top: "SEMBAWANG",
-                    image: "mrt"
-                },
-                "SEMBAWANG CRES",
-                "ADMIRALTY DR",
-                "ADMIRALTY LINK",
-                "CANBERRA RD"
-            ]
-        }
-    },
     8821: {
         front: {
             renderType: "standardService",
             serviceNumber: "882",
             destination: "SEMBAWANG",
             scrolls: [
+                "WELLINGTON CIRCLE",
+                "MONTREAL DR",
+                "MONTREAL LINK",
+                "SEMBAWANG RD",
+                "SEMBAWANG PARK",
                 {
                     renderType: "destScroll",
                     serviceNumber: "882",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "882",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -3922,12 +5415,7 @@ EDSData.TTSG = {
                     serviceNumber: "882",
                     top: "SEMBAWANG",
                     image: "mrt"
-                },
-                "WELLINGTON CIRCLE",
-                "MONTREAL DR",
-                "MONTREAL LINK",
-                "SEMBAWANG RD",
-                "SEMBAWANG PARK"
+                }
             ]
         }
     },
@@ -3967,26 +5455,35 @@ EDSData.TTSG = {
             serviceNumber: "883",
             destination: "YISHUN CTRL 2",
             scrolls: [
+                "CANBERRA WAY",
+                "CANBERRA ST",
+                "CANBERRA MRT",
+                "YISHUN AVE 2",
+                "YISHUN MRT",
                 {
                     renderType: "destScroll",
                     serviceNumber: "883",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "883",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
                     renderType: "destScroll",
                     serviceNumber: "883",
                     top: "YISHUN CTRL 2",
-                    bottom: "(KHOO TECK PUAT HOSPITAL)",
-                },
-                "CANBERRA WAY",
-                "CANBERRA ST",
-                "CANBERRA MRT",
-                "YISHUN AVE 2",
-                "YISHUN MRT"
+                    bottom: "( YISHUN COMMUNITY HOSP )",
+                }
             ]
         }
     },
@@ -3996,13 +5493,27 @@ EDSData.TTSG = {
             serviceNumber: "883",
             destination: "SEMBAWANG",
             scrolls: [
+                "YISHUN MRT",
+                "YISHUN AVE 2",
+                "CANBERRA MRT",
+                "CANBERRA ST",
+                "CANBERRA WAY",
                 {
                     renderType: "destScroll",
                     serviceNumber: "883",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "883",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4010,12 +5521,82 @@ EDSData.TTSG = {
                     serviceNumber: "883",
                     top: "SEMBAWANG",
                     image: "mrt"
+                }
+            ]
+        }
+    },
+    8833: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "883M",
+            destination: "YISHUN AVE 5",
+            scrolls: [
+                "CANBERRA WAY",
+                "CANBERRA ST",
+                "CANBERRA MRT",
+                "YISHUN AVE 7",
+                "YISHUN AVE 5",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "883M",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
                 },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "883M",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "883M",
+                    top: "YISHUN AVE 5",
+                }
+            ]
+        }
+    },
+    8834: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "883M",
+            destination: "SEMBAWANG",
+            scrolls: [
                 "YISHUN MRT",
                 "YISHUN AVE 2",
                 "CANBERRA MRT",
                 "CANBERRA ST",
-                "CANBERRA WAY"
+                "CANBERRA WAY",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "883M",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "883M",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "883M",
+                    top: "SEMBAWANG",
+                    image: "mrt"
+                }
             ]
         }
     },
@@ -4025,13 +5606,26 @@ EDSData.TTSG = {
             serviceNumber: "941",
             destination: "BUKIT BATOK",
             scrolls: [
+                "BUKIT BATOK AVE 1",
+                "BT BATOK WEST AVE 6",
+                "BT BATOK WEST AVE 8",
+                "BT BATOK WEST AVE 9",
                 {
                     renderType: "destScroll",
                     serviceNumber: "941",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "941",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4039,11 +5633,43 @@ EDSData.TTSG = {
                     serviceNumber: "941",
                     top: "BUKIT BATOK",
                     image: "mrt"
-                },
-                "BT BATOK WEST AVE 3",
+                }
+            ]
+        }
+    },
+    9441: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "944",
+            destination: "BUKIT BATOK",
+            scrolls: [
                 "BT BATOK WEST AVE 6",
-                "BT BATOK ST 11",
                 "BT BATOK WEST AVE 8",
+                "BUKIT BATOK RD",,
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "944",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "944",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "944",
+                    top: "BUKIT BATOK",
+                    image: "mrt"
+                }
             ]
         }
     },
@@ -4053,13 +5679,27 @@ EDSData.TTSG = {
             serviceNumber: "945",
             destination: "BUKIT BATOK",
             scrolls: [
+                "BT BATOK EAST AVE 5",
+                "BUKIT BATOK STREET 52",
+                "BUKIT GOMBAK MRT",
+                "BT BATOK WEST AVE 7",
+                "BUKIT BATOK STREET 34",
                 {
                     renderType: "destScroll",
                     serviceNumber: "945",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "945",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4067,12 +5707,7 @@ EDSData.TTSG = {
                     serviceNumber: "945",
                     top: "BUKIT BATOK",
                     image: "mrt"
-                },
-                "BT BATOK EAST AVE 3",
-                "BT BATOK ST 52",
-                "BT GOMBAK MRT",
-                "BT BATOK WEST AVE 7",
-                "BT BATOK ST 34"
+                }
             ]
         }
     },
@@ -4082,13 +5717,24 @@ EDSData.TTSG = {
             serviceNumber: "947",
             destination: "BUKIT BATOK",
             scrolls: [
+                "BT BATOK WEST AVE 2",
+                "BT BATOK WEST AVE 4",
                 {
                     renderType: "destScroll",
                     serviceNumber: "947",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "947",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4096,9 +5742,7 @@ EDSData.TTSG = {
                     serviceNumber: "947",
                     top: "BUKIT BATOK",
                     image: "mrt"
-                }, // incomplete
-                "BT BATOK WEST AVE 2",
-                "BT BATOK WEST AVE 4"
+                }
             ]
         }
     },
@@ -4108,13 +5752,27 @@ EDSData.TTSG = {
             serviceNumber: "963",
             destination: "HARBOURFRONT",
             scrolls: [
+                "BUKIT PANJANG RD",
+                "HILLVIEW AVE",
+                "BT BATOK EAST AVE 4",
+                "AYE",
+                "ALEXANDRA RD",
                 {
                     renderType: "destScroll",
                     serviceNumber: "963",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4122,28 +5780,37 @@ EDSData.TTSG = {
                     serviceNumber: "963",
                     top: "HARBOURFRONT",
                     image: "mrt"
-                },
-                "BUKIT PANJANG RD",
-                "HILLVIEW AVE",
-                "BT BATOK EAST AVE 4",
-                "AYE",
-                "ALEXANDRA RD"
+                }
             ]
         }
     },
-   9632: {
+    9632: {
         front: {
             renderType: "standardService",
             serviceNumber: "963",
             destination: "WOODLANDS",
             scrolls: [
+                "ALEXANDRA RD",
+                "AYE",
+                "BT BATOK EAST AVE 4",
+                "HILLVIEW AVE",
+                "BT PANJANG RD",,
                 {
                     renderType: "destScroll",
                     serviceNumber: "963",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4151,12 +5818,7 @@ EDSData.TTSG = {
                     serviceNumber: "963",
                     top: "WOODLANDS",
                     image: "mrt"
-                },
-                "ALEXANDRA RD",
-                "AYE",
-                "BT BATOK EAST AVE 4",
-                "HILLVIEW AVE",
-                "BT PANJANG RD",
+                }
             ]
         }
     },
@@ -4166,13 +5828,35 @@ EDSData.TTSG = {
             serviceNumber: "963e",
             destination: "HARBOURFRONT",
             scrolls: [
+                "WOODLANDS AVE 3",
+                "BUKIT PANJANG RD",
+                "HILLVIEW AVE",
+                "BT BATOK EAST AVE 3",
+                " A Y E",
                 {
                     renderType: "destScroll",
                     serviceNumber: "963e",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "LIMITED STOPS",
+                    topFont: "Mobitec-9:6",
+                    bottom: "EXPRESS SERVICE",
+                    bottomFont: "Mobitec-6:5",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963e",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963e",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4180,28 +5864,45 @@ EDSData.TTSG = {
                     serviceNumber: "963e",
                     top: "HARBOURFRONT",
                     image: "mrt"
-                },
-                "WOODLANDS AVE 3",
-                "BUKIT PANJANG RD",
-                "HILLVIEW AVE",
-                "BT BATOK EAST AVE 3",
-                " A Y E"
+                }
             ]
         }
     },
-   9634: {
+    9634: {
         front: {
             renderType: "standardService",
             serviceNumber: "963e",
             destination: "WOODLANDS",
             scrolls: [
+                "A Y E",
+                "BT BATOK EAST AVE 3",
+                "HILLVIEW AVE",
+                "BUKIT PANJANG RD",
+                "WOODLANDS AVE 3",
                 {
                     renderType: "destScroll",
                     serviceNumber: "963e",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "LIMITED STOPS",
+                    topFont: "Mobitec-9:6",
+                    bottom: "EXPRESS SERVICE",
+                    bottomFont: "Mobitec-6:5",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963e",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963e",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4209,12 +5910,7 @@ EDSData.TTSG = {
                     serviceNumber: "963e",
                     top: "WOODLANDS",
                     image: "mrt"
-                },
-                "A Y E",
-                "BT BATOK EAST AVE 3",
-                "HILLVIEW AVE",
-                "BUKIT PANJANG RD",
-                "WOODLANDS AVE 3"
+                }
             ]
         }
     },
@@ -4229,6 +5925,14 @@ EDSData.TTSG = {
                 "HILLVIEW AVE",
                 "BT BATOK EAST AVE 3",
                 "A Y E",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963R",
+                    top: "LIMITED STOPS",
+                    topFont: "Mobitec-9:6",
+                    bottom: "EXPRESS SERVICE",
+                    bottomFont: "Mobitec-6:5",
+                },
                 {
                     renderType: "destScroll",
                     serviceNumber: "963R",
@@ -4259,19 +5963,79 @@ EDSData.TTSG = {
             ]
         }
     },
+    9634: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "963e",
+            destination: "WOODLANDS",
+            scrolls: [
+                "A Y E",
+                "BT BATOK EAST AVE 3",
+                "HILLVIEW AVE",
+                "BUKIT PANJANG RD",
+                "WOODLANDS AVE 3",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963R",
+                    top: "LIMITED STOPS",
+                    topFont: "Mobitec-9:6",
+                    bottom: "EXPRESS SERVICE",
+                    bottomFont: "Mobitec-6:5",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963R",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963R",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "963R",
+                    top: "WOODLANDS",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
     9651: {
         front: {
             renderType: "standardService",
             serviceNumber: "965",
             destination: "SENGKANG",
             scrolls: [
+                "WOODLANDS AVE 7",
+                "GAMBAS AVE",
+                "YISHUN MRT",
+                "YISHUN MRT",
+                "COMPASSVALE RD",
                 {
                     renderType: "destScroll",
                     serviceNumber: "965",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "965",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4279,28 +6043,37 @@ EDSData.TTSG = {
                     serviceNumber: "965",
                     top: "SENGKANG",
                     image: "mrt"
-                },
-                "WOODLANDS AVE 7",
-                "GAMBAS AVE",
-                "YISHUN MRT",
-                "YISHUN MRT",
-                "COMPASSVALE RD"
+                }
             ]
         }
     },
-   9652: {
+    9652: {
         front: {
             renderType: "standardService",
             serviceNumber: "965",
             destination: "WOODLANDS",
             scrolls: [
+                "COMPASSVALE RD",
+                "YISHUN MRT",
+                "YISHUN AVE 7",
+                "GAMBAS AVE",
+                "WOODLANDS AVE 7",
                 {
                     renderType: "destScroll",
                     serviceNumber: "965",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "965",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4308,12 +6081,7 @@ EDSData.TTSG = {
                     serviceNumber: "965",
                     top: "WOODLANDS",
                     image: "mrt"
-                },
-                "COMPASSVALE RD",
-                "YISHUN MRT",
-                "YISHUN AVE 7",
-                "GAMBAS AVE",
-                "WOODLANDS AVE 7"
+                }
             ]
         }
     },
@@ -4323,13 +6091,27 @@ EDSData.TTSG = {
             serviceNumber: "965",
             destination: "WDL TEMP INT",
             scrolls: [
+                "COMPASSVALE RD",
+                "YISHUN MRT",
+                "YISHUN AVE 7",
+                "GAMBAS AVE",
+                "WOODLANDS AVE 7",
                 {
                     renderType: "destScroll",
                     serviceNumber: "965",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "965",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4338,12 +6120,7 @@ EDSData.TTSG = {
                     top: "WOODLANDS",
                     bottom: "TEMP INTERCHANGE",
                     image: "mrt"
-                },
-                "COMPASSVALE RD",
-                "YISHUN MRT",
-                "YISHUN AVE 7",
-                "GAMBAS AVE",
-                "WOODLANDS AVE 7"
+                }
             ]
         }
     },
@@ -4353,25 +6130,34 @@ EDSData.TTSG = {
             serviceNumber: "966",
             destination: "MARINE PARADE",
             scrolls: [
+                "WOODLANDS AVE 3",
+                "PENDING RD",
+                "JALAN KOLAM AYER",
+                "JALAN TOA PAYOH",
+                "JALAN EUNOS",
                 {
                     renderType: "destScroll",
                     serviceNumber: "966",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
                     renderType: "destScroll",
                     serviceNumber: "966",
-                    top: "MARINE PARADE"
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
                 },
-                "WOODLANDS AVE 3",
-                "PENDING RD",
-                "JALAN KOLAM AYER",
-                "JALAN TOA PAYOH",
-                "JALAN EUNOS"
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "966",
+                    top: "MARINE PARADE",
+                }
             ]
         }
     },
@@ -4381,13 +6167,27 @@ EDSData.TTSG = {
             serviceNumber: "966",
             destination: "WOODLANDS",
             scrolls: [
+                "MARINE PARADE RD",
+                "JALAN EUNOS",
+                "JALAN KOLAM AYER",
+                "JALAN TOA PAYOH",
+                "PENDING RD",
                 {
                     renderType: "destScroll",
                     serviceNumber: "966",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "966",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4395,28 +6195,37 @@ EDSData.TTSG = {
                     serviceNumber: "966",
                     top: "WOODLANDS",
                     image: "mrt"
-                },
-                "MARINE PARADE RD",
-                "JALAN EUNOS",
-                "JALAN KOLAM AYER",
-                "JALAN TOA PAYOH",
-                "PENDING RD"
+                }
             ]
         }
     },
     9691: {
         front: {
             renderType: "standardService",
-            serviceNumber: "969",
+            serviceNumber: "966",
             destination: "TAMPINES",
             scrolls: [
+                "WOODLANDS AVE 7",
+                "GAMBAS AVE",
+                "YISHUN MRT",
+                "T P E",
+                "TAMPINES CONCOURSE",
                 {
                     renderType: "destScroll",
                     serviceNumber: "969",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "969",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4424,12 +6233,7 @@ EDSData.TTSG = {
                     serviceNumber: "969",
                     top: "TAMPINES",
                     image: "mrt"
-                },
-                "WOODLANDS AVE 7",
-                "GAMBAS AVE",
-                "YISHUN MRT",
-                "T P E",
-                "TAMPINES CONCOURSE"
+                }
             ]
         }
     },
@@ -4439,13 +6243,27 @@ EDSData.TTSG = {
             serviceNumber: "969",
             destination: "WOODLANDS",
             scrolls: [
+                "TAMPINES CONCOURSE",
+                "T P E",
+                "YISHUN MRT",
+                "GAMBAS AVE",
+                "WOODLANDS AVE 7",
                 {
                     renderType: "destScroll",
                     serviceNumber: "969",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "969",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
@@ -4453,127 +6271,7 @@ EDSData.TTSG = {
                     serviceNumber: "969",
                     top: "WOODLANDS",
                     image: "mrt"
-                },
-                "TAMPINES CONCOURSE",
-                "T P E",
-                "YISHUN MRT",
-                "GAMBAS AVE",
-                "WOODLANDS AVE 7"
-            ]
-        }
-    },
-    9801: {
-        front: {
-            renderType: "standardService",
-            serviceNumber: "980",
-            destination: "LOR 1 GEYLANG",
-            scrolls: [
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "980",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
-                    image: "logo"
-                },
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "980",
-                    top: "LOR 1 GEYLANG",
-                    bottom: "( KALLANG STN )",
-                    image: "mrt"
-                },
-                "SEMBAWANG RD",
-                "UPPER THOMSON RD",
-                "THOMSON RD",
-                "LITTLE INDIA",
-                "BEACH RD"
-            ]
-        }
-    },
-    9802: {
-        front: {
-            renderType: "standardService",
-            serviceNumber: "980",
-            destination: "SEMBAWANG",
-            scrolls: [
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "980",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
-                    image: "logo"
-                },
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "980",
-                    top: "SEMBAWANG",
-                    image: "mrt"
-                },
-                "BEACH RD",
-                "LITTLE INDIA",
-                "THOMSON RD",
-                "UPPER THOMSON RD",
-                "SEMBAWANG RD"
-            ]
-        }
-    },
-    9811: {
-        front: {
-            renderType: "standardService",
-            serviceNumber: "981",
-            destination: "SENOKO LOOP",
-            scrolls: [
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "981",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
-                    image: "logo"
-                },
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "981",
-                    top: "SENOKO LOOP"
-                },
-                "CANBERRA RD",
-                "ADMIRALTY RD WEST",
-                "SENOKO DR",
-                "SENOKO RD"
-            ]
-        }
-    },
-    9812: {
-        front: {
-            renderType: "standardService",
-            serviceNumber: "981",
-            destination: "SEMBAWANG",
-            scrolls: [
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "981",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
-                    image: "logo"
-                },
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "981",
-                    top: "SEMBAWANG",
-                    image: "mrt"
-                },
-                "SENOKO RD",
-                "SENOKO LOOP",
-                "SENOKO DR",
-                "ADMIRALTY RD WEST",
-                "CANBERRA RD"
+                }
             ]
         }
     },
@@ -4581,28 +6279,37 @@ EDSData.TTSG = {
         front: {
             renderType: "standardService",
             serviceNumber: "974",
-            destination: "JOO KOON",
+            destination: "BUKIT PANJANG",
             scrolls: [
+                "UPP JURONG RD",
+                "JURONG WEST ST 63",
+                "JLN BOON LAY",
+                "CHOA CHU KANG MRT",
+                "CHOA CHU KANG WAY",
                 {
                     renderType: "destScroll",
                     serviceNumber: "974",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
                     renderType: "destScroll",
                     serviceNumber: "974",
-                    top: "JOO KOON",
-                    image: "mrt"
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
                 },
-                "CHOA CHU KANG WAY",
-                "CHOA CHU KANG MRT",
-                "JLN BOON LAY",
-                "JURONG WEST ST 63",
-                "UPP JURONG RD"
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "974",
+                    top: "BUKIT PANJANG",
+                    image: "mrt"
+                }
             ]
         }
     },
@@ -4610,88 +6317,38 @@ EDSData.TTSG = {
         front: {
             renderType: "standardService",
             serviceNumber: "974",
-            destination: "BUKIT PANJANG",
-            scrolls: [
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "974",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
-                    image: "logo"
-                },
-                {
-                    renderType: "destScroll",
-                    serviceNumber: "974",
-                    top: "BUKIT PANJANG",
-                    image: "mrt"
-                },
-                "UPP JURONG RD",
-                "JURONG WEST ST 63",
-                "JLN BOON LAY",
-                "CHOA CHU KANG MRT",
-                "CHOA CHU KANG WAY"
-            ],
-        }
-    },
-    9748: { //Retain for history
-        front: {
-            renderType: "StandardServiceOldFont",
-            serviceNumber: "974",
             destination: "JOO KOON",
             scrolls: [
-                {
-                    renderType: "destScrollOldFont",
-                    serviceNumber: "974",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
-                    image: "logo"
-                },
-                {
-                    renderType: "destScrollOldFont",
-                    serviceNumber: "974",
-                    top: "JOO KOON",
-                    image: "mrt"
-                },
                 "CHOA CHU KANG WAY",
                 "CHOA CHU KANG MRT",
                 "JLN BOON LAY",
                 "JURONG WEST ST 63",
-                "UPP JURONG RD"
-            ]
-        }
-    },
-    9749: { //Retain for history
-        front: {
-            renderType: "StandardServiceOldFont",
-            serviceNumber: "974",
-            serviceNumberfont: "StandardServiceOldFont",
-            destination: "BUKIT PANJANG",
-            scrolls: [
+                "UPP JURONG RD",
                 {
-                    renderType: "destScrollOldFont",
+                    renderType: "destScroll",
                     serviceNumber: "974",
-                    top: "Welcome Aboard",
-                    topFont: "Mobitec-7:5:1",
-                    bottom: "Tower Transit!",
-                    bottomFont: "Mobitec-7:5:1",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
                     image: "logo"
                 },
                 {
-                    renderType: "destScrollOldFont",
+                    renderType: "destScroll",
                     serviceNumber: "974",
-                    top: "BUKIT PANJANG",
-                    image: "mrt"
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
                 },
-                "UPP JURONG RD",
-                "JURONG WEST ST 63",
-                "JLN BOON LAY",
-                "CHOA CHU KANG MRT",
-                "CHOA CHU KANG WAY"
-            ],
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "974",
+                    top: "JOO KOON",
+                    image: "mrt"
+                }
+            ]
         }
     },
     9743: {
@@ -4703,11 +6360,319 @@ EDSData.TTSG = {
             bottom: "LOT 1 SHOPPERS MALL",
             bottomFont: "Hanover-6:3",
             image: "mrt"
-            
-            
         }
-    }
+    },
+    9748: {
+        front: {
+            renderType: "StandardServiceOldFont",
+            serviceNumber: "974",
+            destination: "BUKIT PANJANG",
+            scrolls: [
+                "UPP JURONG RD",
+                "JURONG WEST ST 63",
+                "JLN BOON LAY",
+                "CHOA CHU KANG MRT",
+                "CHOA CHU KANG WAY",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "974",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "974",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "974",
+                    top: "BUKIT PANJANG",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
+    9749: {
+        front: {
+            renderType: "StandardServiceOldFont",
+            serviceNumber: "974",
+            destination: "JOO KOON",
+            scrolls: [
+                "CHOA CHU KANG WAY",
+                "CHOA CHU KANG MRT",
+                "JLN BOON LAY",
+                "JURONG WEST ST 63",
+                "UPP JURONG RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "974",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "974",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "974",
+                    top: "JOO KOON",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
+    9801: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "980",
+            destination: "LOR 1 GEYLANG",
+            scrolls: [
+                "SEMBAWANG RD",
+                "UPPER THOMSON RD",
+                "THOMSON RD",
+                "LITTLE INDIA",
+                "BEACH RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "980",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "980",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "980",
+                    top: "LOR 1 GEYLANG",
+                    bottom: "( KALLANG STN )",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
+    9802: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "980",
+            destination: "SEMBAWANG",
+            scrolls: [
+                "BEACH RD",
+                "LITTLE INDIA",
+                "THOMSON RD",
+                "UPPER THOMSON RD",
+                "SEMBAWANG RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "980",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "980",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "980",
+                    top: "SEMBAWANG",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
+    9811: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "981",
+            destination: "SENOKO LOOP",
+            scrolls: [
+                "CANBERRA RD",
+                "ADMIRALTY RD WEST",
+                "SENOKO DR",
+                "SENOKO RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "981",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "981",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "981",
+                    top: "SENOKO LOOP",
+                }
+            ]
+        }
+    },
+    9812: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "981",
+            destination: "SEMBAWANG",
+            scrolls: [
+                "SENOKO RD",
+                "SENOKO LOOP",
+                "SENOKO DR",
+                "ADMIRALTY RD WEST",
+                "CANBERRA RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "981",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "981",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "981",
+                    top: "SEMBAWANG",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
+    9901: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "990",
+            destination: "JURONG EAST MRT",
+            scrolls: [
+                "BT BATOK EAST AVE 3",
+                "BT BATOK EAST AVE 6",
+                "TOH GUAN RD",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "990",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "990",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "990",
+                    top: "JURONG EAST",
+                    bottom: "( BEF JURONG EAST STN )",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
+    9902: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "990",
+            destination: "BUKIT BATOK",
+            scrolls: [
+                "TOH GUAN RD",
+                "BUKIT BATOK EAST AVE 6",
+                "BUKIT BATOK EAST AVE 3",
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "990",
+                    top: "Welcome on board",
+                    topFont: "Hanover-7:3",
+                    bottom: "Tower Transit",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "990",
+                    top: "Have a pleasant",
+                    topFont: "Hanover-7:3",
+                    bottom: "journey!",
+                    bottomFont: "Hanover-7:3",
+                    image: "logo"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "990",
+                    top: "BUKIT BATOK",
+                    image: "mrt"
+                }
+            ]
+        }
+    },
+    9999: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "",
+            destination: "BUS UNDER REPAIR",
+            destFont: "Hanover-14:6",
+            scrolls: []
+        },
+    },
 }
+
 
 EDSExtras.TTSG = {
     1: {
@@ -4775,6 +6740,24 @@ EDSImages.TTSG = {
         [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1],
         [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ],
+    'the-cat': [ //Please Do not the cat
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0],
+        [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1],
+        [1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+    ],
     mrt: [
         [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
         [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
@@ -4829,7 +6812,7 @@ EDSImages.TTSG = {
         [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    "SentosaGantry": [
+    SentosaGantry: [
         [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
         [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
         [1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1],
@@ -4884,41 +6867,41 @@ EDSImages.TTSG = {
         [1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1],
     ],
     "OLD ADL LOGO": [ //OLD ADL Logo
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-    [0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0],
-    [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0],
-    [0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0],
-    [1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
-    [0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0],
-    [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0],
-    [0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0],
-    [0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0],
+        [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0],
+        [0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0],
+        [1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+        [0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0],
+        [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ],
     "NEW ADL LOGO": [ //New ADL Logo
-    [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0],
-    [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1],
-    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1],
-    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1],
-    [0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1],
-    [0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1],
-    [0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0],
-    [0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
-    [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
-    [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
-    [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
-    [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-],
+        [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1],
+        [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1],
+        [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1],
+        [0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1],
+        [0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1],
+        [0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0],
+        [0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
+        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
+        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+        [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+        [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+    ],
     heart: [
         [0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0],
         [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],

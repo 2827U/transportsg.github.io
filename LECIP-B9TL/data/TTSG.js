@@ -160,6 +160,57 @@ EDSFormats.TTSG = {
 
         text: "$top+' '+$bottom+' '+$serviceNumber"
     },
+    OngTengHuat: {
+        serviceNumber: {
+            align: "right",
+            margin: {
+                right: 1
+            },
+            text: "$serviceNumber",
+            font: "LECIP-19:TowerB9Front",
+            spacing: 2
+        },
+        top: {
+            align: "centre-x,top",
+            margin: {
+                right: 'width(serviceNumber) - width(image)',
+                Top: 1
+            },
+            text: "$destination",
+            font: "$topFont",
+            spacing: 1
+        },
+        bottom: {
+            align: "centre-x,bottom",
+            text: {
+                $$cond: {
+                    "$bottom !== null": "$bottom",
+                    "else": "''"
+                }
+            },
+            font: {
+                $$cond: {
+                    "$bottomFont === null": "LECIP-7:5",
+                    "else": "$bottomFont"
+                }
+            },
+            spacing: 1,
+            margin: {
+                right: 'width(serviceNumber) - width(image)'
+            }
+        },
+        image: {
+            align: "left,centre-y",
+            image: {
+                $$cond: {
+                    "$image !== null": "$image",
+                    "else": "blank"
+                }
+            }
+        },
+
+        text: "$top+' '+$bottom+' '+$serviceNumber"
+    },
     logo: {
         logo: {
             align: "centre-x,centre-y",
@@ -203,6 +254,27 @@ EDSFormats.TTSG = {
             },
             text: '$bottom',
             font: '$bottomFont',
+            spacing: 1
+        }
+    },
+    'centreMessageServiceScroll2': {
+        serviceNumber: {
+            align: 'right,centre-y',
+            margin: {
+                right: 1
+            },
+            text: '$serviceNumber',
+            font: 'LECIP-19:TowerB9Front',
+            spacing: 3
+        },
+        top: {
+            align: 'centre-x,top',
+            margin: {
+                right: 'width(serviceNumber) len(5)',
+                top: 0
+            },
+            text: '$top',
+            font: '$topFont',
             spacing: 1
         }
     },
@@ -432,7 +504,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "66A",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -452,7 +524,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "66B",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -472,7 +544,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "66C",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -724,7 +796,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "78A",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -850,7 +922,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "79A",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         },
@@ -868,7 +940,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "79A",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -917,7 +989,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "96A",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -937,7 +1009,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "96B",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -1037,7 +1109,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "97e",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         },
@@ -1075,7 +1147,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "97e",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -1221,7 +1293,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "98A",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -1303,6 +1375,55 @@ EDSData.TTSG = {
             }
         }
     },
+    101: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "N1",
+                destination: "YISHUN RING RD",
+                destinationFont: "Hanover-Tower11:7",
+                scrolls: [
+                    "NEWTON RD",
+                    "TOA PAYOH CENTRAL",
+                    "BISHAN ST 11",
+                    "ANG MO KIO AVE 3",
+                    "ANG MO KIO AVE 4",
+                    "LENTOR AVE"
+                ],
+                scrollFont: "LECIP-7:5"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "N1",
+                font: "LECIP-19:TowerB9Front",
+                spacing: 2
+            }
+        }
+    },
+    102: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "N2",
+                destination: "SEMBAWANG DR",
+                destinationFont: "Hanover-Tower11:7",
+                scrolls: [
+                    "WOODLANDS CENTRE RD",
+                    "MARSILING RD",
+                    "WOODLANDS AVE 7",
+                    "ADMIRALTY DR",
+                    "CANBERRA RD",
+                ],
+                scrollFont: "LECIP-7:5"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "N2",
+                font: "LECIP-19:TowerB9Front",
+                spacing: 2
+            }
+        }
+    },
     106: {
         1: {
             front: {
@@ -1378,7 +1499,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "106A",
-                font: "LECIP-20:6",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -1513,7 +1634,7 @@ EDSData.TTSG = {
                         serviceNumber: "143M"
                     },
                     "JURONG TOWN HALL RD",
-                    "TEBAN GARDEN RD",
+                    "TEBAN GARDENS RD",
                     "PANDAN GARDENS"
                 ],
                 scrollFont: "LECIP-7:5"
@@ -1521,7 +1642,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "143M",
-                font: "LECIP-20:6",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -1581,6 +1702,81 @@ EDSData.TTSG = {
                 serviceNumber: "167",
                 font: "LECIP-TowerRear17:10",
                 spacing: 2
+            }
+        }
+    },
+    "167E": {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "167e",
+                destination: "SHENTON WAY",
+                destinationFont: "Hanover-Tower11:7",
+                scrolls: [{
+                        renderType: "centreMessageServiceScroll",
+                        serviceNumber: "167e",
+                        top: "LIMITED STOPS",
+                        topFont: "Hanover-Tower11:7",
+
+                        bottom: "EXPRESS SERVICE",
+                        bottomFont: "LECIP-7:5"
+                    },
+                    {
+                        renderType: "destScroll",
+                        top: "SHENTON WAY",
+                        topFont: "Hanover-Tower12:7",
+            
+                        serviceNumber: "167e"
+                    },
+                    "SEMBAWANG RD",
+                    "SPRINGLEAF MRT",
+                    "NEWTON MRT",
+                    "ORCHARD RD"
+                ],
+                scrollFont: "LECIP-7:5"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "167e",
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
+            }
+        },
+        2: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "167e",
+                destination: "SEMBAWANG",
+                destinationFont: "Hanover-Tower11:7",
+                scrolls: [{
+                        renderType: "centreMessageServiceScroll",
+                        serviceNumber: "167e",
+                        top: "LIMITED STOPS",
+                        topFont: "Hanover-Tower11:7",
+
+                        bottom: "EXPRESS SERVICE",
+                        bottomFont: "LECIP-7:5"
+                    },
+                    {
+                        renderType: "destScroll",
+                        top: "SEMBAWANG",
+                        topFont: "Hanover-Tower12:7",
+            
+                        serviceNumber: "167e"
+                    },
+                    "STAMFORD RD",
+                    "ORCHARD TURN",
+                    "NEWTON MRT",
+                    "SPRINGLEAF MRT",
+                    "SEMBAWANG RD",
+                ],
+                scrollFont: "LECIP-7:5"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "167e",
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -1717,7 +1913,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "169A",
-                font: "LECIP-20:6",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -1738,7 +1934,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "169B",
-                font: "LECIP-20:6",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -1883,7 +2079,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "173A",
-                font: "LECIP-20:6",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -2034,7 +2230,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "183B",
-                font: "LECIP-20:6",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -2111,7 +2307,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "189A",
-                font: "LECIP-20:6",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -2164,7 +2360,7 @@ EDSData.TTSG = {
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "284",
+                serviceNumber: "28$",
                 font: "LECIP-TowerRear17:10",
                 spacing: 1
             }
@@ -2195,6 +2391,46 @@ EDSData.TTSG = {
                 serviceNumber: "285",
                 font: "LECIP-TowerRear17:10",
                 spacing: 1
+            }
+        }
+    },
+    311: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "E31",
+                destination: "CCL EXPRESS BUS",
+                destinationFont: "Hanover-Tower11:7",
+                scrolls: [
+                    "KENT RIDGE > HARBOURFRONT"
+                ],
+                scrollFont: "Hanover-7:3"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "E31",
+                font: "LECIP-TowerRear17:7",
+                spacing: 2
+            }
+        }
+    },
+    312: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "E31",
+                destination: "CCL EXPRESS BUS",
+                destinationFont: "Hanover-Tower11:7",
+                scrolls: [
+                    "HARBOURFRONT > KENT RIDGE"
+                ],
+                scrollFont: "Hanover-7:3"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "E31",
+                font: "LECIP-TowerRear17:7",
+                spacing: 2
             }
         }
     },
@@ -2248,7 +2484,7 @@ EDSData.TTSG = {
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "334",
+                serviceNumber: "33$",
                 font: "LECIP-TowerRear17:10",
                 spacing: 1
             }
@@ -2281,6 +2517,46 @@ EDSData.TTSG = {
                 serviceNumber: "335",
                 font: "LECIP-TowerRear17:10",
                 spacing: 1
+            }
+        }
+    },
+    521: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "S52",
+                destination: "TEL SHUTTLE",
+                destinationFont: "Hanover-Tower11:7",
+                scrolls: [
+                    "CALDECOTT > OUTRAM PARK"
+                ],
+                scrollFont: "Hanover-7:3"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "S52",
+                font: "LECIP-TowerRear17:7",
+                spacing: 2
+            }
+        }
+    },
+    522: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "S52",
+                destination: "TEL SHUTTLE",
+                destinationFont: "Hanover-Tower11:7",
+                scrolls: [
+                    "OUTRAM PARK > CALDECOTT"
+                ],
+                scrollFont: "Hanover-7:3"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "S52",
+                font: "LECIP-TowerRear17:7",
+                spacing: 2
             }
         }
     },
@@ -3145,8 +3421,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "853M",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         },
         2: {
@@ -3173,8 +3449,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "853M",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },   
@@ -3202,9 +3478,9 @@ EDSData.TTSG = {
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "854",
-                font: "LECIP-20:9",
-                spacing: 2
+                serviceNumber: "85$",
+                font: "LECIP-TowerRear17:10",
+                spacing: 1
             }
         },
         2: {
@@ -3230,9 +3506,9 @@ EDSData.TTSG = {
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "854",
-                font: "LECIP-20:9",
-                spacing: 2
+                serviceNumber: "85$",
+                font: "LECIP-TowerRear17:10",
+                spacing: 1
             }
         }
     },   
@@ -3262,14 +3538,15 @@ EDSData.TTSG = {
                     "YISHUN AVE 2",
                     "YIO CHU KANG RD",
                     "HOUGANG AVE 3",
+                    "EUNOS LINK"
                 ],
                 scrollFont: "LECIP-7:5"
             },
             rear: {
                 renderType: "rearService",
                 serviceNumber: "854e",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -3412,8 +3689,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "856A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -3433,8 +3710,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "856B",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -3491,7 +3768,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "857",
-                font: "LECIP-TowerRear17:10",
+                font: "LECIP-TowerRear17:7",
                 spacing: 1
             }
         }
@@ -3512,8 +3789,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "857A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -3533,8 +3810,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "857B",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         },
         2: {
@@ -3552,8 +3829,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "857B",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },  
@@ -3688,8 +3965,25 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "858A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
+            }
+        },
+        2: {
+            front: {
+                renderType: "OngTengHuat",
+                serviceNumber: "858",
+                destination: "CHANGI AIRPORT",
+                topFont: "Hanover-Tower11:7",
+                bottom: "( PTB 3, 1, 2 )",
+                bottomFont: "Hanover-5:3",
+                image: "ChangiAirportControlTower"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "858A",
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -3709,8 +4003,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "858B",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -3796,8 +4090,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "859A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -3825,8 +4119,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "859B",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -3845,8 +4139,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "859T",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -3923,8 +4217,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "870A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -3974,8 +4268,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "882A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -4061,8 +4355,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "883A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -4082,8 +4376,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "883B",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -4176,7 +4470,7 @@ EDSData.TTSG = {
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "941",
+                serviceNumber: "9$1",
                 font: "LECIP-TowerRear17:10",
                 spacing: 2
             }
@@ -4204,9 +4498,9 @@ EDSData.TTSG = {
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "944",
-                font: "LECIP-20:9",
-                spacing: 2
+                serviceNumber: "9$$",
+                font: "LECIP-TowerRear17:10",
+                spacing: 1
             }
         }
     },
@@ -4234,9 +4528,9 @@ EDSData.TTSG = {
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "945",
-                font: "LECIP-20:9",
-                spacing: 2
+                serviceNumber: "9$5",
+                font: "LECIP-TowerRear17:10",
+                spacing: 1
             }
         }
     },
@@ -4260,9 +4554,9 @@ EDSData.TTSG = {
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "947",
-                font: "LECIP-20:9",
-                spacing: 2
+                serviceNumber: "9$7",
+                font: "LECIP-TowerRear17:10",
+                spacing: 1
             }
         }
     },
@@ -4358,8 +4652,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "963e",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         },
         2: {
@@ -4395,8 +4689,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "963e",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -4405,8 +4699,8 @@ EDSData.TTSG = {
             front: {
                 renderType: "standardService",
                 serviceNumber: "963R",
-                destination: "RESORTS WORLD",
-                destinationFont: "Hanover-Tower11:7",
+                destination: "RESORTS WORLD SENTOSA",
+                destinationFont: "Mobitec-Tower9:4",
                 scrolls: [{
                         renderType: "centreMessageServiceScroll",
                         serviceNumber: "963R",
@@ -4418,8 +4712,8 @@ EDSData.TTSG = {
                     },
                     {
                         renderType: "destScroll",
-                        top: "HARBOURFRONT",
-                        topFont: "Hanover-Tower12:7",
+                        top: "RESORTS WORLD",
+                        topFont: "Hanover-Tower11:7",
             
                         serviceNumber: "963R"
                     },
@@ -4434,8 +4728,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "963R",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         },
         2: {
@@ -4471,8 +4765,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "963R",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -4549,8 +4843,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "965A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -4566,11 +4860,47 @@ EDSData.TTSG = {
                 ],
                 scrollFont: "LECIP-7:5"
             },
+            
             rear: {
                 renderType: "rearService",
                 serviceNumber: "965T",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
+            }
+        },
+        2: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "963",
+                destination: "WOODLANDS",
+                destinationFont: "Hanover-Tower11:7",
+                scrolls: [{
+                    renderType: "centreMessageServiceScroll",
+                    serviceNumber: "963",
+                    top: "HELLO UNCLE",
+                    topFont: "Hanover-Tower11:7",
+
+                    bottom: "IS THIS BUS GOING TO HILLVIEW",
+                    bottomFont: "LECIP-6:3"
+                },
+                {
+                    renderType: "centreMessageServiceScroll",
+                    serviceNumber: "963",
+                    top: "HELLO UNCLE",
+                    topFont: "Hanover-Tower11:7",
+
+                    bottom: "IS THIS BUS GOING TO HILLVIEW",
+                    bottomFont: "LECIP-6:3"
+                },
+
+                ],
+                scrollFont: "LECIP-7:5"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "963",
+                font: "LECIP-TowerRear17:10",
+                spacing: 1
             }
         }
     },
@@ -4649,8 +4979,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "966A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -4728,8 +5058,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "969A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -4757,7 +5087,7 @@ EDSData.TTSG = {
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "974",
+                serviceNumber: "97$",
                 font: "LECIP-TowerRear17:10",
                 spacing: 1
             }
@@ -4785,8 +5115,28 @@ EDSData.TTSG = {
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "974",
+                serviceNumber: "97$",
                 font: "LECIP-TowerRear17:10",
+                spacing: 1
+            }
+        }
+    },
+    "974A": {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "974A",
+                destination: "ENDS AT",
+                destinationFont: "Hanover-Tower11:7",
+                scrolls: [
+                    "LOT 1 SHOPPERS MALL"
+                ],
+                scrollFont: "LECIP-7:5"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "974A",
+                font: "LECIP-TowerRear17:7",
                 spacing: 1
             }
         }
@@ -5034,8 +5384,8 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "992A",
-                font: "LECIP-20:6",
-                spacing: 2
+                font: "LECIP-TowerRear17:7",
+                spacing: 1
             }
         }
     },
@@ -5074,7 +5424,7 @@ EDSData.TTSG = {
                 renderType: "rearService",
                 serviceNumber: "992",
                 font: "LECIP-TowerRear17:10",
-                spacing: 2
+                spacing: 1
             }
         },
         2: {
@@ -5110,7 +5460,7 @@ EDSData.TTSG = {
                 renderType: "rearService",
                 serviceNumber: "992",
                 font: "LECIP-TowerRear17:10",
-                spacing: 2
+                spacing: 1
             }
         }
     },
@@ -5118,16 +5468,32 @@ EDSData.TTSG = {
         1: {
             front: {
                 renderType: "message",
-                text: "OFF SERVICE",
-                font: "LECIP-20:12",
+                text: "~  Off Service",
+                font: "Hanover-Tower19:11:1",
                 spacing: 2
             },
             rear: {
+                renderType: "message",
+                text: "~",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            }
+        }
+    },
+    1112: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "SGUS",
+                font: "SGBusLogo-Mobitec",
+                spacing: 1
+            },
+            rear: {
                 renderType: 'twoline',
-                top: "OFF",
+                top: "",
                 topFont: "LECIP-7:4",
 
-                bottom: "SERVICE",
+                bottom: "",
                 bottomFont: "LECIP-7:4"
             }
         }
@@ -5180,6 +5546,610 @@ EDSData.TTSG = {
 
                 bottom: "FAM. TRG",
                 bottomFont: "LECIP-6:3",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    5001: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "NSL  Bridging  Bus",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "NSL",
+                topFont: "Mobitec-10:7",
+
+                bottom: "Bridging",
+                bottomFont: "Hanover-7:3"
+            }
+        }
+    },
+    5002: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "EWL  Bridging  Bus",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "EWL",
+                topFont: "Mobitec-10:7",
+
+                bottom: "Bridging",
+                bottomFont: "Hanover-7:3"
+            }
+        }
+    },
+    5003: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "NEL  Bridging  Bus",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "NEL",
+                topFont: "Mobitec-10:7",
+
+                bottom: "Bridging",
+                bottomFont: "Hanover-7:3"
+            }
+        }
+    },
+    5004: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "CCL  Bridging  Bus",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "CCL",
+                topFont: "Mobitec-10:7",
+
+                bottom: "Bridging",
+                bottomFont: "Hanover-7:3"
+            }
+        }
+    },
+    5005: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "DTL  Bridging  Bus",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "DTL",
+                topFont: "Mobitec-10:7",
+
+                bottom: "Bridging",
+                bottomFont: "Hanover-7:3"
+            }
+        }
+    },
+    5006: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TEL  Bridging  Bus",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "TEL",
+                topFont: "Mobitec-10:7",
+
+                bottom: "Bridging",
+                bottomFont: "Hanover-7:3"
+            }
+        }
+    },
+    5007: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "LRT  Bridging  A",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "LRT",
+                topFont: "Mobitec-10:7",
+
+                bottom: "A",
+                bottomFont: "LECIP-7:5"
+            }
+        }
+    },
+    5008: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "LRT  Bridging  B",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "LRT",
+                topFont: "Mobitec-10:7",
+
+                bottom: "B",
+                bottomFont: "LECIP-7:5"
+            }
+        }
+    },
+    5009: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "LRT  Bridging  East",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "LRT",
+                topFont: "Mobitec-10:7",
+
+                bottom: "EAST",
+                bottomFont: "LECIP-7:5"
+            }
+        }
+    },
+    5010: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "LRT  Bridging  West",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "LRT",
+                topFont: "Mobitec-10:7",
+
+                bottom: "WEST",
+                bottomFont: "LECIP-7:5"
+            }
+        }
+    },
+    5100: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Black 01",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BLACK",
+                topFont: "LECIP-7:5",
+
+                bottom: "01",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5101: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Black 02",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BLACK",
+                topFont: "LECIP-7:5",
+
+                bottom: "02",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5102: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Black 03",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BLACK",
+                topFont: "LECIP-7:5",
+
+                bottom: "03",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5103: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Black 04",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BLACK",
+                topFont: "LECIP-7:5",
+
+                bottom: "04",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5104: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Blue 01",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BLUE",
+                topFont: "LECIP-7:5",
+
+                bottom: "01",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5105: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Blue 02",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BLUE",
+                topFont: "LECIP-7:5",
+
+                bottom: "02",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5106: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Blue 03",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BLUE",
+                topFont: "LECIP-7:5",
+
+                bottom: "03",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5107: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Blue 04",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BLUE",
+                topFont: "LECIP-7:5",
+
+                bottom: "04",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5108: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Brown 01",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BROWN",
+                topFont: "LECIP-7:5",
+
+                bottom: "01",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5109: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Brown 02",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BROWN",
+                topFont: "LECIP-7:5",
+
+                bottom: "02",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5110: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Brown 03",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BROWN",
+                topFont: "LECIP-7:5",
+
+                bottom: "03",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5111: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Brown 04",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "BROWN",
+                topFont: "LECIP-7:5",
+
+                bottom: "04",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5112: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Green 01",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GREEN",
+                topFont: "LECIP-7:5",
+
+                bottom: "01",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5113: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Green 02",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GREEN",
+                topFont: "LECIP-7:5",
+
+                bottom: "02",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5114: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Green 03",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GREEN",
+                topFont: "LECIP-7:5",
+
+                bottom: "03",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5115: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "TT Green 04",
+                font: "Mobitec-Tower16:9",
+                spacing: 2
+            },
+            rear: {
+                renderType: 'twoline',
+                top: "GREEN",
+                topFont: "LECIP-7:5",
+
+                bottom: "04",
+                bottomFont: "Mobitec-10:7"
+            }
+        }
+    },
+    5200: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "~  T T 0 1",
+                font: "Hanover-Tower19:11:1",
+                spacing: 2
+            },
+            rear: {
+                renderType: "message",
+                text: "TT01",
+                font: "Mobitec-10:7",
+                spacing: 2
+            }
+        }
+    },
+    5201: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "~  T T 0 2",
+                font: "Hanover-Tower19:11:1",
+                spacing: 2
+            },
+            rear: {
+                renderType: "message",
+                text: "TT02",
+                font: "Mobitec-10:7",
+                spacing: 2
+            }
+        }
+    },
+    5224: {
+        1: {
+            front: {
+                renderType: "message",
+                text: "~  T T 2 5",
+                font: "Hanover-Tower19:11:1",
+                spacing: 2
+            },
+            rear: {
+                renderType: "message",
+                text: "TT25",
+                font: "Mobitec-10:7",
+                spacing: 2
+            }
+        }
+    },
+    5300: {
+        1: {
+            front: {
+                renderType: "centreMessageServiceScroll2",
+                serviceNumber: "b1",
+                top: "Crew  Bus ",
+                topFont: "Hanover-Tower19:11:2",
+            },
+            rear: {
+                renderType: "message",
+                text: "b1",
+                font: "LECIP-19:TowerB9Front",
+                spacing: 2
+            }
+        }
+    },
+    5400: {
+        1: {
+            front: {
+                renderType: "twoline",
+                top: "BULIM   TTS",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "HOTEL FERRY",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "BULIM",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "DEPOT",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    5401: {
+        1: {
+            front: {
+                renderType: "twoline",
+                top: "MANDAI   TTS",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "HOTEL FERRY",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "MANDAI",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "DEPOT",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            }
+        }
+    },
+    5401: {
+        1: {
+            front: {
+                renderType: "twoline",
+                top: "TTS HOTEL FERRY",
+                topFont: "LECIP-10",
+                topSpacing: 1,
+
+                bottom: "EMPLOYEE SHUTTLE",
+                bottomFont: "LECIP-7:5",
+                bottomSpacing: 1,
+            },
+            rear: { 
+                renderType: "twoline",
+                top: "HOTEL",
+                topFont: "LECIP-7:5",
+                topSpacing: 1,
+
+                bottom: "FERRY",
+                bottomFont: "LECIP-7:5",
                 bottomSpacing: 1,
             }
         }
@@ -5303,14 +6273,10 @@ EDSData.TTSG = {
                 bottomSpacing: 1,
             },
             rear: { 
-                renderType: "twoline",
-                top: "TOWER",
-                topFont: "LECIP-6:4",
-                topSpacing: 1,
-
-                bottom: "TRANSIT",
-                bottomFont: "LECIP-6:4",
-                bottomSpacing: 1,
+                renderType: "message",
+                text: "~",
+                font: "Hanover-Tower19:11:2",
+                spacing: 1
             }
         }
     },
@@ -5349,7 +6315,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "97e",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         },
@@ -5385,166 +6351,7 @@ EDSData.TTSG = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "97e",
-                font: "LECIP-20:9",
-                spacing: 2
-            }
-        }
-    },
-    7500: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "N1",
-                destination: "YISHUN RING RD",
-                destinationFont: "Hanover-Tower11:7",
-                scrolls: [{
-                        renderType: "centreMessageServiceScroll",
-                        serviceNumber: "N1",
-                        top: "LIMITED STOPS",
-                        topFont: "Hanover-Tower11:7",
-
-                        bottom: "EXPRESS SERVICE",
-                        bottomFont: "LECIP-7:5"
-                    },
-                    {
-                        renderType: "destScroll",
-                        top: "YISHUN RING RD",
-                        topFont: "Hanover-Tower12:7",
-            
-                        serviceNumber: "N1"
-                    },
-                    "JURONG TOWN HALL RD",
-                    "TEBAN GARDEN RD",
-                    "PANDAN GARDENS"
-                ],
-                scrollFont: "LECIP-7:5"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "N1",
-                font: "LECIP-20:6",
-                spacing: 2
-            }
-        }
-    },
-    7501: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "N1",
-                destination: "YISHUN RING RD",
-                destinationFont: "Hanover-Tower11:7",
-                scrolls: [
-                    "NEWTON RD",
-                    "TOA PAYOH CENTRAL",
-                    "BISHAN ST 11",
-                    "ANG MO KIO AVE 3",
-                    "ANG MO KIO AVE 4",
-                    "LENTOR AVE"
-                ],
-                scrollFont: "LECIP-7:5"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "N1",
-                font: "LECIP-19:TowerB9Front",
-                spacing: 2
-            }
-        }
-    },
-    7502: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "N2",
-                destination: "WOODLANDS CTR RD",
-                destinationFont: "Hanover-Tower11:7",
-                scrolls: [
-                    "MARSILING DR",
-                    "WOODLANDS AVE 7"
-                ],
-                scrollFont: "LECIP-7:5"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "N2",
-                font: "LECIP-19:TowerB9Front",
-                spacing: 2
-            }
-        }
-    },
-    9052: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "S52",
-                destination: "TEL SHUTTLE",
-                destinationFont: "Hanover-Tower11:7",
-                scrolls: [
-                    "TO WOODLANDS NORTH"
-                ],
-                scrollFont: "LECIP-7:5"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "S52",
-                font: "LECIP-20:9",
-                spacing: 2
-            }
-        },
-        2: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "S52",
-                destination: "TEL SHUTTLE",
-                destinationFont: "Hanover-Tower11:7",
-                scrolls: [
-                    "TO CALDECOTT"
-                ],
-                scrollFont: "LECIP-7:5"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "S52",
-                font: "LECIP-20:9",
-                spacing: 2
-            }
-        }
-    },
-    9031: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "E31",
-                destination: "CCL EXPRESS BUS",
-                destinationFont: "Hanover-Tower11:7",
-                scrolls: [
-                    "HARBOURFRONT - KENT RIDGE"
-                ],
-                scrollFont: "LECIP-6:3"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "E31",
-                font: "LECIP-20:9",
-                spacing: 2
-            }
-        },
-        2: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "E31",
-                destination: "CCL EXPRESS BUS",
-                destinationFont: "Hanover-Tower11:7",
-                scrolls: [
-                    "KENT RIDGE - HARBOURFRONT"
-                ],
-                scrollFont: "LECIP-6:3"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "E31",
-                font: "LECIP-20:9",
+                font: "LECIP-TowerRear17:7",
                 spacing: 2
             }
         }
@@ -5570,5 +6377,23 @@ EDSData.TTSG = {
 }
 
 EDSImages.TTSG = {
-
+    blank: [[]],
+    ChangiAirportControlTower: [
+        [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1],
+        [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0],
+        [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+        [0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0],
+        [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+    ],
 }
