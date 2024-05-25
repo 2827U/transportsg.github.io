@@ -1821,6 +1821,22 @@ EDSData.SBST = {
             }
         }
     },
+    "20A": {
+        1: {
+            front: {
+                renderType: "swt",
+                serviceNumber: "20A",
+                terminateAt: "CHANGI STH AVE 1",
+                landmark: "(EXPO STN EXIT B)"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "20A",
+                font: "LECIP-20:9",
+                spacing: 2
+            }
+        }
+    },
     21: {
         1: {
             front: {
@@ -3008,6 +3024,37 @@ EDSData.SBST = {
                 spacing: 2
             }
         },
+    },
+    "39A": {
+        1: {
+            front: {
+                renderType: "swt",
+                serviceNumber: "39A",
+                landmark: "JLN KAYU (AFT SELETAR CAMP G)"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "39A",
+                font: "LECIP-20:9",
+                spacing: 2
+            }
+        }
+    },
+    "39B": {
+        1: {
+            front: {
+                renderType: "swt",
+                serviceNumber: "39B",
+                terminateAt: "PASIR RIS CTRL",
+                landmark: "(PASIR RIS STN EXIT B)"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "39B",
+                font: "LECIP-20:9",
+                spacing: 2
+            }
+        }
     },
     40: {
         1: {
@@ -10592,6 +10639,22 @@ EDSData.SBST = {
             }
         }
     },
+        "168A": {
+        1: {
+            front: {
+                renderType: "swt",
+                serviceNumber: "168A",
+                terminateAt: "TAMPINES",
+                landmark: "AVE 4 (OPP TAMPINES STN/INT)"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "168A",
+                font: "LECIP-20:6",
+                spacing: 2
+            }
+        }
+    },
     170: {
         1: {
             front: {
@@ -13016,6 +13079,29 @@ EDSData.SBST = {
             }
         }
     },
+    296: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "296",
+                destination: "TAMPINES INT-TAMPINES NTH DR 2",
+                destinationFont: "LECIP-6:3",
+                scrolls: [
+                    "TAMPINES AVE 5",
+                    "TAMPINES AVE 6",
+                    "TAMPINES NORTH DR 1",
+                    "TAMPINES ST 64"
+                ],
+                scrollFont: "LECIP-6:3"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "296",
+                font: "LECIP-20:9",
+                spacing: 2
+            }
+        }
+    },
     298: {
         1: {
             front: {
@@ -14231,7 +14317,7 @@ EDSData.SBST = {
                 top: "AMK - SERANGOON",
                 topFont: "LECIP-7:5",
 
-                bottom: "BRIDGING BUS",
+                bottom: " ",
                 bottomFont: "LECIP-7:5"
             },
             rear: {

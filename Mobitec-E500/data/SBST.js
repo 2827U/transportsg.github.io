@@ -66,8 +66,8 @@ EDSFormats.SBST = {
         __dynamic__: (matrix, data) => {
             matrixPrimitives.setStrokeColour(null);
             matrixPrimitives.fillRectangle(matrix, 0, 0, matrix.width, matrix.height);
-        },
-        text: "FULL"
+    },
+    text: "All LED Lit"
     },
     brandedSvc: {
         serviceNumber: {
@@ -1104,6 +1104,14 @@ EDSData.SBST = {
             scrollFont: "Mobitec-6:5"
         }
     },
+    205: {
+        front: {
+            renderType: "swt",
+            serviceNumber: "20A",
+            destinationRoad: "CHANGI STH",
+            destinationName: "AVE 1 (EXPO STN EXIT B)"
+        }
+    },
     210: {
         front: {
             renderType: "message",
@@ -1961,6 +1969,22 @@ EDSData.SBST = {
                 "TAMPINES AVE 2"
             ],
             scrollFont: "Mobitec-6:5"
+        }
+    },
+    395: {
+        front: {
+            renderType: "swt",
+            serviceNumber: "39A",
+            destinationRoad: "JALAN KAYU",
+            destinationName: "(AFT SELETAR CAMP G)"
+        }
+    },
+    396: {
+        front: {
+            renderType: "swt",
+            serviceNumber: "39B",
+            destinationRoad: "",
+            destinationName: "PASIR RIS STN EXIT B"
         }
     },
     400: {
@@ -5928,6 +5952,14 @@ EDSData.SBST = {
             scrollFont: "Mobitec-6:5"
         }
     },
+ 1685: {
+        front: {
+            renderType: "swt",
+            serviceNumber: "168A",
+            destinationRoad: "TAMP. AVE",
+            destinationName: "4 (OPP TAMP. STN/INT)"
+       }
+    },
     1701: {
         front: {
             renderType: "standardService",
@@ -7465,6 +7497,23 @@ EDSData.SBST = {
             scrollFont: "Mobitec-6:5"
         }
     },
+    2961: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "296",
+            destination: {
+                text: "TAMP INT - TAMP NTH DR 2",
+                font: "Mobitec-7:4"
+            },
+            scrolls: [
+                "TAMPINES AVE 5",
+                "TAMPINES AVE 6",
+                "TAMPINES NORTH DR 1",
+                "TAMPINES ST 64"
+            ],
+            scrollFont: "Mobitec-6:5"
+        }
+    },   
     2981: {
         front: {
             renderType: "standardService",
@@ -7880,6 +7929,18 @@ EDSData.SBST = {
             topFont: "Mobitec-7:4",
 
             bottom: "TOGETHER WITH SBS TRANSIT",
+            bottomFont: "Mobitec-7:4",
+
+            serviceNumber: ""
+        }
+    },
+    5001: {
+        front: {
+            renderType: "destScroll",
+            top: "JOURNEYING WITH YOU",
+            topFont: "Mobitec-7:4",
+
+            bottom: "50 Years of Mobility Excellence",
             bottomFont: "Mobitec-7:4",
 
             serviceNumber: ""
@@ -8720,7 +8781,19 @@ EDSExtras.SBST = {
             serviceNumber: ""
         }
     },
-}
+    2: {
+        front: {
+            renderType: "destScroll",
+            top: "JOURNEYING WITH YOU",
+            topFont: "Mobitec-7:4",
+    
+            bottom: "50 Years of Mobility Excellence",
+            bottomFont: "Mobitec-7:4",
+    
+            serviceNumber: ""
+            }
+        },
+    }
 
 EDSImages.SBST = {
     express: [
