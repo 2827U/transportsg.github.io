@@ -4604,6 +4604,22 @@ EDSData.SBST = {
             scrollFont: "Mobitec-6:5"
         }
     },
+    1295: {
+        front: {
+            renderType: "swt",
+            serviceNumber: "129A",
+            destinationRoad: "BARTLEY",
+            destinationName: "RD (BARTLEY STN EXIT A)"
+        }
+    },
+    1296: {
+        front: {
+            renderType: "swt",
+            serviceNumber: "129B",
+            destinationRoad: "",
+            destinationName: "OPP TEMASEK POLY EAST G"
+        }
+    },
     1301: {
         front: {
             renderType: "standardService",
@@ -8098,6 +8114,14 @@ EDSData.SBST = {
             renderType: "brandedSvc",
             serviceNumber: "672",
             branding: "CITY  DIRECT",
+            font: "Mobitec-16:8",
+            spacing: 1
+        }
+    },
+    7070: {
+        front: {
+            renderType: "message",
+            text: "EB707",
             font: "Mobitec-16:8",
             spacing: 1
         }

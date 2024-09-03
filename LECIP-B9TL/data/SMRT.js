@@ -1,28 +1,33 @@
 EDSFormats.SMRT = {
     standardService: {
         serviceNumber: {
-            align: "right,centre-y",
+            align: "right",
             margin: {
-                right: 4
+                right: 1
             },
             text: "$serviceNumber",
-            font: "Arial-17",
+            font: {
+                $$cond: {
+                    "$serviceFont === null": "Arial-17",
+                    "else": "$serviceFont"
+                }
+            },
             spacing: 2
         },
         destination: {
             align: "centre-x,top",
             margin: {
-                top: 1,
-                right: 'width(serviceNumber) + len(4)'
+                right: 'width(serviceNumber)'
             },
             text: "$destination",
+            font: "$destinationFont",
             spacing: 1
         },
         scroll: {
-            align: "centre-x,top",
+            align: "centre-x,bottom",
             margin: {
-                top: 11,
-                right: 'width(serviceNumber) + len(4)'
+                right: 'width(serviceNumber)',
+                bottom: 1
             },
             scrolls: "$scrolls",
             rotate: true,
@@ -38,11 +43,16 @@ EDSFormats.SMRT = {
         serviceNumber: {
             align: "right",
             margin: {
-                right: 1
+                right: 1,
             },
             text: "$serviceNumber",
             font: "Arial-17",
-            spacing: 3
+            spacing: {
+                $$cond: {
+                    "$spacing === null" : 2,
+                    "else": "$spacing"
+                }
+            }
         },
         top: {
             align: {
@@ -52,15 +62,10 @@ EDSFormats.SMRT = {
                 }
             },
             text: "$top",
-            font: {
-                $$cond: {
-                    "$topFont === null": "ArialBold-8",
-                    "else": "$topFont"
-                }
-            },
+            font: "$topFont",
             spacing: 1,
             margin: {
-                right: 'width(serviceNumber) - width(image)'
+                right: 'width(serviceNumber)'
             }
         },
         bottom: {
@@ -73,61 +78,123 @@ EDSFormats.SMRT = {
             },
             font: {
                 $$cond: {
-                    "$bottomFont === null": "ArialBold-8",
-                    "else": "$bottomFont"
+                    "$bottomFont !== null": "$bottomFont",
+                    "else": "ArialBold-8:2"
                 }
             },
             spacing: 1,
             margin: {
-                right: 'width(serviceNumber) - width(image)'
-            }
-        },
-        image: {
-            align: "left",
-            image: {
-                $$cond: {
-                    "$image !== null": "$image",
-                    "else": "blank"
-                }
+                right: 'width(serviceNumber)',
+                bottom: 1
             }
         },
 
         text: "$top+' '+$bottom+' '+$serviceNumber"
     },
-    calibriOldService: {
+    destScroll2: {
         serviceNumber: {
-            align: "right,centre-y",
+            align: "right",
             margin: {
-                right: 4
+                right: 1,
+                top: 1,
             },
             text: "$serviceNumber",
-            font: "Calibri-17",
-            spacing: 2
+            font: "Calibri-15",
+            spacing: {
+                $$cond: {
+                    "$spacing === null" : 2,
+                    "else": "$spacing"
+                }
+            }
         },
-        destination: {
-            align: "left,top",
-            margin: {
-                left: 1,
-                top: 1
+        top: {
+            align: {
+                $$cond: {
+                    "$bottom === null": "centre-x,centre-y",
+                    "else": "centre-x,top"
+                }
             },
-            text: "$destination",
-            spacing: 1
-        },
-        scroll: {
-            align: "left,bottom",
+            text: "$top",
+            font: "$topFont",
+            spacing: 1,
             margin: {
-                left: 1,
-                bottom: 2
+                right: 'width(serviceNumber)'
+            }
+        },
+        bottom: {
+            align: "centre-x,bottom",
+            text: {
+                $$cond: {
+                    "$bottom !== null": "$bottom",
+                    "else": "''"
+                }
             },
-            scrolls: "$scrolls",
-            rotate: true,
-            rotateSpeed: 3000,
-
-            font: "$scrollFont",
-            spacing: 1
+            font: {
+                $$cond: {
+                    "$bottomFont !== null": "$bottomFont",
+                    "else": "ArialBold-8:2"
+                }
+            },
+            spacing: 1,
+            margin: {
+                right: 'width(serviceNumber)',
+                bottom: 1
+            }
         },
 
-        text: "$destination"
+        text: "$top+' '+$bottom+' '+$serviceNumber"
+    },
+    destScroll2A: {
+        serviceNumber: {
+            align: "right",
+            margin: {
+                right: 1,
+                top: 1,
+            },
+            text: "$serviceNumber",
+            font: "Calibri-15",
+            spacing: {
+                $$cond: {
+                    "$spacing === null" : 2,
+                    "else": "$spacing"
+                }
+            }
+        },
+        top: {
+            align: {
+                $$cond: {
+                    "$bottom === null": "centre-x,centre-y",
+                    "else": "centre-x,top"
+                }
+            },
+            text: "$top",
+            font: "$topFont",
+            spacing: 1,
+            margin: {
+                right: 'width(serviceNumber)'
+            }
+        },
+        bottom: {
+            align: "centre-x,bottom",
+            text: {
+                $$cond: {
+                    "$bottom !== null": "$bottom",
+                    "else": "''"
+                }
+            },
+            font: {
+                $$cond: {
+                    "$bottomFont !== null": "$bottomFont",
+                    "else": "ArialBold-8:2"
+                }
+            },
+            spacing: 1,
+            margin: {
+                right: 'width(serviceNumber)',
+            }
+        },
+
+        text: "$top+' '+$bottom+' '+$serviceNumber"
     },
     logo: {
         logo: {
@@ -216,2074 +283,150 @@ EDSFormats.SMRT.calibriSmallService = JSON.parse(JSON.stringify(EDSFormats.SMRT.
 EDSFormats.SMRT.calibriSmallService.serviceNumber.font = 'Calibri-15'; // TODO: make font
 
 EDSData.SMRT = {
-    1: {
+        117: {
         1: {
             front: {
-                renderType: 'message',
-                text: 'CHARTERED',
-                font: 'Arial-17',
-                spacing: 2
-            }
-        }
-    },
-    2: {
-        1: {
-            front: {
-                renderType: 'message',
-                text: 'ANG MO KIO DEPOT',
-                font: 'Arial-12', // not this font but idk what
-                spacing: 2
+                renderType: "standardService",
+                serviceNumber: "",
+                destination: {
+                    text: "SMRT LECIP NEW VERSION",
+                    font: "ArialBold-8:2"
+                },
+                scrolls: [
+                    "WORK IN PROGRESS"
+                ],
+                scrollFont: 'ArialBold-8:2'
             },
-            rear: { // check
-                renderType: 'twoline',
-                top: "AMK",
-                topFont: "ArialBold-8",
-
-                bottom: " DEPOT",
-                bottomFont: "Arial-7;Space-Width=0",
-                bottomMargin: 2
+            rear: {
+                renderType: "destScroll",
+                top: "Work In",
+                topFont: "Hanover-7:3",
+                bottom: "Progress",
+                bottomFont: "Hanover-7:3",
+    
+                serviceNumber: ""
             }
         }
     },
-    3: {
+    1791: { // Done
         1: {
             front: {
-                renderType: 'message',
-                text: 'KRANJI DEPOT',
-                font: 'Arial-15',
-                spacing: 2
-            },
-            rear: { // check
-                renderType: 'twoline',
-                top: "KJ",
-                topFont: "ArialBold-8",
-
-                bottom: " DEPOT",
-                bottomFont: "Arial-7;Space-Width=0",
-                bottomMargin: 2
-            }
-        }
-    },
-    4: {
-        1: {
-            front: {
-                renderType: 'message',
-                text: 'SMRT BUSES',
-                font: 'Arial-17',
-                spacing: 2
-            }
-        }
-    },
-    5: {
-        1: {
-            front: {
-                renderType: 'message',
-                text: 'OFF SERVICE',
-                font: 'Arial-17',
-                spacing: 2
-            },
-            rear: { // check
-                renderType: 'twoline',
-                top: "OFF",
-                topFont: "ArialBold-8",
-
-                bottom: "SERVICE",
-                bottomFont: "ArialNarrow-7",
-                bottomMargin: 2
-            }
-        }
-    },
-    6: {
-        1: {
-            front: {
-                renderType: 'message',
-                text: 'WOODLANDS DEPOT',
-                font: 'Arial-8', // check font
-                spacing: 2
-            },
-            rear: { // check
-                renderType: 'twoline',
-                top: "WLD",
-                topFont: "ArialBold-8",
-
-                bottom: " DEPOT",
-                bottomFont: "Arial-7;Space-Width=0",
-                bottomMargin: 2
-            }
-        }
-    },
-    // 7: {
-    //     1: {
-    //         front: {
-    //             renderType: "message",
-    //             text: "OUT OF SERVICE",
-    //             font: "Arial-12",
-    //             spacing: 2
-    //         },
-    //         rear: {
-    //             renderType: 'twoline',
-    //             top: "OUT OF",
-    //             topFont: "ArialNarrow-7",
-
-    //             bottom: "SERVICE",
-    //             bottomFont: "ArialNarrow-7",
-    //             bottomMargin: 2
-    //         },
-    //     }
-    // },
-    // 8: {
-    //     1: {
-    //         front: {
-    //             renderType: 'message',
-    //             text: 'YOUR RIDE OUR PRIDE',
-    //             font: 'ArialBold-8',
-    //             spacing: 2
-    //         },
-    //         rear: {
-    //             renderType: 'twoline',
-    //             top: "SMRT",
-    //             topFont: "ArialBold-8",
-
-    //             bottom: "BUSES",
-    //             bottomFont: "ArialNarrow-7",
-    //             bottomMargin: 2
-    //         }
-    //     }
-    // },
-    9: {
-        1: {
-            front: {
-                renderType: 'message',
-                text: 'ON DRIVING TEST',
-                font: 'Arial-15',
-                spacing: 2
-            }
-        }
-    },
-    10: {
-        1: {
-            front: {
-                renderType: 'message',
-                text: 'FERRY SERVICE',
-                font: 'Arial-15',
-                spacing: 2
-            }
-        }
-    },
-    11: {
-        1: {
-            front: {
-                renderType: 'message',
-                text: 'MRT SHUTTLE',
-                font: 'Arial-17',
-                spacing: 2
-            }
-        }
-    },
-    13: {
-        1: {
-            front: {
-                renderType: 'message',
-                text: 'TRAINING BUS',
-                font: 'Arial-17',
-                spacing: 2
-            }
-        }
-    },
-    51: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR1",
-                destination: {
-                    text: "SUNTEC CITY",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: "Calibri-7"
-            }
-        }
-    },
-    52: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR1",
-                destination: {
-                    text: "YISHUN",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    53: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR2",
-                destination: {
-                    text: "MARINA CENTRE",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    54: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR2",
-                destination: {
-                    text: "SEMBAWANG",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    55: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR3",
-                destination: {
-                    text: "BOAT QUAY",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    56: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR3",
-                destination: {
-                    text: "CHOA CHU KANG",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    57: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR5",
-                destination: {
-                    text: "JURONG WEST",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    58: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR5", // from memory the NR5 is kinda corrupted but need check
-                destination: {
-                    text: "WHAMPOA",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: "Calibri-7"
-            }
-        }
-    },
-    59: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR6",
-                destination: {
-                    text: "SENGKANG",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    60: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR6",
-                destination: {
-                    text: "MARINA CENTRE",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    61: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR7",
-                destination: {
-                    text: "PASIR RIS",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    62: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR7",
-                destination: {
-                    text: "MARINA CENTRE",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    75: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR5",
-                destination: {
-                    text: "JURONG WEST",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    76: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR5",
-                destination: {
-                    text: "MARINA CENTRE",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    77: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR8",
-                destination: {
-                    text: "BUKIT BATOK",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    78: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "NR8",
-                destination: {
-                    text: "MARINA CENTRE",
-                    font: "Calibri-7"
-                },
-                scrolls: [""],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    106: {
-        1: {
-            front: {
-                renderType: 'message',
-                text: 'NGEE ANN POLY',
-                font: 'Arial-12',
-                spacing: 2
-            }
-        }
-    },
-    113: {
-        1: {
-            front: {
-                renderType: 'message',
-                text: 'AIRSHOW SHUTTLE',
-                font: 'ArialBold-8', // check font
-                spacing: 1
-            }
-        }
-    },
-    117: {
-        1: {
-            front: {
-                renderType: "logo",
-                text: "SMRT LOGO",
-                image: "logo"
+                renderType: "standardService",
+                serviceNumber: "179",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "179"
+                    },
+                    "JURONG WEST ST 63",
+                    "PIONEER RD NTH",
+                    "LIEN YING CHOW DR",
+                    "NANYANG DR"
+                ],
+                scrollFont: "ArialBold-8:2"
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "SMRT",
-                font: "ArialBold-8",
+                serviceNumber: "179",
+                font: "LECIP-SMRTRear14:9",
                 spacing: 2
-            },
-        }
-    },
-    118: {
-        1: {
-            front: {
-                renderType: "message",
-                text: "SMRT FLY OUR FLAG",
-                font: "Arial-12",
-                marginTop: 2,
-                spacing: 1
             }
         }
     },
-    119: {
+    1792: { // Done
         1: {
             front: {
-                renderType: "message",
-                text: "SMRT",
-                font: "CalibriBold-17",
-                marginLeft: -80, // whack first
-                spacing: 1
-            }
-        }
-    },
-    120: {
-        1: {
-            front: {
-                renderType: "twoline",
-                top: "SMRT BUSES THANKED YOU",
-                topFont: "ArialBold-8",
-
-                bottom: "FOR YOUR SUPPORT",
-                bottomFont: "ArialBold-8"
-            }
-        }
-    },
-    121: {
-        1: {
-            front: {
-                renderType: "twoline",
-                top: "SMRT BUSES THANK YOU FOR",
-                topFont: "ArialBold-8",
-
-                bottom: "YOUR SUPPORT",
-                bottomFont: "ArialBold-8"
-            }
-        }
-    },
-    // 122: {
-    //     1: {
-    //         front: {
-    //             renderType: 'message',
-    //             text: 'Moving WITH you - 13 Jun',
-    //             font: 'Arial-12',
-    //             spacing: 2
-    //         }
-    //     }
-    // },
-    // 151: {
-    //     1: {
-    //         front: {
-    //             renderType: "message",
-    //             text: "FREE BRIDGING BUS",
-    //             font: "Arial-12",
-    //             spacing: 2
-    //         },
-    //         rear: {
-    //             renderType: 'twoline',
-    //             top: "FREE",
-    //             topFont: "ArialNarrow-7",
-
-    //             bottom: "SHUTTLE",
-    //             bottomFont: "ArialNarrow-7",
-    //             bottomMargin: 2
-    //         },
-    //     }
-    // },
-    "151A": {
-        1: {
-            front: {
-                renderType: "message",
-                text: "EWL BRIDGING BUS",
-                font: "Arial-12",
-                spacing: 2
+                renderType: "standardService",
+                serviceNumber: "179A",
+                destination: "BOON LAY",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll2A",
+                    top: "BOON LAY INT",
+                    topFont: "ArialBold-8:2",
+                    bottom: "NTU (LOOP)",
+                    bottomFont: "Calibri-7",
+        
+                    serviceNumber: "179A"
+                    },
+                ],
+                scrollFont: "ArialBold-8:2"
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "EWL",
-                font: "Arial-15",
+                serviceNumber: "179A",
+                font: "ArialBold-8:2",
                 spacing: 2
-            },
+            }
         }
     },
-    "151B": {
+    1811: {
         1: {
             front: {
-                renderType: "message",
-                text: "NSL BRIDGING BUS",
-                font: "Arial-12",
-                spacing: 2
+                renderType: "standardService",
+                serviceNumber: "181",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "181"
+                    },
+                    "JURONG WEST AVE 5",
+                    "JURONG WEST AVE 3",
+                ],
+                scrollFont: "ArialBold-8:2"
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "NSL",
-                font: "Arial-15",
+                serviceNumber: "181",
+                font: "LECIP-SMRTRear14:9",
                 spacing: 2
-            },
-        }
-    },
-    "151C": {
-        1: {
-            front: {
-                renderType: "message",
-                text: "CCL BRIDGING BUS",
-                font: "Arial-12",
-                spacing: 2
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "CCL",
-                font: "Arial-15",
-                spacing: 2
-            },
-        }
-    },
-    "151D": {
-        1: {
-            front: {
-                renderType: "message",
-                text: "TEL BRIDGING BUS",
-                font: "Arial-12",
-                spacing: 2
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "TEL",
-                font: "Arial-15",
-                spacing: 2
-            },
-        }
-    },
-    // 153: {
-    //     1: {
-    //         front: {
-    //             renderType: "message",
-    //             text: "LRT BRIDGING BUS",
-    //             font: "Arial-12",
-    //             spacing: 2
-    //         },
-    //         rear: {
-    //             renderType: 'twoline',
-    //             top: "LRT",
-    //             topFont: "ArialBold-8",
-
-    //             bottom: "BRIDGING",
-    //             bottomFont: "ArialNarrow-7",
-    //             bottomMargin: 2
-    //         },
-    //     }
-    // },
-    "153A": {
-        1: {
-            front: {
-                renderType: "message",
-                text: "LRT SHUTTLE A",
-                font: "Arial-12",
-                spacing: 2
-            },
-            rear: {
-                renderType: 'twoline',
-                top: "LRT",
-                topFont: "ArialBold-8",
-
-                bottom: "A",
-                bottomFont: "ArialBold-8",
-                bottomMargin: 2
-            },
-        }
-    },
-    "153B": {
-        1: {
-            front: {
-                renderType: "message",
-                text: "LRT SHUTTLE B",
-                font: "Arial-12",
-                spacing: 2
-            },
-            rear: {
-                renderType: 'twoline',
-                top: "LRT",
-                topFont: "ArialBold-8",
-
-                bottom: "A",
-                bottomFont: "ArialBold-8",
-                bottomMargin: 2
-            },
-        }
-    },
-    218: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "300",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "CHOA CHU KANG WAY"
-                ],
-                scrollFont: 'Arial-8'
             }
         }
     },
-    219: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "302",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "CHOA CHU KANG WAY",
-                    "CHOA CHU KANG ST 52"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    222: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "307",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "CCK CENTRAL"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    230: {
-        1: {
-            front: {
-                renderType: "calibriSmallService",
-                serviceNumber: "67W",
-                destination: {
-                    text: "ENDS AT",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "LITTLE INDIA"
-                ],
-                scrollFont: "Calibri-7"
-            }
-        }
-    },
-    252: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "903",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "WOODLANDS CENTRE"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    253: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "911",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "WOODLANDS AVE 2"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    255: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "913",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "WOODLANDS DR 61"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    256: {
-        1: {
-            front: {
-                renderType: "calibriSmallService",
-                serviceNumber: "BPS1", // TODO: font
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SEGAR RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    285: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "301",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "AVE 2, 3"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    288: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "307",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "CCK DR"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    373: {
-        1: {
-            front: {
-                renderType: "twoline",
-                top: "SHUTTLE 10",
-                topFont: "ArialBold-8",
-
-                bottom: "ANG MO KIO-WOODLANDS",
-                bottomFont: "ArialBold-8"
-            }
-        }
-    },
-    374: {
-        1: {
-            front: {
-                renderType: "twoline",
-                top: "SHUTTLE 10", // check font
-                topFont: "ArialBold-8",
-
-                bottom: "WOODLANDS-ANG MO KIO",
-                bottomFont: "ArialBold-8"
-            }
-        }
-    },
-    381: {
-        1: {
-            front: {
-                renderType: "twoline",
-                top: "SHUTTLE 2",
-                topFont: "ArialBold-8",
-
-                bottom: "JOO KOON - JURONG EAST",
-                bottomFont: "Arial-8"
-            }
-        }
-    },
-    382: {
-        1: {
-            front: {
-                renderType: "twoline",
-                top: "SHUTTLE 2",
-                topFont: "ArialBold-8",
-
-                bottom: "JURONG EAST - JOO KOON",
-                bottomFont: "Arial-8"
-            }
-        }
-    },
-    383: {
-        1: {
-            front: {
-                renderType: "twoline",
-                top: "SHUTTLE 4",
-                topFont: "ArialBold-8",
-
-                bottom: "CHOA CHU KANG-JURONG EAST",
-                bottomFont: "Arial-8;Space-Width=1"
-            }
-        }
-    },
-    384: {
-        1: {
-            front: {
-                renderType: "twoline",
-                top: "SHUTTLE 4",
-                topFont: "ArialBold-8",
-
-                bottom: "JURONG EAST-CHOA CHU KANG",
-                bottomFont: "Arial-8;Space-Width=1"
-            }
-        }
-    },
-    397: {
-        1: {
-            front: {
-                renderType: "twoline",
-                top: "SHUTTLE 1",
-                topFont: "ArialBold-8",
-
-                bottom: "OUTRAM PARK-JURONG EAST",
-                bottomFont: "Arial-8"
-            }
-        }
-    },
-    398: {
-        1: {
-            front: {
-                renderType: "twoline",
-                top: "SHUTTLE 1",
-                topFont: "ArialBold-8",
-
-                bottom: "OUTRAM PARK-JURONG EAST",
-                bottomFont: "Arial-8"
-            }
-        }
-    },
-    420: {
+    1841: { // Confirmed
         1: {
             front: {
                 renderType: "standardService",
                 serviceNumber: "184",
-                destination: {
-                    text: "CLEMENTI via",
-                    font: "ArialBold-8"
-                },
+                destination: "CLEMENTI via",
+                destinationFont: "ArialBold-8:2",
                 scrolls: [
-                    "BT PANJANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    422: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "187",
-                destination: {
-                    text: "BOON LAY via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "WDL AVE 3",
-                    "JURONG EAST AVE 1",
-                    "BT PANJANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    423: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "187",
-                destination: {
-                    text: "WOODLANDS via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "JURONG EAST AVE 1"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    424: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "859",
-                destination: {
-                    text: "SEMBAWANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SEMBAWANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    425: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "859",
-                destination: {
-                    text: "YISHUN via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SEMBAWANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    431: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "852",
-                destination: {
-                    text: "BUKIT BATOK via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "MARYMOUNT RD",
-                    "ANG MO KIO AVE 6"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    440: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "855",
-                destination: {
-                    text: "HARBOURFRONT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "UPP THOMSON RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    441: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "855",
-                destination: {
-                    text: "YISHUN via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "LOWER DELTA RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    444: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "980",
-                destination: {
-                    text: "GEYLANG LOR 1 via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SEMBAWANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    445: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "980",
-                destination: {
-                    text: "SEMBAWANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SEMBAWANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    477: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "190",
-                destination: {
-                    text: "NEW BRIDGE RD via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'BT PANJANG RD',
-                    'STEVENS ROAD',
-                    'ORCHARD ROAD',
-                    'HILL STREET',
-                    'CHINATOWN'
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "190",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    478: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "190",
-                destination: {
-                    text: "CHOA CHUA KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'HILL STREET',
-                    'SOMERSET RD',
-                    'SCOTTS RD',
-                    'STEVENS RD',
-                    'BUKIT PANJANG RD'
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "190",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    492: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "700A",
-                destination: {
-                    text: "SUNTEC CITY via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "DUNEARN RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "700A",
-                font: "Arial-9",
-                spacing: 1
-            }
-        }
-    },
-    494: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "927",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "MANDAI RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    495: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "927",
-                destination: {
-                    text: "SINGAPORE ZOO via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "CHOA CHU KANG AVE 4"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    512: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "970",
-                destination: {
-                    text: "SHENTON WAY via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "HILLVIEW RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    525: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "941",
-                destination: {
-                    text: "BT BATOK via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "B.B WEST AVE 3 , 6"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    539: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "173",
-                destination: {
-                    text: "CLEMENTI via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "JLN JURONG KECHIL",
-                    "HUME AVE"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    540: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "173",
-                destination: {
-                    text: "BT BATOK via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "JLN JURONG KECHIL"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    553: {
-        1: {
-            front: {
-                renderType: "calibriSmallService",
-                serviceNumber: "188E",
-                destination: {
-                    text: "HARBOURFRONT",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "BT BATOK WEST AVE 4"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    576: {
-        1: {
-            front: {
-                renderType: "calibriSmallService",
-                serviceNumber: "963R",
-                destination: {
-                    text: "SENTOSA via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "WOODLANDS AVE 3"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    578: {
-        1: {
-            front: {
-                renderType: "message",
-                text: "RESORT WORLD SENTOSA RWS88",
-                font: "CalibriBold-8",
-                marginTop: 3,
-                spacing: 1
-            }
-        }
-    },
-    582: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "858",
-                destination: {
-                    text: "CHANGI AIRPORT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SEMBAWANG RD"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        },
-        rear: {
-            renderType: "rearService",
-            serviceNumber: "858",
-            font: "Calibri-17",
-            spacing: 2
-        }
-    },
-    584: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "106",
-                destination: {
-                    text: "SHENTON WAY TER via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "B.B WEST AVE 3",
-                    "TOH TUCK RD"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    585: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "106",
-                destination: {
-                    text: "BT BATOK via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "BAYFRONT AVE"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    586: {
-        1: {
-            front: {
-                renderType: "calibriSmallService",
-                serviceNumber: "188R",
-                destination: {
-                    text: "RWS via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "B.B WEST AVE 2"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    587: {
-        1: {
-            front: {
-                renderType: "calibriOldService",
-                serviceNumber: "188R",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "TOH GUAN RD"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    589: {
-        1: {
-            front: {
-                renderType: "calibriOldService",
-                serviceNumber: "966",
-                destination: {
-                    text: "MARINE PARADE via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "PENDING RD"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    590: {
-        1: {
-            front: {
-                renderType: "calibriSmallService",
-                serviceNumber: "971E",
-                destination: {
-                    text: "CECIL ST via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "BT PANJANG RING RD",
-                    "JELAPANG RD",
-                    "SEGAR/FAJAR RD",
-                    "WHITLEY RD",
-                    "SCOTTS/ORCHARD RD",
-                    "NICOLL HIGHTWAY", // sic
-                    "COLLYER QUAY",
-                    "ANSON RD"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    591: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "178",
-                destination: {
-                    text: "BOON LAY via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    'WDL CENTRE RD',
-                    'UPP BT TIMAH',
-                    "BT BATOK",
-                    'JURONG TOWN HALL',
-                    "CORPORATION RD"
-                ],
-                scrollFont: "Calibri-7"
-            }
-        },
-    },
-    592: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "178",
-                destination: {
-                    text: "WOODLANDS via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    'WDL CENTRE RD',
-                    'UPP BT TIMAH',
-                    "BT BATOK",
-                    'JURONG TOWN HALL',
-                    "CORPORATION RD"
-                ],
-                scrollFont: "Calibri-7"
-            }
-        },
-    },
-    598: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "860",
-                destination: {
-                    text: "YISHUN INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "YISHUN RING RD"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    614: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "184",
-                destination: {
-                    text: "BT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "CLEMENTI",
+                    topFont: "ArialBold-8:2",
+                    bottom: "MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "184"
+                    },
+                    "BT PANJANG",
+                    "CASHEW RD",
+                    "UPP BT TIMAH",
+                    "JLN ANAK BUKIT",
                     "CLEMENTI RD"
                 ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    624: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "975",
-                destination: {
-                    text: "LIM CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "TECK WHYE AVE"
-                ],
-                scrollFont: 'Arial-8'
-            }
-        }
-    },
-    649: {
-        1: {
-            front: {
-                renderType: "calibriSmallService",
-                serviceNumber: "850E",
-                destination: {
-                    text: "SHENTON WAY via",
-                    font: "Calibri-7"
-                },
-                scrolls: [
-                    "YISHUN RING RD"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-
-    6101: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "61",
-                destination: {
-                    text: "EUNOS via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'CLEMENTI RD',
-                    'HOLLAND RD',
-                    'HOLLAND AVE',
-                    'TELOK BLANGAH RD',
-                    'CHINATOWN',
-                    'VICTORIA ST',
-                    'KALLANG BAHRU',
-                    'MACPHERSON RD',
-                    'UBI AVE 2'
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "61",
-                font: "Arial-17",
-                spacing: 2
-            }
-        },
-    },
-    6102: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "61",
-                destination: {
-                    text: "BUKIT BATOK via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'UBI AVE 2',
-                    'MACPHERSON RD',
-                    'KALLANG BAHRU',
-                    'NORTH BRIDGE RD',
-                    'SOUTH BRIDGE RD',
-                    'TELOK BLANGAH RD',
-                    'HOLLAND RD',
-                    'CLEMENTI RD'
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "61",
-                font: "Arial-17",
-                spacing: 2
-            }
-        }
-    },
-    6701: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "67",
-                destination: {
-                    text: "TAMPINES via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'UPP BT TIMAH RD',
-                    'DUNEARN RD',
-                    'SERANGOON RD',
-                    'SIMS AVE',
-                    'NEW UPP CHANGI RD',
-                    'BEDOK NORTH AVE 3'
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "67",
-                font: "Arial-17",
-                spacing: 2
-            }
-        },
-    },
-    6702: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "67",
-                destination: {
-                    text: "CHOA CHUA KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'BEDOK NTH AVE 3',
-                    'NEW UPP CHANGI RD',
-                    'GEYLANG RD',
-                    'JALAN BESAR',
-                    'BUKIT TIMAH RD',
-                    'UPP BT TIMAH RD'
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "67",
-                font: "Arial-17",
-                spacing: 2
-            }
-        }
-    },
-    6703: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "67A",
-                destination: {
-                    text: "ENDS AT OPP",
-                    font: "Arial-8"
-                },
-                scrolls: [
-                    "CORONATION PLAZA"
-                ],
-                scrollFont: "Arial-8"
-            },
-            pids: {
-                renderType: "pids",
-                serviceNumber: "67A",
-                destination: "OPP CORONATION PLAZA",
-                scrolls: [
-                ]
-            }
-        }
-    },
-    6704: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "67C",
-                destination: {
-                    text: "ENDS AT GEYLANG RD",
-                    font: "Arial-8"
-                },
-                scrolls: [
-                    "(BEFORE CITY PLAZA)"
-                ],
-                scrollFont: "Arial-8"
-            },
-            pids: {
-                renderType: "pids",
-                serviceNumber: "67C",
-                destination: "GEYLANG RD",
-                scrolls: [
-                ]
-            }
-        }
-    },
-    6705: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "67W",
-                destination: {
-                    text: "ENDS AT",
-                    font: "Arial-8"
-                },
-                scrolls: [
-                    "LITTLE INDIA"
-                ],
-                scrollFont: "Arial-8"
-            },
-            pids: {
-                renderType: "pids",
-                serviceNumber: "67W",
-                destination: "LITTLE INDIA",
-                scrolls: [
-                ]
-            }
-        }
-    },
-    1101: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "110",
-                destination: {
-                    text: "CHANGI AIRPORT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "COMASSVALE DR"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "110",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1102: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "110",
-                destination: {
-                    text: "COMPASSVALE INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "PTB 3, 1, 2, 4"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "110",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1671: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "167",
-                destination: {
-                    text: "BT MERAH via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'JLN BT MERAH'
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "167",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1672: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "167",
-                destination: {
-                    text: "SEMBAWANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "CANTOMENT RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "167",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1691: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "169",
-                destination: {
-                    text: "WOODLANDS via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WOODLANDS AVE 8, 9'
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "169",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1711: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "171",
-                destination: {
-                    text: "MARINA CENTRE via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SEMBAWANG RD",
-                    "DUNEARN RD",
-                    "ORCHARD RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "171",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1761: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "176",
-                destination: {
-                    text: "BT MERAH via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "BT BATOK CTR/MRT", // check order??
-                    "JURONG TOWN HALL",
-                    'W.COAST HIGHWAY',
-                    'TELOK BLANGAH RD',
-                    "UPP BT TIMAH RD"
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "176",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    1781: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "178",
-                destination: {
-                    text: "BOON LAY via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WDL CENTRE RD',
-                    'UPP BT TIMAH',
-                    "BT BATOK",
-                    'JURONG TOWN HALL',
-                    "CORPORATION RD"
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "178",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    1782: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "178",
-                destination: {
-                    text: "WOODLANDS via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WDL CENTRE RD',
-                    'UPP BT TIMAH',
-                    "BT BATOK",
-                    'JURONG TOWN HALL',
-                    "CORPORATION RD"
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "178",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    1791: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "179",
-                destination: {
-                    text: "BOON LAY via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "JURONG WEST ST 64",
-                    "PIONEER ROAD NORTH",
-                    "LIEN YING CHOW DR",
-                    "NANYANG DRIVE (LOOP)",
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "179",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    1841: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "184",
-                destination: {
-                    text: "CLEMENTI via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'BT PANJANG RD',
-                    'CASHEW RD',
-                    'UPPER BUKIT TIMAH RD',
-                    'CLEMENTI RD'
-                ],
-                scrollFont: 'Arial-8'
+                scrollFont: "ArialBold-8:2"
             },
             rear: {
                 renderType: "rearService",
                 serviceNumber: "184",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1842: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "184",
-                destination: {
-                    text: "BT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'CLEMENTI RD',
-                    'UPPER BUKIT TIMAH RD',
-                    'CASHEW RD',
-                    'BT PANJANG RD'
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "184",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1871: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "187",
-                destination: {
-                    text: "BOON LAY via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "WDL AVE 3",
-                    "JURONG EAST AVE 1",
-                    "BT PANJANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "187",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1872: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "187",
-                destination: {
-                    text: "WOODLANDS via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "JURONG EAST AVE 1"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "187",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1881: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "188",
-                destination: {
-                    text: "HARBOURFRONT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "CHOA CHU KANG WAY",
-                    {
-                        text: "BT BATOK WEST AVE 4",
-                        font: "Arial-7",
-                    },
-                    {
-                        text: "BT BATOK WEST AVE 2",
-                        font: "Arial-7",
-                    },
-                    {
-                        text: "BT BATOK WEST AVE 3",
-                        font: "Arial-7",
-                    },
-                    {
-                        text: "BT BATOK WEST AVE 6",
-                        font: "Arial-7",
-                    },
-                    "TOH GUAN RD",
-                    "HAW PAR VILLA",
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "188",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    1882: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "188",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "BOON LAY WAY",
-                    "TOH GUAN RD"
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "188",
-                font: "Arial-15",
+                font: "LECIP-SMRTRear14:9",
                 spacing: 2
             }
         }
@@ -2293,87 +436,550 @@ EDSData.SMRT = {
             front: {
                 renderType: "standardService",
                 serviceNumber: "190",
-                destination: {
-                    text: "KAMPONG BAHRU via",
-                    font: "ArialBold-8"
-                },
+                destination: "KG. BAHRU TER via",
+                destinationFont: "ArialBold-8:2",
                 scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "KAMPONG BAHRU",
+                    topFont: "ArialBold-8:2",
+                    bottom: "TERMINAL",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "190"
+                    },
                     'BT PANJANG RD',
                     'STEVENS ROAD',
                     'ORCHARD ROAD',
                     'HILL STREET',
                     'CHINATOWN'
                 ],
-                scrollFont: "Arial-8"
+                scrollFont: "ArialBold-8:2"
             },
             rear: {
                 renderType: "rearService",
                 serviceNumber: "190",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    1902: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "190",
-                destination: {
-                    text: "CHOA CHUA KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'HILL STREET',
-                    'SOMERSET RD',
-                    'SCOTTS RD',
-                    'STEVENS RD',
-                    'BUKIT PANJANG RD'
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "190",
-                font: "Arial-15",
+                font: "LECIP-SMRTRear14:9",
                 spacing: 2
             }
         }
     },
-    "19O": {
+    1921: { // Done
         1: {
             front: {
-                renderType: "scammer",
-                serviceNumber: "190",
-                destination: "N       B              R",
-                destinationFont: "LECIP-7:5",
+                renderType: "standardService",
+                serviceNumber: "192",
+                destination: "TUAS TER via",
+                destinationFont: "ArialBold-8:2",
                 scrolls: [
-                    'B    P                 R'
+                    {
+                    renderType: "destScroll",
+                    top: "TUAS",
+                    topFont: "ArialBold-8:2",
+                    bottom: "",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "192"
+                    },
+                    "JURONG WEST ST 62",
+                    "UPP JURONG RD",
+                    "TUAS AVE 3, 1, 12",
+                    "TUAS WEST DR"
                 ],
-                scrollFont:"LECIP-7:5"
+                scrollFont: "ArialBold-8:2"
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "190",
-                font: "LECIP-20:12",
+                serviceNumber: "192",
+                font: "LECIP-SMRTRear14:9",
                 spacing: 2
             }
         }
     },
-    3021: {
+    1922: { // Done / Bomb
         1: {
             front: {
                 renderType: "standardService",
-                serviceNumber: "302",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
+                serviceNumber: "192",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
                 scrolls: [
-                    "CHOA CHU KANG WAY",
-                    "CHOA CHU KANG ST 52"
+                    {
+                    renderType: "destScroll",
+                    top: "TUAS",
+                    topFont: "ArialBold-8:2",
+                    bottom: "",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "192"
+                    },
+                    "TUAS WEST DR",
+                    "TUAS AVE 12, 1, 3",
+                    "UPPER JURONG RD",
+                    "JURONG WEST ST 62",
                 ],
-                scrollFont: 'Arial-8'
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "192",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    1931: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "193",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "193"
+                    },
+                    "TUAS WEST DR",
+                    "TUAS AVE 9, 4, 2, 5",
+                    "SIXTH LOK YANG RD",
+                    "LOK YANG WAY",
+                    "PIONEER RD NTH"
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "193",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    1932: { // Done / Bomb
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "193",
+                destination: "TUAS TER via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "TUAS",
+                    topFont: "ArialBold-8:2",
+                    bottom: "T",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "193"
+                    },
+                    "JURONG WEST AVE 4",
+                    "PIONEER RD NTH",
+                    "LOK YANG WAY",
+                    "SIXTH LOK YANG RD",
+                    "TUAS AVE 5, 2, 4, 9",
+                    "TUAS WEST DR",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "193",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    1991: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "199",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "199"
+                    },
+                    "JALAN BOON LAY",
+                    "JALAN BAHAR",
+                    "NANYANG AVE",
+                    "NANYANG CRES",
+                    "NANYANG DR"
+                ],
+                scrollFont: "ArialBold-8"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "199",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2401: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "240",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "240"
+                    },
+                    "BOON LAY DR",
+                    "BOON LAY PLACE",
+                    "KANG CHING RD",
+                    "CORPORATION DR",
+                    "JLN AHMAD IBRAHIM",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "240",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2411: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "241",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "241"
+                    },
+                    "JURONG WEST ST 63",
+                    "PIONEER RD NTH",
+                    "JURONG WEST ST 91",
+                    "JURONG WEST ST 92",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "241",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2412: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "241A",
+                destination: "PIONEER MRT",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll2",
+                    top: "ENDS AT",
+                    topFont: "ArialBold-8:2",
+                    bottom: "PIONEER MRT",
+                    bottomFont: "Calibri-7",
+        
+                    serviceNumber: "241A"
+                    },
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "241A",
+                font: "ArialBold-8:2",
+                spacing: 2
+            }
+        }
+    },
+    2421: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "242",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "242"
+                    },
+                    "JLN BOON LAY",
+                    "JURONG WEST AVE 4",
+                    "JURONG WEST ST 71",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "242",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2431: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "243G",
+                serviceFont: "Calibri-15",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll2",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "243G"
+                    },
+                    "JURONG WEST ST 64",
+                    "JURONG WEST ST 61",
+                    "JURONG WEST AVE 5",
+                    "JURONG WEST ST 82",
+                    "JURONG WEST ST 75",
+                    "JURONG WEST ST 62",
+                ],
+                scrollFont: "Calibri-7"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "243G",
+                font: "ArialBold-8:2",
+                spacing: 2
+            }
+        }
+    },
+    2432: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "243W",
+                serviceFont: "Calibri-15",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll2",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "243W"
+                    },
+
+                    "JURONG WEST ST 64",
+                    "JURONG WEST ST 61",
+                    "JURONG WEST AVE 5",
+                    "JURONG WEST ST 82",
+
+                    
+                    "JURONG WEST ST 75",
+                    "JURONG WEST ST 64", // Ending scroll
+                ],
+                scrollFont: "Calibri-7"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "243W",
+                font: "ArialBold-8:2",
+                spacing: 2
+            }
+        }
+    },
+    2461: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "246",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "246"
+                    },
+                    "BOON LAY PLACE, DR",
+                    "CHIN BEE DR",
+                    "QUALITY RD",
+                    "JLN TUKANG",
+                    "CORPORATION DR",
+                    "TAH CHING RD"
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "249",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2491: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "249",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "249"
+                    },
+                    "JLN BOON LAY",
+                    "JURONG PIER RD",
+                    "JLN BUROH",
+                    "TG KLING RD",
+                    "JLN SAMULUN",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "249",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2492: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "249A",
+                destination: "JURONG SHIPYARD",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll2",
+                    top: "ENDS AT",
+                    topFont: "ArialBold-8:2",
+                    bottom: "JURONG SHIPYARD",
+                    bottomFont: "Calibri-7",
+        
+                    serviceNumber: "249A"
+                    },
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "249A",
+                font: "ArialBold-8:2",
+                spacing: 2
+            }
+        }
+    },
+    2511: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "251",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "251"
+                    },
+                    "BOON LAY WAY",
+                    "PIONEER RD",
+                    "SHIPYARD RD"
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "251",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2521: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "252",
+                destination: "BOON LAY via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "252"
+                    },
+                    "JOO KOON CIRCLE",
+                    "JOO KOON RD",
+                    "ENTERPRISE RD",
+                    "INTERNATIONAL RD",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "249",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
             }
         }
     },
@@ -2382,1420 +988,146 @@ EDSData.SMRT = {
             front: {
                 renderType: "standardService",
                 serviceNumber: "405",
-                destination: {
-                    text: "BOON LAY via",
-                    font: "ArialBold-8"
-                },
+                destination: "BOON LAY INT via",
+                destinationFont: "ArialBold-8:2",
                 scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "BOON LAY",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "405"
+                    },
                     "JALAN BOON LAY",
                     "JALAN BAHAR",
-                    "OLD C.C.K ROAD",
-                    "LIM CHU KANG RD"
+                    "OLD C.C.K. RD"
                 ],
-                scrollFont: "Arial-8"
+                scrollFont: "ArialBold-8:2"
             },
             rear: {
                 renderType: "rearService",
                 serviceNumber: "405",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    7001: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "700",
-                destination: {
-                    text: "SHENTON WAY via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "BT PANJANG RD",
-                    "PETIR RD",
-                    "DUNEARN RD",
-                    "SCOTTS RD",
-                    "ORCHARD RD",
-                    //?
-                    "COLLYER QUAY"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "700",
-                font: "Arial-15",
+                font: "LECIP-SMRTRear14:9",
                 spacing: 2
             }
         }
     },
-    7002: {
+    9000: {
         1: {
             front: {
                 renderType: "standardService",
-                serviceNumber: "700",
+                serviceNumber: "",
                 destination: {
-                    text: "BT PANJANG via",
-                    font: "ArialBold-8"
+                    text: "243W",
+                    font: "Calibri-15"
                 },
                 scrolls: [
-                    "STAMFORD RD",
-                    "SOMERSET RD",
-                    "ORCHARD TURN",
-                    "SCOTTS RD",
-                    "BT TIMAH RD",
-                    "PETIR RD",
-                    "BT PANJANG RD",
+                    ""
                 ],
-                scrollFont: 'Arial-8'
+                scrollFont: 'Calibri-15'
             },
             rear: {
-                renderType: "rearService",
-                serviceNumber: "700",
-                font: "Arial-15",
-                spacing: 2
+                renderType: "standardService",
+                serviceNumber: "",
+                destination: {
+                    text: "",
+                    font: "Hanover-7:3"
+                },
+                scrolls: [
+                    ""
+                ],
+                scrollFont: "Hanover-7:3"
             }
         }
     },
-    7003: {
+    9997: { // Done
         1: {
             front: {
                 renderType: "standardService",
-                serviceNumber: "700A",
-                destination: {
-                    text: "SUNTEC CITY via",
-                    font: "ArialBold-8"
-                },
+                serviceNumber: "",
+                destination: "MCHNY",
+                destinationFont: "ArialBold-8:2",
                 scrolls: [
-                    "BT PANJANG RD",
-                    "PETIR RD",
-                    "DUNEARN RD",
-                    "SCOTTS RD",
-                    "ORCHARD RD",
-                ],
-                scrollFont: 'Arial-8'
-          },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "700A",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    7004: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "700A",
-                destination: {
-                    text: "BT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "STAMFORD RD",
-                    "SOMERSET RD",
-                    "ORCHARD TURN",
-                    "SCOTTS RD",
-                    "BT TIMAH RD",
-                    "PETIR RD",
-                    "BT PANJANG RD",
-                ],
-                scrollFont: 'Arial-8'
-          },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "700A",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    7501: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "75",
-                destination: {
-                    text: "BUKIT MERAH via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "UPP BT TIMAH RD",
-                    "CLEMENTI ROAD",
-                    "HOLLAND ROAD",
-                    "GREAT WORLD CITY",
-                    "OUTRAM ROAD",
-                    "JALAN BUKIT MERAH"
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "75",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    7502: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "75",
-                destination: {
-                    text: "BUKIT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "JALAN BUKIT MERAH",
-                    "KIM TIAN RD",
-                    "HOLLAND ROAD",
-                    "CLEMENTI ROAD",
-                    "UPP BT TIMAH RD"
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "75",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    7508: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "75",
-                destination: {
-                    text: "MARINA CENTRE via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "UPP BT TIMAH RD",
-                    "CLEMENTI ROAD",
-                    "HOLLAND ROAD",
-                    "GREAT WORLD CITY",
-                    "OUTRAM ROAD",
-                    "CANTONMENT RD",
-                    "ANSON ROAD",
-                    "ROBINSON ROAD",
-                    "EMPRESS PLACE"
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "75",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    7509: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "75",
-                destination: {
-                    text: "BUKIT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "COLLYER QUAY",
-                    "SHENTON WAY",
-                    "OUTRAM RD, MRT",
-                    "HOLLAND ROAD",
-                    "CLEMENTI ROAD",
-                    "UPP BT TIMAH RD"
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "75",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    8541: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "854",
-                destination: {
-                    text: "YISHUN via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "YIO CHU KANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "854",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    8572: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "857",
-                destination: {
-                    text: "YISHUN via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "STAMFORD RD",
-                    "SELEGIE RD",
-                    "SERANGOON RD",
-                    "YIO CHU KANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "857",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    8681: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "868E",
-                destination: {
-                    text: "SUNTEC CITY via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "JURONG EAST CTRL",
-                    "TEMASEK BLVD/AVE"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "868E",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9001: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "900",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WDL AVENUE 7',
-                    'WDL AVENUE 4',
-                    'WDL DRIVE 14',
-                    'WDL AVENUE 4',
-                    'WDL AVENUE 7'
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "900",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9002: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "900A", // fonts all messed up ????
-                destination: {
-                    text: "WOODLANDS INT",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WOODLANDS AVE 7',
-                    'WOODLANDS AVE 4',
-                    'WOODLANDS DR 14',
-                    // '' ??
-                    'INNOVA JC',
-                    'WOODLANDS AVE 4',
-                    'WOODLANDS AVE 7'
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "900A",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9011: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "901",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WOODLANDS AVE 2,1',
-                    'WOODLANDS DRIVE 16',
-                    'WOODLANDS AVE 6',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "901",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9021: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "902",
-                destination: {
-                    text: "REPUBLIC",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'POLYTECHNIC',
-                ],
-                scrollFont: 'ArialBold-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "902",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9031: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "903",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WOODLANDS AVE 2', // scrolls??
-                    "TRAIN CHECKPOINT"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "903",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9032: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "903M",
-                destination: {
-                    text: "WOODLANDS INT",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WOODLANDS AVE 2', // scrolls??
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "903M",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9041: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "904",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WDL CRESENT(LOOP)',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "904",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9111: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "911",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WOODLANDS AVE 7',
-                    'WOODLANDS ST 83',
-                    'WOODLANDS AVE 2',
-                    'WOODLANDS ST 13',
-                    'WDL TRAIN CHECKPOINT',
-                    'WOODLANDS ST 13'
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "911",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9112: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "911T", // wot??
-                destination: {
-                    text: "ENDS AT",
-                    font: "Arial-8"
-                },
-                scrolls: [
-                    'WDL INT / MRT',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "911T",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9121: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "912",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WOODLANDS AVE 5',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "912",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9122: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "912A",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WDL AVE 2,5',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "912A",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9123: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "912B",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WOODLANDS AVE 5',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "912B",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9124: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "912T",
-                destination: {
-                    text: "ENDS AT",
-                    font: "Arial-8"
-                },
-                scrolls: [
-                    'WDL INT / MRT',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "912T",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9125: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "912M",
-                destination: {
-                    text: "WOODLANDS INT",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'AVE 1,2,5',
-                    'ST 41 (LOOP)'
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "912M",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9131: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "913",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'WOODLANDS AVE 7,6',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "913",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9132: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "913T",
-                destination: {
-                    text: "ENDS AT",
-                    font: "Arial-8"
-                },
-                scrolls: [
-                    'WDL INT / MRT',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "913T",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9201: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "920",
-                destination: {
-                    text: "BT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'PETIR / JELEBU RD',
-                    'SENJA RD / LINK',
-                    'JELAPANG RD',
-                    'SAUJANA RD',
-                    'FAJAR RD',
-                    'BT PANJANG RING RD',
-                    'BANGKIT RD',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "920",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9501: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "950",
-                destination: {
-                    text: "JB SENTRAL TER via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "WOODLANDS AVE 3",
-                    "WDL TRAIN CHECKPOINT"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "950",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9502: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "950",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "WOODLANDS CENTRE RD",
-                    "WOODLANDS AVE 3"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "950",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    9503: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "950",
-                destination: {
-                    text: "JB SENTRAL TER",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "MALAYSIA"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "950",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9504: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "950",
-                destination: {
-                    text: "WOODLANDS INT",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SINGAPORE"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "950",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9512: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "951E",
-                destination: {
-                    text: "WOODLANDS ST 82",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'ROBINSON RD',
-                    'STAMFORD RD',
-                    'DHOBY GHAUT MRT',
                     {
-                        text: 'WOODLANDS AVE 5, 4',
-                        font: 'Arial-7'
+                    renderType: "destScroll2",
+                    top: "MERRY CHRISTMAS",
+                    topFont: "ArialBold-8:2",
+                    bottom: "HAPPY NEW YEAR",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: ""
                     },
                 ],
-                scrollFont: "Arial-8"
+                scrollFont: "ArialBold-8:2"
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "951E",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    9601: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "960",
-                destination: {
-                    text: "MARINA CTR via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "WOODLANDS RD",
-                    'BT TIMAH RD',
-                    "BRAS BASAH RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "960",
-                font: "Arial-15",
+                serviceNumber: "",
+                font: "ArialBold-8:2",
                 spacing: 2
             }
         }
     },
-    9602: {
+    9998: { // Done
         1: {
             front: {
                 renderType: "standardService",
-                serviceNumber: "960",
-                destination: {
-                    text: "WOODLANDS via",
-                    font: "ArialBold-8"
-                },
+                serviceNumber: "",
+                destination: "SMRT FIRST JURONG WEST BUS",
+                destinationFont: "ArialBold-8:2",
                 scrolls: [
-                    "VICTORIA ST",
-                    "ROCHOR RD",
-                    "BT TIMAH RD",
-                    "WHITLEY RD",
-                    "PIE/BKE",
-                    "BT PANJANG RD/LRT",
-                    "WOODLANDS RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "960",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9603: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "960e",
-                destination: {
-                    text: "WOODLANDS via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "RAFFLES AVE",
-                    "VICTORIA ST",
-                    'BT TIMAH RD',
-                    "WOODLANDS AVE 3"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "960e",
-                font: "ArialBold-8",
-                spacing: 1
-            }
-        }
-    },
-    9631: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "963",
-                destination: {
-                    text: "HARBOURFRONT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'ALEXANDRA RD',
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "963",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9641: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "964",
-                destination: {
-                    text: "WOODLANDS INT via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "WOODLANDS AVE 7,6",
-                    "WOODLANDS LOOP"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "964",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9701: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "970",
-                destination: {
-                    text: "SHENTON WAY via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "HILLVIEW AVE"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "970",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9702: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "970",
-                destination: {
-                    text: "BT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "HILLVIEW AVE"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "970",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9721: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "972",
-                destination: {
-                    text: "ORCHARD RD via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SENJA ROAD / LINK",
-                    "JELAPANG ROAD",
-                    "SEGAR / FAJAR RD",
-                    "BT PANJANG RING RD",
-                    "BKE / PIE",
-                    "WHITLEY ROAD",
-                    "STEVENS / SCOTTS RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "972",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9722: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "972",
-                destination: {
-                    text: "BUKIT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "PENANG RD",
-                    "ORCHARD TURN",
-                    "SCOTTS / STEVENS RD",
-                    "WHITLEY ROAD",
-                    "PIE / BKE",
-                    "BT PANJANG RING RD",
-                    "FAJAR / SEGAR RD",
-                    "JELAPANG RD",
-                    "SENJA LINK / ROAD",
-                    "BT PANJANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "972",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9723: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "972M",
-                destination: {
-                    text: "ORCHARD RD via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SENJA ROAD / LINK",
-                    "JELAPANG ROAD",
-                    "SEGAR / FAJAR RD",
-                    "BT PANJANG RING RD",
-                    "BKE / PIE",
-                    "DUNEARN ROAD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "972M",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9724: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "972M",
-                destination: {
-                    text: "BUKIT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "PENANG RD",
-                    "ORCHARD TURN",                  
-                    "BUKIT TIMAH ROAD",
-                    "PIE / BKE",
-                    "BT PANJANG RING RD",
-                    "FAJAR / SEGAR RD",
-                    "JELAPANG RD",
-                    "SENJA LINK / ROAD",
-                    "BT PANJANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "972M",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9729: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "972",
-                destination: {
-                    text: "HAPPY 10TH",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "ANNIVERSARY"
-                ],
-                scrollFont: "ArialBold-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "972",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9731: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "973",
-                destination: {
-                    text: "BT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "BT PANJANG RD",
-                    "PENDING RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "970",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9751: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "975",
-                destination: {
-                    text: "LIM CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "TECK WHYE AVE"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "975",
-                font: "Calibri-15",
-                spacing: 2
-            }
-        }
-    },
-    9754: {
-        1: {
-            front: {
-                renderType: "calibriStandardService",
-                serviceNumber: "975B",
-                destination: {
-                    text: "ENDS AT OPP",
-                    font: "Arial-8"
-                },
-                scrolls: [
-                    "LIM CHU KANG LANE 3"
-                ],
-                scrollFont: 'Calibri-7'
-            }
-        }
-    },
-    9791: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "979",
-                destination: {
-                    text: "BT PANJANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'PETIR / JELEBU RD',
-                    'WOODLANDS RD',
                     {
-                        text: 'CHOA CHU KANG NORTH 5',
-                        font: 'Arial-7'
+                    renderType: "destScroll2",
+                    top: "SMRT FIRST",
+                    topFont: "ArialBold-8:2",
+                    bottom: "JURONG WEST BUS",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: ""
                     },
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "",
+                font: "ArialBold-8:2",
+                spacing: 2
+            }
+        }
+    },
+    9999: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "176",
+                destination: "BUKIT PANJANG via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
                     {
-                        text: 'CHOA CHU KANG ST 52/DR',
-                        font: 'Arial-7'
+                    renderType: "destScroll",
+                    top: "BUKIT PANJANG",
+                    topFont: "ArialBold-8:2",
+                    bottom: "INT / MRT",
+                    bottomFont: "ArialBold-8:2",
+        
+                    serviceNumber: "176"
                     },
-                    {
-                        text: 'CHOA CHU KANG NORTH 7',
-                        font: 'Arial-7'
-                    },
-                    'C.C.K CRES (LOOP)'
+                    'WEST COAST HIGHWAY',
+                    "JURONG TOWN HALL"
                 ],
-                scrollFont: "Arial-8"
+                scrollFont: "ArialBold-8;2"
             },
             rear: {
                 renderType: "rearService",
-                serviceNumber: "979",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    9801: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "980",
-                destination: {
-                    text: "GEYLANG LOR 1 via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "SEMBAWANG RD",
-                    "UPPER THOMSON RD",
-                    "THOMSON RD",
-                    "VICTORIA ST",
-                    "BEACH RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "980",
-                font: "Arial-15",
+                serviceNumber: "176",
+                font: "LECIP-SMRTRear14:9",
                 spacing: 2
             }
         }
     },
-    9802: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "980",
-                destination: {
-                    text: "SEMBAWANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "BEACH RD",
-                    "VICTORIA ST",
-                    "THOMSON RD",
-                    "UPPER THOMSON RD",
-                    "SEMBAWANG RD"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "980",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9831: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "983",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "PETIR RD",
-                    "CHOA CHU KANG RD"
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "983",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    9851: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "985",
-                destination: {
-                    text: "GEYLANG LOR 1 via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'TECK WHYE AVE',
-                    'B. B WEST AVE 7, 4',
-                    'B. B WEST AVE 2',
-                    'B. B EAST AVE 2',
-                    'JLN JURONG KECHIL',
-                    'JLN TOA PAYOH',
-                    'BENDEMEER ROAD',
-                    'KALLANG MRT'
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "985",
-                font: "Arial-15",
-                spacing: 2
-            }
-        },
-    },
-    9852: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "985",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    'SERANGOON ROAD',
-                    'JLN TOA PAYOH',
-                    'JLN JURONG KECHIL',
-                    'B. B EAST AVE 2',
-                    'B. B WEST AVE 2, 4',
-                    'B. B WEST AVE 7',
-                    'TECK WHYE AVE'
-                ],
-                scrollFont: "Arial-8"
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "985",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9911: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "991",
-                destination: {
-                    text: "CHOA CHU KANG via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "BT BATOK WEST AVE 3,6",
-                    "BT BATOK ST 11",
-                    "BT BATOK WEST AVE 8,5",
-                    "BRICKLAND RD",
-                    "CHOA CHU KANG AVE 3,1",
-                    "KEAT HONG LINK"
-                ],
-                scrollFont: 'Arial-8'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "991",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    },
-    9912: {
-        1: {
-            front: {
-                renderType: "standardService",
-                serviceNumber: "991",
-                destination: {
-                    text: "BUKIT BATOK via",
-                    font: "ArialBold-8"
-                },
-                scrolls: [
-                    "KEAT HONG LINK",
-                    "CHOA CHU KANG AVE 1,3",
-                    "BRICKLAND RD",
-                    "BT BATOK WEST AVE 5,8",
-                    "BT BATOK ST 11",
-                    "BT BATOK WEST AVE 6,3"
-                ],
-                scrollFont: 'Arial-8;Space-Width=0'
-            },
-            rear: {
-                renderType: "rearService",
-                serviceNumber: "991",
-                font: "Arial-15",
-                spacing: 2
-            }
-        }
-    }
 }
 
 
