@@ -480,6 +480,119 @@ EDSData.SMRT = {
             }
         }
     },
+    1821: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "182",
+                destination: "TUAS STH AVE 4 via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    "UPP JURONG RD",
+                    "JLN AHMAD IBRAHIM",
+                    "TUAS CHECKPOINT",
+                    "TUAS WEST DR",
+                    "TUAS STH AVE 3, 9",
+                    "TUAS STH AVE 8, 5"
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "182",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    1822: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "182",
+                destination: "JOO KOON INT via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    "TUAS STH AVE 3",
+                    "TUAS WEST DR",
+                    "TUAS CHECKPOINT",
+                    "JLN AHMAD IBRAHIM",
+                    "UPP JURONG RD"
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "182",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    1823: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "182M",
+                destination: "TUAS STH AVE 3",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "TUAS STH AVE 3 via",
+                    topFont: "ArialBold-8:2",
+                    bottom: "UPP JURONG RD",
+                    bottomFont: "Calibri-8:2",
+        
+                    serviceNumber: "182M"
+                    },
+                    {
+                    renderType: "destScroll2A",
+                    top: "TUAS STH AVE 3 via",
+                    topFont: "ArialBold-8:2",
+                    bottom: "JLN AHMAD IBRAHIM",
+                    bottomFont: "Calibri-7:2",
+            
+                    serviceNumber: "182M"
+                    },
+                    {
+                    renderType: "destScroll",
+                    top: "TUAS STH AVE 3 via",
+                    topFont: "ArialBold-8:2",
+                    bottom: "TUAS WEST DR",
+                    bottomFont: "Calibri-8:2",
+            
+                    serviceNumber: "182M"
+                    },
+                    {
+                    renderType: "destScroll2A",
+                    top: "TUAS STH AVE 3 via",
+                    topFont: "ArialBold-8:2",
+                    bottom: "TUAS STH AVE 8, 9",
+                    bottomFont: "Calibri-7:2",
+                
+                    serviceNumber: "182M"
+                    },
+                    {
+                    renderType: "destScroll2A",
+                    top: "TUAS STH AVE 3 via",
+                    topFont: "ArialBold-8:2",
+                    bottom: "TUAS STH AVE 3, 5",
+                    bottomFont: "Calibri-7:2",
+                
+                    serviceNumber: "182M"
+                    },
+                ],
+                scrollFont: "ArialBold-7:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "182M",
+                font: "Arial-10",
+                spacing: 1
+            }
+        }
+    },
     1841: { // Done
         1: {
             front: {
@@ -508,6 +621,58 @@ EDSData.SMRT = {
             rear: {
                 renderType: "rearService",
                 serviceNumber: "184",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    1851: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "185",
+                destination: "BUONA VISTA TER via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    "PIONEER RD NTH",
+                    "JURONG WEST AVE 3",
+                    "JURONG WEST ST 23",
+                    "JURONG WEST AVE 1",
+                    "JURONG EAST AVE 1",
+                    "CLEMENTI AVE 6",
+                    "C'WEALTH AVE WEST",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "185",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    1852: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "185",
+                destination: "SOON LEE DEPOT via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    "C'WEALTH AVE WEST",
+                    "CLEMENTI AVE 6",
+                    "JURONG EAST AVE 1",
+                    "JURONG WEST AVE 1",
+                    "JURONG WEST ST 23" ,
+                    "JURONG WEST AVE 3",
+                    "PIONEER RD NTH",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "185",
                 font: "LECIP-SMRTRear14:9",
                 spacing: 2
             }
@@ -926,7 +1091,7 @@ EDSData.SMRT = {
                 renderType: "rearService",
                 serviceNumber: "241A",
                 font: "Arial-10",
-                spacing: 2
+                spacing: 1
             }
         }
     },
@@ -1030,6 +1195,118 @@ EDSData.SMRT = {
             }
         }
     },
+    2471: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "247",
+                destination: "TUAS TER via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    "TUAS LINK 4",
+                    "TUAS AVE 7, 8",
+                    "TUAS CRES",
+                    "TUAS STH AVE 5,4,7",
+                    "TUAS STH AVE 3,9,8",
+                    "TUAS BAY LINK",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "247",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2481: {
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "248",
+                destination: "TUAS TER via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    "TUAS AVE 20",
+                    "TUAS CRESCENT",
+                    "TUAS STH AVE 5, 12",
+                    "TUAS STH AVE 14, 10",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "248",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2482: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "248M",
+                destination: "TUAS",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "TUAS TER via",
+                    topFont: "ArialBold-8:2",
+                    bottom: "TUAS AVE 20",
+                    bottomFont: "Calibri-8:2",
+        
+                    serviceNumber: "248M"
+                    },
+                    {
+                    renderType: "destScroll2A",
+                    top: "TUAS TER via",
+                    topFont: "ArialBold-8:2",
+                    bottom: "TUAS CRESCENT",
+                    bottomFont: "Calibri-8:2",
+            
+                    serviceNumber: "248M"
+                    },
+                    {
+                    renderType: "destScroll",
+                    top: "TUAS TER via",
+                    topFont: "ArialBold-8:2",
+                    bottom: "TUAS STH AVE 5, 12",
+                    bottomFont: "Calibri-7:2",
+            
+                    serviceNumber: "248M"
+                    },
+                    {
+                    renderType: "destScroll2A",
+                    top: "TUAS TER via",
+                    topFont: "ArialBold-8:2",
+                    bottom: "TUAS STH WAY",
+                    bottomFont: "Calibri-8:2",
+                
+                    serviceNumber: "248M"
+                    },
+                    {
+                    renderType: "destScroll2A",
+                    top: "TUAS TER via",
+                    topFont: "ArialBold-8:2",
+                    bottom: "TUAS STH AVE 14, 9, 10",
+                    bottomFont: "Calibri-7:2",
+                
+                    serviceNumber: "248M"
+                    },
+                ],
+                scrollFont: "ArialBold-7:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "248M",
+                font: "Arial-10",
+                spacing: 1
+            }
+        }
+    },
     2491: {
         1: {
             front: {
@@ -1130,6 +1407,126 @@ EDSData.SMRT = {
             }
         }
     },
+2531: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "253",
+                destination: "JOO KOON INT via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+
+                    "BENOI RD",
+                    "BENOI SECTOR",
+                    "PIONEER RD",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "253",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2541: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "254",
+                destination: "JOO KOON INT via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    "PIONEER RD",
+                    "TUAS RD",
+                    "TUAS AVE 20, 11",
+                    "TUAS BASIN LK",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "254",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2551: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "255",
+                destination: "JOO KOON INT via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+
+                    "GUL CIRCLE",
+                    "GUL CRES",
+                    "GUL AVE, WAY",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "255",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2571: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "257",
+                destination: "JOO KOON INT via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+
+                    "BENOI RD",
+                    "PIONEER RD",
+                    "GUL RD",
+                    "PIONEER SECTOR LN",
+                    "PIONEER SECTOR 3",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "257",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    2581: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "258",
+                destination: "JOO KOON INT via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+
+                    "JLN AHMAD IBRAHIM",
+                    "PIONEER RD NTH",
+                    "GUL RD",
+                    "JURONG WEST ST 61",
+                    "JURONG WEST ST 81",
+                    "JURONG WEST ST 64",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "258",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
     4051: {
         1: {
             front: {
@@ -1174,6 +1571,58 @@ EDSData.SMRT = {
                 serviceNumber: "405M",
                 font: "Arial-10",
                 spacing: 1
+            }
+        }
+    },
+    5021: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "502",
+                destination: "EXPRESS",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "EXPRESS",
+                    topFont: "Arial-10",
+        
+                    serviceNumber: "502"
+                    },
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "502",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    5022: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "502A",
+                destination: "EXPRESS",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+                    {
+                    renderType: "destScroll",
+                    top: "EXPRESS",
+                    topFont: "Arial-10",
+        
+                    serviceNumber: "502A"
+                    },
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "502A",
+                font: "Arial-10",
+                spacing: 2
             }
         }
     },
@@ -1385,6 +1834,60 @@ EDSData.SMRT = {
             }
         }
     },
+    9741: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "974",
+                destination: "BT PANJANG via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+
+                    "UPP JURONG RD",
+                    "JURONG WEST ST 64",
+                    "JLN BOON LAY",
+                    "JLN BAHAR",
+                    "PIE, KJE",
+                    "C. C. K DR, MRT",
+                    "C. C. K WAY"
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "974",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    },
+    9742: { // Done
+        1: {
+            front: {
+                renderType: "standardService",
+                serviceNumber: "974",
+                destination: "JOO KOON INT via",
+                destinationFont: "ArialBold-8:2",
+                scrolls: [
+
+                    "C. C. K WAY",
+                    "C. C. K MRT, DR",
+                    "KJE, PIE",
+                    "JLN BAHAR",
+                    "JLN BOON LAY",
+                    "JURONG WEST ST 64",
+                    "UPPER JURONG RD",
+                ],
+                scrollFont: "ArialBold-8:2"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "974",
+                font: "LECIP-SMRTRear14:9",
+                spacing: 2
+            }
+        }
+    }, 
     9990: {
         1: {
             front: {
