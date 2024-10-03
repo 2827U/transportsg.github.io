@@ -3766,6 +3766,22 @@ EDSData.SBST = {
             }
         }
     },
+    "50A": {
+        1: {
+            front: {
+                renderType: "swt",
+                serviceNumber: "50A",
+                terminateAt: "AMK AVE 8",
+                landmark: "(BEF ANG MO KIO STN EXIT B)"
+            },
+            rear: {
+                renderType: "rearService",
+                serviceNumber: "50A",
+                font: "LECIP-20:9",
+                spacing: 2
+            }
+        }
+    },
     "50C": {
         1: {
             front: {
@@ -19505,15 +19521,15 @@ EDSData.SBST = {
             front: {
                 renderType: "message",
                 text: "NEL BRIDGING BUS",
-                font: "LECIP-20:9",
+                font: "LECIP-14:6",
                 spacing: 2
             },
             rear: {
                 renderType: 'twoline',
-                top: "NEL",
+                top: "NEL BRDG",
                 topFont: "LECIP-6:3",
 
-                bottom: "BRIDGING",
+                bottom: "BUS",
                 bottomFont: "LECIP-6:3"
             }
         }
@@ -19523,15 +19539,15 @@ EDSData.SBST = {
             front: {
                 renderType: "message",
                 text: "DTL BRIDGING BUS",
-                font: "LECIP-20:9",
+                font: "LECIP-14:6",
                 spacing: 2
             },
             rear: {
                 renderType: 'twoline',
-                top: "DTL",
+                top: "DTL BRDG",
                 topFont: "LECIP-6:3",
 
-                bottom: "BRIDGING",
+                bottom: "BUS",
                 bottomFont: "LECIP-6:3"
             }
         }
@@ -19541,15 +19557,15 @@ EDSData.SBST = {
             front: {
                 renderType: "message",
                 text: "CCL BRIDGING BUS",
-                font: "LECIP-20:9",
+                font: "LECIP-14:6",
                 spacing: 2
             },
             rear: {
                 renderType: 'twoline',
-                top: "CCL",
+                top: "CCL BRDG",
                 topFont: "LECIP-6:3",
 
-                bottom: "BRIDGING",
+                bottom: "BUS",
                 bottomFont: "LECIP-6:3"
             }
         }
@@ -19559,15 +19575,15 @@ EDSData.SBST = {
             front: {
                 renderType: "message",
                 text: "EWL BRIDGING BUS",
-                font: "LECIP-20:9",
+                font: "LECIP-14:6",
                 spacing: 2
             },
             rear: {
                 renderType: 'twoline',
-                top: "EWL",
+                top: "EWL BRDG",
                 topFont: "LECIP-6:3",
 
-                bottom: "BRIDGING",
+                bottom: "BUS",
                 bottomFont: "LECIP-6:3"
             }
         }
@@ -19577,15 +19593,15 @@ EDSData.SBST = {
             front: {
                 renderType: "message",
                 text: "NSL BRIDGING BUS",
-                font: "LECIP-20:9",
+                font: "LECIP-14:6",
                 spacing: 2
             },
             rear: {
                 renderType: 'twoline',
-                top: "NSL",
+                top: "NSL BRDG",
                 topFont: "LECIP-6:3",
 
-                bottom: "BRIDGING",
+                bottom: "BUS",
                 bottomFont: "LECIP-6:3"
             }
         }
@@ -19595,15 +19611,15 @@ EDSData.SBST = {
             front: {
                 renderType: "message",
                 text: "TEL BRIDGING BUS",
-                font: "LECIP-20:9",
+                font: "LECIP-14:6",
                 spacing: 2
             },
             rear: {
                 renderType: 'twoline',
-                top: "TEL",
+                top: "TEL BRDG",
                 topFont: "LECIP-6:3",
 
-                bottom: "BRIDGING",
+                bottom: "BUS",
                 bottomFont: "LECIP-6:3"
             }
         }
@@ -19613,15 +19629,15 @@ EDSData.SBST = {
             front: {
                 renderType: "message",
                 text: "CRL BRIDGING BUS",
-                font: "LECIP-20:9",
+                font: "LECIP-14:6",
                 spacing: 2
             },
             rear: {
                 renderType: 'twoline',
-                top: "CRL",
+                top: "CRL BRDG",
                 topFont: "LECIP-6:3",
 
-                bottom: "BRIDGING",
+                bottom: "BUS",
                 bottomFont: "LECIP-6:3"
             }
         }
@@ -19631,15 +19647,15 @@ EDSData.SBST = {
             front: {
                 renderType: "message",
                 text: "JRL BRIDGING BUS",
-                font: "LECIP-20:9",
+                font: "LECIP-14:6",
                 spacing: 2
             },
             rear: {
                 renderType: 'twoline',
-                top: "JRL",
+                top: "JRL BRDG",
                 topFont: "LECIP-6:3",
 
-                bottom: "BRIDGING",
+                bottom: "BUS",
                 bottomFont: "LECIP-6:3"
             }
         }
@@ -19649,15 +19665,15 @@ EDSData.SBST = {
             front: {
                 renderType: "message",
                 text: "LRT BRIDGING BUS",
-                font: "LECIP-20:9",
+                font: "LECIP-14:6",
                 spacing: 2
             },
             rear: {
                 renderType: 'twoline',
-                top: "LRT",
+                top: "LRT BRDG",
                 topFont: "LECIP-6:3",
 
-                bottom: "BRIDGING",
+                bottom: "BUS",
                 bottomFont: "LECIP-6:3"
             }
         }
@@ -19690,11 +19706,11 @@ EDSData.SBST = {
             },
             rear: {
                 renderType: 'twoline',
-                top: "LRT",
-                topFont: "LECIP-7:4",
+                top: "LRT BRDG",
+                topFont: "LECIP-6:3",
 
                 bottom: "EAST",
-                bottomFont: "LECIP-7:4"
+                bottomFont: "LECIP-6:3"
             }
         },
         2: {
@@ -19706,11 +19722,11 @@ EDSData.SBST = {
             },
             rear: {
                 renderType: 'twoline',
-                top: "LRT",
-                topFont: "LECIP-7:4",
+                top: "LRT BRDG",
+                topFont: "LECIP-6:3",
 
                 bottom: "WEST",
-                bottomFont: "LECIP-7:4"
+                bottomFont: "LECIP-6:3"
             }
         }
     },

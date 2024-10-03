@@ -802,7 +802,7 @@ EDSData.TTSG = {
         front: {
             renderType: "standardService",
             serviceNumber: "66",
-            destination: "BEAUTY WORLD",
+            destination: "BEAUTY WORLD MRT",
             scrolls: [
                 "JURONG TOWN HALL RD",
                 "BUKIT BATOK WEST AVE 8",
@@ -2115,6 +2115,14 @@ EDSData.TTSG = {
                     top: "Skip",
                     topFont: "Mobitec-7:5:3",
                     bottom: "Marina Centre / Suntec",
+                    bottomFont: "Mobitec-Tower6:4",
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "106",
+                    top: "Skip",
+                    topFont: "Mobitec-7:5:3",
+                    bottom: "Marina Bay / Bayfront",
                     bottomFont: "Mobitec-Tower6:4",
                 },
                 "C'WEALTH AVE WEST",
@@ -6047,7 +6055,6 @@ EDSData.TTSG = {
                 "BENDEMEER RD",
                 "LITTLE INDIA",
                 "BENCOOLEN ST",
-                "BRAS BASAH RD",
                 {
                     renderType: "destScroll",
                     serviceNumber: "857",
@@ -6431,10 +6438,10 @@ EDSData.TTSG = {
             destination: "KHATIB MRT",
             scrolls: [
                 "CANBERRA ST",
-                "CANBERRA WAY",
                 "CANBERRA MRT",
+                "YISHUN AVE 7",
                 "YISHUN AVE 6",
-                "YISHUN AVE 1",
+                "YISHUN RING RD",
                 {
                     renderType: "destScroll",
                     serviceNumber: "861",
@@ -6468,10 +6475,10 @@ EDSData.TTSG = {
             serviceNumber: "861",
             destination: "SEMBAWANG",
             scrolls: [
-                "YISHUN AVE 1",
+                "YISHUN RING RD",          
                 "YISHUN AVE 6",
+                "YISHUN AVE 7",
                 "CANBERRA MRT",
-                "CANBERRA WAY",
                 "CANBERRA ST",
                 {
                     renderType: "destScroll",
