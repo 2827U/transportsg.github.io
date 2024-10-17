@@ -6518,8 +6518,18 @@ EDSData.TTSG = {
                     serviceNumber: "861A",
                     top: "Ends At",
                     topFont: "Mobitec-7:5:3",
-                    bottom: "Khatib Stn Exit D",
+                    bottom: "Yishun Ring Rd",
                     bottomFont: "Mobitec-Tower6:4",
+                    image: "mrt"
+                },
+                {
+                    renderType: "destScroll",
+                    serviceNumber: "861A",
+                    top: "Ends At",
+                    topFont: "Mobitec-7:5:3",
+                    bottom: "(Khatib Stn Exit D)",
+                    bottomFont: "Mobitec-Tower6:4",
+                    image: "mrt"
                 },
             ]
         }
@@ -7676,7 +7686,7 @@ EDSData.TTSG = {
     9691: {
         front: {
             renderType: "standardService",
-            serviceNumber: "966",
+            serviceNumber: "969",
             destination: "TAMPINES",
             scrolls: [
                 "WOODLANDS AVE 7",

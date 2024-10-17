@@ -4422,6 +4422,42 @@ EDSData.SBST = {
             renderType: "standardService",
             serviceNumber: "123M",
             destination: {
+                text: "> TIONG BAHRU",
+                font: "Mobitec-7:4"
+            },
+            scrolls: [
+                "KAMPONG BAHRU RD",
+                "LOWER DELTA RD ",
+                "BUKIT PURMEI AVE",
+                "LOWER DELTA RD ",
+                "TIONG BAHRU STN",
+            ],
+            scrollFont: "Mobitec-6:5"
+        }
+    },
+    1238: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "123M",
+            destination: {
+                text: "> HARBOURFRONT INT",
+                font: "Mobitec-7:4"
+            },
+            scrolls: [
+                "TIONG BAHRU STN",
+                "LOWER DELTA RD",
+                "BUKIT PURMEI AVE",
+                "LOWER DELTA RD",
+                "TELOK BLANGAH RD"
+            ],
+            scrollFont: "Mobitec-6:5"
+        }
+    },
+    1239: {
+        front: {
+            renderType: "standardService",
+            serviceNumber: "123M",
+            destination: {
                 text: "HARBOURFRONT-T. BAHRU",
                 font: "Mobitec-7:4"
             },
@@ -6609,8 +6645,7 @@ EDSData.SBST = {
             renderType: "expressService",
             serviceNumber: "196e"
         }
-    },
-    1971: {
+    },    1971: {
         front: {
             renderType: "standardService",
             serviceNumber: "197",
@@ -6629,7 +6664,7 @@ EDSData.SBST = {
             scrollFont: "Mobitec-6:5"
         }
     },
-    1962: {
+    1972: {
         front: {
             renderType: "standardService",
             serviceNumber: "197",
@@ -6698,7 +6733,7 @@ EDSData.SBST = {
             renderType: "standardService",
             serviceNumber: "199",
             destination: {
-                text: "BOONLAY INT-NANYANG CRES",
+                text: "BOON LAY INT-NANYANG CRES",
                 font: "Mobitec-7:4"
             },
             scrolls: [
